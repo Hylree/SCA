@@ -20,10 +20,9 @@ app.use(bodyParser.json());
 
 /**_______________________________________________________ */
 /** On importe les routers */
-const animalRouter = require('./app/routers/animalRouter');
-const authRouter = require('./app/routers/authRouter');
-const userRouter = require('./app/routers/userRouter');
-const contactRouter = require('./app/routers/contactRouter');
+const animalRouter = require('./app/routers/api/animalRouter');
+const authRouter = require('./app/routers/api/authRouter');
+const userRouter = require('./app/routers/api/userRouter');
 
 /** On importe les middlewares */
 const authMiddleware = require('./app/middlewares/authMiddleware');
@@ -31,17 +30,31 @@ const authMiddleware = require('./app/middlewares/authMiddleware');
 /** On créé le router API */
 const apiRouter = express.Router();
 
+
 apiRouter.use('/animals', animalRouter);
 apiRouter.use('/auth', authRouter);
-apiRouter.use('/contact', contactRouter);
 apiRouter.use('/users', [authMiddleware, userRouter]);
 
 /** On implémente le router API */
-app.use('/', apiRouter);
+app.use('/api', apiRouter);
 
 
 /** _____________________________________________________________ */
+
+const contactRouter = require('./app/routers/web/contactRouter');
+const registerRouter = require('./app/routers/web/registerRouter');
 /** On créé le router web */
+const webRouter = express.Router();
+
+webRouter.use('/contact', contactRouter);
+webRouter.use('/register', registerRouter);
+
+/** On implémente le router Web */
+app.use('/', webRouter);
+
+/** fin routers 
+ * ______________________________________________________________
+*/
 
 
 /** Connexion à la base MongoDB */

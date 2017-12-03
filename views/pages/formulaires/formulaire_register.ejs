@@ -1,0 +1,23 @@
+        <% if(locals.error){ %>
+        <div class="ui negative message">
+            <label> 
+        
+                <%= error %> 
+ 
+            </label>
+        </div>
+        
+        <% } %>
+<form action="/register/reg" method="post" class="ui form">
+    <div class="field">
+        <label for="message"> E-mail </label>
+        <input name="username" id="username"></input>
+        <label for="message"> Mot de passe </label>
+        <input name="password" id="password"></input>
+        <label for="message"> Confirmer votre mot de passe </label>
+        <input name="password_confirm" id="password_confirm"></input>
+    </div>
+    <button type="submit" class="ui blue labeled submit icon button" >
+        <i class="icon edit"></i>Envoyer
+    </button>
+</form>

@@ -1,5 +1,5 @@
 /** On importe les modèles */
-const Animal = require('../models/animal');
+const Animal = require('../../models/animal');
 
 /** On déclare les fonctions liées aux animaux */
 

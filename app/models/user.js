@@ -6,16 +6,16 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: [true, 'Username property is required.'],
-        unique: true,
-        minlength: [3, 'Username property should be 3 characters long at least.'],
-        maxlength: [255, 'Username property should be 255 characters long at maximum.']
+        required: [true, 'L\'email doit être renseigné'],
+        unique: [true, 'Le nom d\'utilisateur ou le mot de passe n\'est pas valide'],
+        minlength: [3, 'L\'email doit être supérieur à 3 caractères'],
+        maxlength: [255, 'L\'email doit être inférieur à 255 caractères']
     },
     password: {
         type: String,
-        required: [true, 'Password property is required.'],
+        required: [true, 'Le mot de passe doit être renseigné'],
         unique: false,
-        minlength: [8, 'Password property should be 8 characters long at least.']
+        minlength: [8, 'Le mot de passe doit être supérieur à 8 caractères']
     },
     authToken: {
         type: String,

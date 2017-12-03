@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 
 /** On importe les fichiers de configuration */
-const jwtConfig = require('../config/jwt');
+const jwtConfig = require('../../config/jwt');
 
 /** On importe les modèles */
-const User = require('../models/user');
+const User = require('../../models/user');
 
 /** On déclare les fonctions liées aux animaux */
 const login = (req, res) => {

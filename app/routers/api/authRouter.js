@@ -2,7 +2,7 @@
 const express = require('express');
 
 /** On importe les controllers */
-const authController = require('../controllers/authController');
+const authController = require('../../controllers/api/authController');
 
 /** On déclare notre router */
 const authRouter = express.Router();

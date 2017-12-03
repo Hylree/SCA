@@ -2,10 +2,10 @@
 const express = require('express');
 
 /** On importe les controllers */
-const animalController = require('../controllers/animalController');
+const animalController = require('../../controllers/api/animalController');
 
 /** On importe les middlewares */
-const authMiddleware = require('../middlewares/authMiddleware.js');
+const authMiddleware = require('../../middlewares/authMiddleware.js');
 
 /** On déclare notre router */
 const animalRouter = express.Router();

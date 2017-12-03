@@ -2,7 +2,7 @@
 const bcrypt = require('bcrypt-nodejs');
 
 /** On importe les modèles */
-const User = require('../models/user');
+const User = require('../../models/user');
 
 /** On déclare les fonctions liées aux animaux */
 
@@ -19,7 +19,7 @@ const getUsers = (req, res) => {
 const postUsers = (req, res) => {
 
     req.body.password = bcrypt.hashSync(req.body.password, null);
-
+        
     User.create(req.body, (err, user) => {
         if (err) {
             res.status(400).send({ success: false, error: err });
@@ -27,6 +27,8 @@ const postUsers = (req, res) => {
             res.status(201).send({ success: true, user: user });
         }
     });
+        
+
 
 };
 
