@@ -9,7 +9,7 @@ const registerRouter = express.Router();
 
 /** On déclare les routes */
 registerRouter.get('/', registerController.viewRegister);
-registerRouter.post('/reg', registerController.postRegister);
+registerRouter.post('/', registerController.postRegister);
 
 /** On exporte le router */
 module.exports = registerRouter

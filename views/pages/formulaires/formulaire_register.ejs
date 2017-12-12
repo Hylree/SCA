@@ -1,14 +1,19 @@
-        <% if(locals.error){ %>
+        <% if(locals.errors){ %>
         <div class="ui negative message">
-            <label> 
-        
-                <%= error %> 
- 
-            </label>
+                <label>Erreur:</label>
+            <div class="ui middle aligned divided list">
+                <% errors.forEach((error) => { %>
+                    <div class="item">
+                            <div class="content">
+                                <%= error %>
+                            </div>
+                    </div>
+                <% }); %>
+            </div>
         </div>
         
         <% } %>
-<form action="/register/reg" method="post" class="ui form">
+<form action="/register" method="post" class="ui form">
     <div class="field">
         <label for="message"> E-mail </label>
         <input name="username" id="username"></input>

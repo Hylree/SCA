@@ -13,27 +13,24 @@ const viewRegister = (req, res) => {
 
 const postRegister = (req, res) => {
 
-    let valid;
 
     User.create(req.body, (err, user) => {
-        if (err) throw err;
+        if (err) {
+            const errors = [];
+            if(err.code === 11000){
+                errors.push("L'utilisateur existe déjà.");
+            }else{
+                for (const error in err.errors) {
+                    if (err.errors[error].name === 'ValidatorError') {
+                        errors.push(err.errors[error].properties.message);
+                    }
+                }
+            }
 
-        if(req.body.password != req.body.password_confirm){
-            valid = false;
-        }
-
-        if(err){
-
-            valid = false;
-        }
-        
-        if(valid == false){
-            res.status(400).render('pages/vue/register');
-            console.log("result: ", err)
-        }else if(valid == true ){
+            res.status(400).render('pages/vue/register', { errors: errors });
+        } else {
             res.status(201).render('pages/vue/register');
-        }
-        
+        }        
     });
 /**
 req.body.password = bcrypt.hashSync(req.body.password, null);

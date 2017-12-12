@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 /** On importe fichiers de configuration */
 const databaseConfig = require('./app/config/database');
@@ -16,6 +17,12 @@ app.use('/assets', express.static('public'));
 /** On applique des middlewares */
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'Jalousies',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: false}
+}));
 
 
 /**_______________________________________________________ */

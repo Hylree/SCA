@@ -9,7 +9,7 @@ const contactRouter = express.Router();
 
 /** On déclare les routes */
 contactRouter.get('/', contactController.viewContact);
-contactRouter.post('/reg', contactController.postContact);
+contactRouter.post('/register', contactController.postContact);
 
 /** On exporte le router */
 module.exports = contactRouter;
