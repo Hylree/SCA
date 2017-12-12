@@ -26,7 +26,7 @@ const postRegister = (req, res) => {
                     }
                 }
             }
-
+            
             res.status(400).render('pages/vue/register', { errors: errors });
         } else {
             res.status(201).render('pages/vue/register');
