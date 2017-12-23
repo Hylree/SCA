@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-/** On déclare le schéma */
+/** On déclare le schéma User*/
 const userSchema = new Schema({
     username: {
         type: String,
@@ -13,9 +13,30 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: [true, 'Le mot de passe doit être renseigné'],
+        required: [true, 'Le mot de passe doit être renseigné.'],
         unique: false,
-        minlength: [8, 'Le mot de passe doit être supérieur à 8 caractères']
+        minlength: [8, 'Le mot de passe doit être supérieur à 8 caractères.']
+    },
+    //modif
+    /**genre:{
+        type: String,
+        required: [true, 'Vous êtes un homme ou une femme?'],
+        validate: {
+            validator : function(v){
+                if(v != "Homme" || v != "Femme"){
+                    return true;
+                }else{ 
+                    re
+                }
+        },
+        message : [true, 'Vous avez rentré une mauvaise donnée.']
+    }
+    }
+
+    },*/
+    type: {
+        type: Schema.Types.ObjectId,
+        ref: 'Type',
     },
     authToken: {
         type: String,
@@ -31,5 +52,8 @@ const userSchema = new Schema({
     }
 });
 
-/** On exporte le modèle */
+/** On exporte le modèle User */
 module.exports = mongoose.model('User', userSchema);
+
+
+
