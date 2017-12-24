@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt-nodejs');
 
 /** On importe les modèles */
 const User = require('../../models/user');
-const Profil = require('../../models/type');
 
 /** On déclare les fonctions */
 

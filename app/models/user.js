@@ -1,6 +1,7 @@
 /** On importe les librairies */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const relationship = require('mongoose-relationship');
 
 /** On déclare le schéma User*/
 const userSchema = new Schema({
@@ -34,9 +35,9 @@ const userSchema = new Schema({
     }
 
     },*/
-    type: {
-        type: Schema.Types.ObjectId,
-        ref: 'Type',
+    profil: {
+        type: Schema.ObjectId,
+        ref: 'Profil',
     },
     authToken: {
         type: String,
@@ -53,7 +54,31 @@ const userSchema = new Schema({
 });
 
 /** On exporte le modèle User */
-module.exports = mongoose.model('User', userSchema);
+var User = mongoose.model('User', userSchema)
+module.exports = User;
 
+const profilSchema = new Schema({
+    profil_name: {
+        type: Schema.ObjectId,
+        ref:'User',
+        childPath:'profil'
+    },
+    test:{
+        type: String,
+        default: 'default'
+    }
+});
 
+var Profil = mongoose.model('Profil', profilSchema)
+module.exports = Profil;
+
+profilSchema.plugin(relationship, {relationshipPathName: 'profil_name'});
+
+var user = new User({});
+user.save();
+
+var profil = new Profil({user: user._id});
+
+profil.save();
+profil.remove();
 
