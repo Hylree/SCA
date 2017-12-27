@@ -1,25 +1,32 @@
+
 /** On importe les librairies */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-/** On déclare le schéma User*/
 const profilSchema = new Schema({
+    
+        id: {
+            type: String
+        },
 
-    name: {
-        type: String,
-        default: 'Prospect'
-    },
-    droit: {
-        type: String,
-        default: 'default'
-    }
-});
+        name:{
+            type: String,
+        },
+        description:{
+            type : String
+        },
+        ressource : [{
+            id : {
+                type : String,
+            },
+            permissions : [{
+                type : String
+            }]
+        }]
+    });
 
-profilSchema.virtual('user', {
-    ref: 'User',
-    localField: '_id',
-    foreignField: 'type'
-});
 
-/** On exporte le modèle User */
-module.exports = mongoose.model('Type', profilSchema);
+
+
+/** On exporte le modèle Profil */
+var Profil = module.exports = mongoose.model('Profil', profilSchema)

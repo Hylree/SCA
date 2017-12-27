@@ -3,19 +3,30 @@ const bcrypt = require('bcrypt-nodejs');
 
 /** On importe les modèles */
 const User = require('../../models/user');
+const Profil = require('../../models/profil');
 
 /** On déclare les fonctions */
 
 const viewRegister = (req, res) => {
     res.render('pages/vue/register');
+    
+
 }
 
 const postRegister = (req, res) => {
+    const errors = [];
 
+    if(req.body.password !== req.body.password_confirm){
+        errors.push("Le mot de passe est invalide");
+    }
 
-    User.create(req.body, (err, user) => {
+    req.body.password = bcrypt.hashSync(req.body.password, null);
+
+    const user = new User(req.body);
+
+    user.save((err, user) => {
+
         if (err) {
-            const errors = [];
             if(err.code === 11000){
                 errors.push("L'utilisateur existe déjà.");
             }else{
@@ -25,26 +36,29 @@ const postRegister = (req, res) => {
                     }
                 }
             }
-            
-            res.status(400).render('pages/vue/register', { errors: errors });
-        } else {
-            res.status(201).render('pages/vue/register');
-        }        
+            res.status(400).render({ errors: errors });
+        } 
+        else {
+            if(errors[0] === null){
+                Profil.findOne({'id' : 'admin'},(err, profil) => {
+                    user.profil = profil._id;
+                    user.save();  
+                    //console.log(err);     
+                });
+            res.status(201).render('pages/vue/registe');
+            }
+        }
+
+
+        console.log(user);
     });
-/**
-req.body.password = bcrypt.hashSync(req.body.password, null);
-    
-User.create(req.body, (err, user) => {
-    if (err) {
-        res.status(400).send({ success: false, error: err });
-    } else {
-        res.status(201).send({ success: true, user: user });
-    }
-});
-
- */
-
 }
+
+/**  POur récupérer un utilisateur avec le profil 
+ User.findOne({ username : 'Superman'}).populate('profil').exec((err, person) => {
+    onsole.log(person);
+});
+*/
 
 /** On exporte le controller */
 module.exports = {
