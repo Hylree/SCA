@@ -15,12 +15,168 @@
         <% } %>
 <form action="/register" method="post" class="ui form">
     <div class="field">
+        <h3>Informations de connexion</h3>
+
         <label for="message"> E-mail </label>
-        <input name="username" id="username"></input>
+        <input name="username" id="username" type="email"></input>
+
         <label for="message"> Mot de passe </label>
-        <input name="password" id="password"></input>
-        <label for="message"> Confirmer votre mot de passe </label>
-        <input name="password_confirm" id="password_confirm"></input>
+        <input name="password" id="password" type="password"></input>
+
+        <label for="message"> Confirmer le mot de passe </label>
+        <input name="password_confirm" id="password_confirm" type="password"></input>
+
+        <h3>Informations personnelles</h3>
+        <div class="container_flex">
+            <aside class="aside aside-1">
+                <div class="ui sub header">Civilité</div>
+            <div class="ui selection dropdown">
+            <input name="civilite" value="default" type="hidden">
+                <i class="dropdown icon"></i>
+                <div class="default text">Choisir...</div>
+                <div class="menu">
+                    <div class="item" data-value="Mme">Madame</div>
+                    <div class="item" data-value="M">Monsieur</div>
+                </div>
+            </div>
+            </aside>
+            <aside class="aside aside-2">
+            <label for="message"> NOM </label>
+            <input name="last_name" id="last_name" type="text" style="text-transform:uppercase"></input>
+
+            <label for="message"> Prénom </label>
+            <input name="first_name" id="first_name"></input>
+
+            <label for="message"> Téléphone </label>
+            <input class="cleave-tel"name="tel" id="tel" type="tel"></input>
+            
+                <div class="nativeDatePicker">
+                    <label for="bday">Votre date de naissance</label>
+                    <input type="date" id="bday" name="bday">
+                    <span class="validity"></span>
+                    </div>
+                    <h4 class="fallbackLabel">Votre date de naissance</h4>
+
+                    <div class="fallbackDatePicker">
+                    <div class="align_flex">
+                    <div>
+                        <label for="day">Jour</label>
+                        <select id="day" name="day">
+                        </select>
+                    </div>
+                    <div>
+                        <label for="month">Mois</label>
+                        <select id="month" name="month">
+                            <option selected>Janvier</option>
+                            <option>Février</option>
+                            <option>Mars</option>
+                            <option>Avril</option>
+                            <option>Mai</option>
+                            <option>Juin</option>
+                            <option>Juillet</option>
+                            <option>Aout</option>
+                            <option>Septembre</option>
+                            <option>Octobre</option>
+                            <option>Novembre</option>
+                            <option>Décembre</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="year">Année</label>
+                        <select id="year" name="year">
+                        </select>
+                    </div>
+                    </div>
+                    </div>
+            <div class="align_flex">
+                <div>
+                    <label for="message"> Numero, Voie </label>
+                    <input name="num_street" id="num_street"></input>
+                </div>
+                <div>
+                    <label for="message"> Adresse </label>
+                    <input name="name_street" id="name_street"></input>
+                </div>
+            </div>
+
+                <label for="message"> Complément </label>
+                <input name="more_street" id="more_adresse"></input>
+
+            <div class="align_flex">
+                <label for="message"> Code postale </label>
+                <input name="code" id="code"></input>
+                
+                <label for="message"> Ville </label>
+                <input name="city" id="city"></input>
+            </div>
+
+            <div class="ui ignored middle aligned selection list" id="output"></div>
+
+
+            </aside>
+        </div>
+        
+        
+        <div class="ui sub header">Type de logement de votre habitation principale</div>
+        <div class="ui selection dropdown">
+        <input name="home_type" value="default" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">Choisir...</div>
+            <div class="menu">
+                <div class="item" data-value="Appartement">Appartement</div>
+                <div class="item" data-value="Maison">Maison</div>
+                <div class="item" data-value="Autres">Autres</div>
+            </div>
+        </div>
+
+        <div class="ui sub header">Qualité de l'occupant de votre habitaion principale</div>
+        <div class="ui selection dropdown">
+        <input name="tenant_type" value="default" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">Choisir...</div>
+            <div class="menu">
+                <div class="item" data-value="Location">Location</div>
+                <div class="item" data-value="Propriétaire">Propriétaire</div>
+                <div class="item" data-value="Autres">Autres</div>
+            </div>
+        </div>
+
+        <div class="ui sub header">Situation familiale</div>
+        <div class="ui selection dropdown">
+        <input name="situation_fam" value="default" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">Choisir...</div>
+            <div class="menu">
+                <div class="item" data-value="Célibataire">Célibataire</div>
+                <div class="item" data-value="Marié">Marié</div>
+                <div class="item" data-value="Concubinage">Concubinage</div>
+                <div class="item" data-value="Séparer">Séparer</div>
+                <div class="item" data-value="Divorcé">Divorcé</div>
+                <div class="item" data-value="Veuf">Veuf</div>
+                <div class="item" data-value="Pacs">Pacs</div>
+            </div>
+        </div>
+
+    <div class="ui sub header">Situation Profésionnelle</div>
+        <div class="ui selection dropdown">
+        <input name="situation_pro" value="default" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">Choisir...</div>
+            <div class="menu">
+                <div class="item" data-value="Artisan">Artisan</div>
+                <div class="item" data-value="Exploitant agricole">Exploitant agricole</div>
+                <div class="item" data-value="Profession libérale">Profession libérale</div>
+                <div class="item" data-value="Chef d'entreprise">Chef d'entreprise</div>
+                <div class="item" data-value="Salarié">Salarié</div>
+                <div class="item" data-value="Fonctionnaire">Fonctionnaire</div>
+                <div class="item" data-value="VRP">VRP</div>
+                <div class="item" data-value="Etudiant">Etudiant</div>
+                <div class="item" data-value="Sans profession">Sans profession</div>
+                <div class="item" data-value="Retraité">Retraité</div>
+                <div class="item" data-value="Recherche d'emploi">Recherche d'emploi</div>
+                <div class="item" data-value="Ecclasiastique">Ecclasiastique</div>
+            </div>
+        </div>
     </div>
     <button type="submit" class="ui blue labeled submit icon button" >
         <i class="icon edit"></i>Envoyer

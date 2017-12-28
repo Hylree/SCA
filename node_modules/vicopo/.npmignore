@@ -1,0 +1,4 @@
+*.gem
+*.egg-info
+*.pyc
+dist
