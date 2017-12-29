@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 /** On importe fichiers de configuration */
 const databaseConfig = require('./app/config/database');
@@ -24,6 +25,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: {secure: false}
 }));
+app.use(cookieParser());
 
 
 /**_______________________________________________________ */
@@ -51,14 +53,19 @@ app.use('/api', apiRouter);
 
 const contactRouter = require('./app/routers/web/contactRouter');
 const registerRouter = require('./app/routers/web/registerRouter');
+const homeRouter = require('./app/routers/web/homeRouter');
 /** On créé le router web */
 const webRouter = express.Router();
 
+/** On importe les middlewares */
+const flashMessageMiddleware = require('./app/middlewares/flashMessageMiddleware');
+
 webRouter.use('/contact', contactRouter);
 webRouter.use('/register', registerRouter);
+webRouter.use('/', homeRouter);
 
 /** On implémente le router Web */
-app.use('/', webRouter);
+app.use('/', [flashMessageMiddleware, webRouter]);
 
 /** fin routers 
  * ______________________________________________________________

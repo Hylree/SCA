@@ -30,3 +30,32 @@
         </div>
     </div>
     <div class="ui main container">
+    <% if(locals.flashErrors){ %>
+        <div class="ui negative message">
+                <h4>Erreur</h4>
+            <div class="ui middle aligned divided list">
+                <% flashErrors.forEach((error) => { %>
+                    <div class="item">
+                            <div class="content">
+                                <%= error %>
+                            </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+        
+        <% } %>
+
+        <% if(locals.flashSuccess){ %>
+            <div class="ui positive message">
+                    <h4>success</h4>
+                    <% flashSuccess.forEach((element) => { %>
+                        <div class="item">
+                                <div class="content">
+                                    <%= element %>
+                                </div>
+                        </div>
+                    <% }); %>
+            </div>
+        
+        <% } %>

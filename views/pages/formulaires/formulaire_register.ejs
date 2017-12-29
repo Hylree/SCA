@@ -1,18 +1,3 @@
-        <% if(locals.errors){ %>
-        <div class="ui negative message">
-                <label>Erreur:</label>
-            <div class="ui middle aligned divided list">
-                <% errors.forEach((error) => { %>
-                    <div class="item">
-                            <div class="content">
-                                <%= error %>
-                            </div>
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-        
-        <% } %>
 <form action="/register" method="post" class="ui form">
     <div class="field">
         <h3>Informations de connexion</h3>

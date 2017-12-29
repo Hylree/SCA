@@ -1,5 +1,7 @@
 /** On importe les librairies */
 const bcrypt = require('bcrypt-nodejs');
+const url = require('url');
+const cookie = require('cookie-parser');
 
 /** On importe les modèles */
 const User = require('../../models/user');
@@ -8,9 +10,7 @@ const Profil = require('../../models/profil');
 /** On déclare les fonctions */
 
 const viewRegister = (req, res) => {
-    res.render('pages/vue/register');
-    
-
+    res.render('pages/vue/register', req.locals);
 }
 
 const postRegister = (req, res) => {
@@ -20,9 +20,7 @@ const postRegister = (req, res) => {
     const cp = req.body.code;
     const typeHab = req.body.home_type;
     let date = req.body.bday;
-    let   year = date.substring(0,4),
-            month = date.substring(5,7),
-            day = date.substring(8,10);
+    let   year, month, day;
     const regex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/gmi;
 
 
@@ -40,8 +38,21 @@ const postRegister = (req, res) => {
     if(regex.test(req.body.tel) === false){
         errors.push("Le téléphone n'a pas la bonne forme: " + req.body.tel);
     }
-console.log(day + ' ' + month + ' ' + year);
-    dateRes = new Date(parseInt(year), parseInt(month), parseInt(day),0, 0, 0, 0)
+
+    if(req.body.bday == ''){
+        year = req.body.year;
+        month = testMonthWord(req.body.month);
+        day = req.body.day;
+
+    }else{
+        year = date.substring(0,4),
+        month = date.substring(5,7),
+        day = date.substring(8,10);
+
+    }
+
+    console.log(day + ' ' + month + ' ' + year);
+    dateRes = month + '.' + day + '.' + year;
     //dateRes.setFullYear(year);
     //dateRes.setMonth(month);
     //dateRes.setDate();
@@ -67,49 +78,54 @@ console.log(day + ' ' + month + ' ' + year);
         errors.push("La situation proféssionnel est invalide. " + req.body.situation_pro);
     }
     
-    req.body.date_naissance = dateRes;
+    req.body.date_naissance = new Date(dateRes);
 
-    console.log(req.body);
-    const user = new User(req.body);
+    Profil.findOne({'id' : 'prospect'}, (err, profil) => {
+        req.body.profil = profil._id;
+        const user = new User(req.body);
+        user.save((err, user) => {
+            if (err || errors.length > 0) {
 
-    user.save((err, user) => {
+                if(err.code != ''){
+                    if(err.code === 11000){
+                        errors.push("L'utilisateur existe déjà.");
+                    }
+                }
 
-        if (err) {
-            if(err.code === 11000){
-                errors.push("L'utilisateur existe déjà.");
-            }else{
-                for (const error in err.errors) {
+                for(const error in err.errors){
                     if (err.errors[error].name === 'ValidatorError') {
                         errors.push(err.errors[error].properties.message);
                     }
-                }
+                } 
+                
+                res.cookie('flashErrors', errors);
+                res.status(201).redirect('/register');
+                
             }
-            res.status(400).render('pages/vue/register', { errors: errors });
-        } 
-        else {
-            if(errors[0] === null){
-                Profil.findOne({'id' : 'prospect'},(err, profil) => {
-                    user.profil = profil._id;
-                    user.save();
-                    //console.log(err);     
-                });
-
-            res.status(201).render('pages/vue/registe');
+            else {
+                
+                res.cookie('flashSuccess', ['Bravo']);
+                res.status(201).redirect( '/' );
             }
-        }
-
-
-        console.log(user);
+        });
     });
+
+    
 }
 
 function testMonthWord(month){
 
-    const arrayMonthTest = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre'];
+    const arrayMonthTest = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
     let res = 0;
     arrayMonthTest.forEach(function(element, index) {
         if(element == month){
             res = index + 1 ;
+            if(res < 10){
+                res = '0' + res.toString();
+            }else{
+                
+            res = res.toString();
+            }
         }
     }, this);
 
