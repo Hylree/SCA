@@ -1,6 +1,6 @@
 /** On déclare la configuration */
 const jwtConfig = {
-    secret: 'ILOVEAPIS'
+    secret: 'JalousiesDoudouMilou'
 };
 
 /** On exporte la configuration */

@@ -6,7 +6,7 @@ const flashMiddleware = (req, res, next) => {
     
     res.locals.flashSuccess = jsonParseSuccess;
     res.locals.flashErrors = jsonParseErrors;
-    
+    console.log(jsonParseErrors + jsonParseSuccess);
     res.clearCookie('flashSuccess');
     res.clearCookie('flashErrors');
     next();

@@ -85,19 +85,17 @@ const postRegister = (req, res) => {
         const user = new User(req.body);
         user.save((err, user) => {
             if (err || errors.length > 0) {
-
-                if(err.code != ''){
+                console.log(err);
+                if(err){
                     if(err.code === 11000){
                         errors.push("L'utilisateur existe déjà.");
                     }
+                    for(const error in err.errors){
+                        if (err.errors[error].name === 'ValidatorError') {
+                            errors.push(err.errors[error].properties.message);
+                        }
+                    } 
                 }
-
-                for(const error in err.errors){
-                    if (err.errors[error].name === 'ValidatorError') {
-                        errors.push(err.errors[error].properties.message);
-                    }
-                } 
-                
                 res.cookie('flashErrors', errors);
                 res.status(201).redirect('/register');
                 

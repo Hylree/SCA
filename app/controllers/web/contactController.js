@@ -5,7 +5,6 @@ const Contact = require('../../models/contact');
 const postContact = (req, res) =>{
 
     Contact.create(req.body, (err, message) => {
-        if (err) throw err;
         res.status(201).render('pages/vue/contact');
     });
 }

@@ -23,7 +23,7 @@ app.use(session({
     secret: 'Jalousies',
     resave: false,
     saveUninitialized: true,
-    cookie: {secure: false}
+    cookie: {secure: true, maxAge : 60000}
 }));
 app.use(cookieParser());
 
@@ -34,8 +34,9 @@ const animalRouter = require('./app/routers/api/animalRouter');
 const authRouter = require('./app/routers/api/authRouter');
 const userRouter = require('./app/routers/api/userRouter');
 
+
 /** On importe les middlewares */
-const authMiddleware = require('./app/middlewares/authMiddleware');
+
 
 /** On créé le router API */
 const apiRouter = express.Router();
@@ -43,7 +44,7 @@ const apiRouter = express.Router();
 
 apiRouter.use('/animals', animalRouter);
 apiRouter.use('/auth', authRouter);
-apiRouter.use('/users', [authMiddleware, userRouter]);
+//apiRouter.use('/users', [authMiddleware, userRouter]);
 
 /** On implémente le router API */
 app.use('/api', apiRouter);
@@ -54,18 +55,21 @@ app.use('/api', apiRouter);
 const contactRouter = require('./app/routers/web/contactRouter');
 const registerRouter = require('./app/routers/web/registerRouter');
 const homeRouter = require('./app/routers/web/homeRouter');
+const loginRouter = require('./app/routers/web/loginRouter');
 /** On créé le router web */
 const webRouter = express.Router();
 
 /** On importe les middlewares */
 const flashMessageMiddleware = require('./app/middlewares/flashMessageMiddleware');
+const authMiddleware = require('./app/middlewares/authMiddleware');
 
 webRouter.use('/contact', contactRouter);
+webRouter.use('/login', loginRouter);
 webRouter.use('/register', registerRouter);
 webRouter.use('/', homeRouter);
 
 /** On implémente le router Web */
-app.use('/', [flashMessageMiddleware, webRouter]);
+app.use('/', [authMiddleware, flashMessageMiddleware, webRouter]);
 
 /** fin routers 
  * ______________________________________________________________

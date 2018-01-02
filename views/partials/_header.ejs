@@ -19,18 +19,35 @@
     </style>
 </head>
 <body>
-    <div class="ui fixed inverted pointing menu">
-        <a href="/" class="header item">Accueil</a>
-        
-            <a class="ui item">
-                Connexion
+        <div class="ui secondary pointing menu">
+            <a href="/" class="item">
+            Acceuil
             </a>
-        
-            
+            <a class="item ">
+            Actualités
+            </a>
+            <a class="item ">
+            Autres
+            </a>
+        <% if(!locals.cookieSession){ %>
+            <div class="right menu">
+                <div class="ui dropdown item">
+                    Mon Compte <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item">Mon compte</a>
+                        <a class="item">Se déconnecter</a>
+                    </div>
+                </div>
+            </div>
+        <% }else{ %>
+            <div class="right menu">
+                <a class="ui item active">
+                Logout
+                </a>
+            </div>
+        <% } %>
         </div>
-    </div>
-    <div class="ui main container">
-    <% if(locals.flashErrors){ %>
+<% if(locals.flashErrors){ %>
         <div class="ui negative message">
                 <h4>Erreur</h4>
             <div class="ui middle aligned divided list">
@@ -59,3 +76,6 @@
             </div>
         
         <% } %>
+
+    <div class="ui segment main ">
+    

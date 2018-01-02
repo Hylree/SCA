@@ -6,8 +6,6 @@
 /** On déclare les fonctions */
 
 const viewHome = (req, res) => {
-
-
     //console.log('test', req.locals);
     res.render('pages/vue/home',  req.locals);
 }
