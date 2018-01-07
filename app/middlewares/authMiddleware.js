@@ -16,7 +16,6 @@ const authMiddleware = (req, res, next) => {
         
             console.log(authToken);
             if (!authToken) {
-                res.status(401).send({ success: false, message: 'Authentication required.' });
                 errors.push("La session n'est plus valide, reconnectez-vous.");
                 res.cookie('flashErrors', errors);
                  next();

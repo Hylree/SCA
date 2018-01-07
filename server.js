@@ -30,7 +30,6 @@ app.use(cookieParser());
 
 /**_______________________________________________________ */
 /** On importe les routers */
-const animalRouter = require('./app/routers/api/animalRouter');
 const authRouter = require('./app/routers/api/authRouter');
 const userRouter = require('./app/routers/api/userRouter');
 
@@ -42,7 +41,6 @@ const userRouter = require('./app/routers/api/userRouter');
 const apiRouter = express.Router();
 
 
-apiRouter.use('/animals', animalRouter);
 apiRouter.use('/auth', authRouter);
 //apiRouter.use('/users', [authMiddleware, userRouter]);
 

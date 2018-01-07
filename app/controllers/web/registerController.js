@@ -168,7 +168,7 @@ function checkSituationFamily(sit){
 }
 
 function checkSituationPro(sit){
-    const arraySituation = ['Artisan', 'Exploitant agricole', 'Profession libéral', 'Chef d\'entreprise', 'Salarié', 'Fonctionnaire', 'VRP', 'Etudiant', 'Sans profession', 'Recherche d\'emploi', 'Ecclasiastique'];
+    const arraySituation = ['Artisan', 'Exploitant agricole', 'Profession libérale', "Chef d'entreprise", 'Salarié', 'Fonctionnaire', 'VRP', 'Etudiant', 'Sans profession', "Recherche d'emploi", 'Ecclasiastique'];
     let res = false;
 
     arraySituation.forEach(function(element) {

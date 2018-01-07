@@ -24,12 +24,12 @@
             Acceuil
             </a>
             <a class="item ">
-            Actualités
+            Nouveauté
             </a>
             <a class="item ">
             Autres
             </a>
-        <% if(!locals.cookieSession){ %>
+        <% if(locals.cookieSession){ %>
             <div class="right menu">
                 <div class="ui dropdown item">
                     Mon Compte <i class="dropdown icon"></i>
@@ -41,8 +41,7 @@
             </div>
         <% }else{ %>
             <div class="right menu">
-                <a class="ui item active">
-                Logout
+                <a href="/login" class="ui item">
                 </a>
             </div>
         <% } %>

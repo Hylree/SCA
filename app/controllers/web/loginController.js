@@ -50,7 +50,7 @@ const login = (req, res) => {
                         }, { new: true }, (err, user) => {
                             
                             res.cookie('flashSuccess', ['Vous êtes désormais connectez.']);
-                            res.cookie('cookieSession', {authToken : authToken});
+                            res.cookie('cookieSession', authToken);
                             res.status(200).redirect( '/' );
                         })
 
