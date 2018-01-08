@@ -35,8 +35,9 @@ const userSchema = new Schema({
 
     },*/
     profil : {
-        type : Schema.Types.ObjectId,
+        type : Schema.Types.String,
         ref: 'Profil',
+        default: 'prospect'
     },
     civilite:{
         type: String,

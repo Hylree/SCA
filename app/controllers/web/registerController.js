@@ -81,7 +81,7 @@ const postRegister = (req, res) => {
     req.body.date_naissance = new Date(dateRes);
 
     Profil.findOne({'id' : 'prospect'}, (err, profil) => {
-        req.body.profil = profil._id;
+        req.body.profil = profil.id;
         const user = new User(req.body);
         user.save((err, user) => {
             if (err || errors.length > 0) {

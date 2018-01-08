@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cleave.js": "^1.0.9",
     "cookie-parser": "^1.4.3",
@@ -19,6 +20,9 @@
     "mongoose": "^4.13.5",
     "mongoose-relationship": "^0.1.5",
     "mongoose-relationships": "^0.4.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-oauth": "^1.0.0",
     "vicopo": "^1.1.8"
   },
   "devDependencies": {},

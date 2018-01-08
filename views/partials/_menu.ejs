@@ -1,10 +1,28 @@
- <div class="ui fixed inverted pointing menu">
-        <a href="/" class="header item">Accueil</a>
-        <% if(!locals.cookieSession){ %>
-            <a class="ui item">
-            
+        <div class="ui secondary pointing menu">
+            <a href="/" class="item">
+            Acceuil
             </a>
+            <a class="item ">
+            Nouveauté
+            </a>
+            <a class="item ">
+            Autres
+            </a>
+        <% if(locals.authToken){ %>
+            <div class="right menu">
+                <div class="ui dropdown item">
+                    Mon Compte <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item">Mon compte</a>
+                        <a href="/login/logout"class="item">Se déconnecter</a>
+                    </div>
+                </div>
+            </div>
+        <% }else{ %>
+            <div class="right menu">
+                <a href="/login" class="ui item">
+                Login
+                </a>
+            </div>
         <% } %>
-
         </div>
-    </div>

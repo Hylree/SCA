@@ -10,6 +10,7 @@ const loginRouter = express.Router();
 /** On déclare les routes */
 loginRouter.get('/', loginController.viewLogin);
 loginRouter.post('/', loginController.login);
+loginRouter.get('/logout', loginController.logout);
 
 /** On exporte le router */
 module.exports = loginRouter

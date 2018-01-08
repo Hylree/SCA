@@ -19,62 +19,8 @@
     </style>
 </head>
 <body>
-        <div class="ui secondary pointing menu">
-            <a href="/" class="item">
-            Acceuil
-            </a>
-            <a class="item ">
-            Nouveauté
-            </a>
-            <a class="item ">
-            Autres
-            </a>
-        <% if(locals.cookieSession){ %>
-            <div class="right menu">
-                <div class="ui dropdown item">
-                    Mon Compte <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item">Mon compte</a>
-                        <a class="item">Se déconnecter</a>
-                    </div>
-                </div>
-            </div>
-        <% }else{ %>
-            <div class="right menu">
-                <a href="/login" class="ui item">
-                </a>
-            </div>
-        <% } %>
-        </div>
-<% if(locals.flashErrors){ %>
-        <div class="ui negative message">
-                <h4>Erreur</h4>
-            <div class="ui middle aligned divided list">
-                <% flashErrors.forEach((error) => { %>
-                    <div class="item">
-                            <div class="content">
-                                <%= error %>
-                            </div>
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-        
-        <% } %>
 
-        <% if(locals.flashSuccess){ %>
-            <div class="ui positive message">
-                    <h4>success</h4>
-                    <% flashSuccess.forEach((element) => { %>
-                        <div class="item">
-                                <div class="content">
-                                    <%= element %>
-                                </div>
-                        </div>
-                    <% }); %>
-            </div>
-        
-        <% } %>
-
+        <% include ./_menu %> 
+        <% include ./_flash_message %>
     <div class="ui segment main ">
     

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 /** On déclare le schéma */
 
-const contactSchema = new Schema({
+const postSchema = new Schema({
         message:{
             type: String,
             required: [true, 'Pas de contenue de message'],
@@ -13,4 +13,4 @@ const contactSchema = new Schema({
 )
 
 /** On exporte le modèle */
-module.exports = mongoose.model('Contact', contactSchema);
+module.exports = mongoose.model('Post', postSchema);

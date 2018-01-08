@@ -11,8 +11,8 @@ const User = require('../models/user');
 const authMiddleware = (req, res, next) => {
 
     const errors = [];
-    if(req.cookies.cookieSession){
-        const authToken = req.cookies.cookieSession.authToken;
+    if(req.session.authToken){
+        const authToken = req.session.authToken;
         
             console.log(authToken);
             if (!authToken) {
@@ -46,7 +46,8 @@ const authMiddleware = (req, res, next) => {
                                     User.findOneAndUpdate({ _id: user._id }, { 
                                         validUntil: new Date((new Date()).setHours((new Date()).getHours() + 1)) 
                                     }, { new: true }, (err, user) => {
-                                        
+                                        res.locals.authToken = authToken;
+                                        res.locals.profil = user.profil;
                                         next();
                                     });
                                 }

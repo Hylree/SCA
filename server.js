@@ -20,12 +20,11 @@ app.use('/res', express.static('node_modules'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
-    secret: 'Jalousies',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: true, maxAge : 60000}
+    name: 'session',
+    secret: 'Jalousies'
 }));
 app.use(cookieParser());
+
 
 
 /**_______________________________________________________ */
@@ -50,7 +49,7 @@ app.use('/api', apiRouter);
 
 /** _____________________________________________________________ */
 
-const contactRouter = require('./app/routers/web/contactRouter');
+const postRouter = require('./app/routers/web/postRouter');
 const registerRouter = require('./app/routers/web/registerRouter');
 const homeRouter = require('./app/routers/web/homeRouter');
 const loginRouter = require('./app/routers/web/loginRouter');
@@ -61,7 +60,7 @@ const webRouter = express.Router();
 const flashMessageMiddleware = require('./app/middlewares/flashMessageMiddleware');
 const authMiddleware = require('./app/middlewares/authMiddleware');
 
-webRouter.use('/contact', contactRouter);
+webRouter.use('/post', postRouter);
 webRouter.use('/login', loginRouter);
 webRouter.use('/register', registerRouter);
 webRouter.use('/', homeRouter);
@@ -76,7 +75,6 @@ app.use('/', [authMiddleware, flashMessageMiddleware, webRouter]);
 
 /** Connexion à la base MongoDB */
 mongoose.connect(databaseConfig.url, { useMongoClient: true }, (err) => {
-    if (err) throw err;
     console.log('Connexion établie à la base de données');
 });
 

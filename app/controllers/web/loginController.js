@@ -22,7 +22,8 @@ const login = (req, res) => {
         res.cookie('flashErrors', errors);
         res.status(200).redirect( '/login' );
     } else {
-
+        
+    
         User.findOne({ username: username }, (err, user) => {
 
             if (!user) {
@@ -48,9 +49,12 @@ const login = (req, res) => {
                             authToken: authToken,
                             validUntil: new Date((new Date()).setHours((new Date()).getHours() + 1))
                         }, { new: true }, (err, user) => {
-                            
-                            res.cookie('flashSuccess', ['Vous êtes désormais connectez.']);
-                            res.cookie('cookieSession', authToken);
+
+                            req.session.authToken = authToken;
+                            req.session.username = username;
+                            req.session.profil = user.profil;
+                            res.cookie('flashSuccess', ['Vous êtes désormais connecté.']);
+                            //res.cookie('cookieSession', authToken);
                             res.status(200).redirect( '/' );
                         })
 
@@ -66,8 +70,20 @@ const login = (req, res) => {
 
 };
 
+const logout = (req, res) => {
+
+    req.session.destroy((err) => {
+        if (err) throw err;
+        
+        res.cookie('flashSuccess', ['Vous êtes désormais deconnecté.']);
+        //res.cookie('cookieSession', authToken);
+        res.status(200).redirect( '/' );
+    });
+};
+
 /** On exporte le controller */
 module.exports = {
     login: login,
-    viewLogin : viewLogin
-};
+    viewLogin : viewLogin,
+    logout: logout
+}
