@@ -3,10 +3,7 @@
             Acceuil
             </a>
             <a class="item ">
-            Nouveauté
-            </a>
-            <a class="item ">
-            Autres
+            En ce moment
             </a>
         <% if(locals.authToken){ %>
             <div class="right menu">
@@ -14,6 +11,9 @@
                     Mon Compte <i class="dropdown icon"></i>
                     <div class="menu">
                         <a class="item">Mon compte</a>
+                                <% if(locals.profil === "admin"){ %>
+                                    <a href="/administration" class="item">Administration</a>
+                                <% } %>
                         <a href="/login/logout"class="item">Se déconnecter</a>
                     </div>
                 </div>

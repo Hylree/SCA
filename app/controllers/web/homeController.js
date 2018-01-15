@@ -11,7 +11,7 @@ const viewHome = (req, res) => {
     
     console.log('session ', req.session);
     console.log('local ', res.locals);
-    res.render('pages/vue/home',  req.locals);
+    res.render('pages/vue/web/home',  req.locals);
 }
 
 module.exports = {

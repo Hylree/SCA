@@ -2,7 +2,7 @@
 const express = require('express');
 
 /** On importe les controllers */
-const postController = require('../../controllers/web/postController');
+const postController = require('../../controllers/admin/postController');
 
 /** On déclare notre router */
 const postRouter = express.Router();

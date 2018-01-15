@@ -10,7 +10,7 @@ const Profil = require('../../models/profil');
 /** On déclare les fonctions */
 
 const viewRegister = (req, res) => {
-    res.render('pages/vue/register', req.locals);
+    res.render('pages/vue/web/register', req.locals);
 }
 
 const postRegister = (req, res) => {

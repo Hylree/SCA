@@ -27,6 +27,12 @@ app.use(cookieParser());
 
 
 
+/** On importe les middlewares */
+const flashMessageMiddleware = require('./app/middlewares/flashMessageMiddleware');
+const authMiddleware = require('./app/middlewares/authMiddleware');
+const authProfilMiddleware = require('./app/middlewares/authProfilMiddleware');
+
+
 /**_______________________________________________________ */
 /** On importe les routers */
 const authRouter = require('./app/routers/api/authRouter');
@@ -49,18 +55,12 @@ app.use('/api', apiRouter);
 
 /** _____________________________________________________________ */
 
-const postRouter = require('./app/routers/web/postRouter');
 const registerRouter = require('./app/routers/web/registerRouter');
 const homeRouter = require('./app/routers/web/homeRouter');
 const loginRouter = require('./app/routers/web/loginRouter');
 /** On créé le router web */
 const webRouter = express.Router();
 
-/** On importe les middlewares */
-const flashMessageMiddleware = require('./app/middlewares/flashMessageMiddleware');
-const authMiddleware = require('./app/middlewares/authMiddleware');
-
-webRouter.use('/post', postRouter);
 webRouter.use('/login', loginRouter);
 webRouter.use('/register', registerRouter);
 webRouter.use('/', homeRouter);
@@ -68,6 +68,17 @@ webRouter.use('/', homeRouter);
 /** On implémente le router Web */
 app.use('/', [authMiddleware, flashMessageMiddleware, webRouter]);
 
+
+const postRouter = require('./app/routers/admin/postRouter');
+const adminRouter = require('./app/routers/admin/adminRouter');
+
+/** On créé le router l'administration */
+const adminMainRouter = express.Router();
+
+adminMainRouter.use('/post', postRouter);
+adminMainRouter.use('/', adminRouter)
+
+app.use('/administration', [authMiddleware, authProfilMiddleware, flashMessageMiddleware, adminMainRouter]);
 /** fin routers 
  * ______________________________________________________________
 */

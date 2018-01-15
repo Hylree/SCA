@@ -9,7 +9,7 @@ const jwtConfig = require('../../config/jwt');
 const User = require('../../models/user');
 
 const viewLogin = (req, res) => {
-    res.render('pages/vue/login', req.locals);
+    res.render('pages/vue/web/login', req.locals);
 }
 /** On déclare les fonctions liées aux animaux */
 const login = (req, res) => {
