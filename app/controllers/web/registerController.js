@@ -156,7 +156,7 @@ function checkQualityForHab(quality){
 }
 
 function checkSituationFamily(sit){
-    const arraySitation = ['Clélibataire', 'Marié', 'Concubinage', 'Séparer', 'Divorcé', 'Veuf', 'Pacs'];
+    const arraySitation = ['Célibataire', 'Marié', 'Concubinage', 'Séparer', 'Divorcé', 'Veuf', 'Pacs'];
     let res = false;
 
     arraySitation.forEach(function(element) {

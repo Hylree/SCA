@@ -9,6 +9,10 @@ const postSchema = new Schema({
             type: String,
             required: [true, 'Pas de contenue de message'],
         }
+    ,
+    path:{
+        type: String
+    }
     }
 )
 

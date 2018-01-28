@@ -8,7 +8,7 @@ const postsController = require('../../controllers/web/postsController');
 const postsRouter = express.Router();
 
 /** On déclare les routes */
-postsRouter.get('/', postsController.viewLogin);
+postsRouter.get('/', postsController.postsView);
 
 /** On exporte le router */
 module.exports = postsRouter

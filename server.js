@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 
 /** On importe fichiers de configuration */
 const databaseConfig = require('./app/config/database');
@@ -24,6 +25,9 @@ app.use(session({
     secret: 'Jalousies'
 }));
 app.use(cookieParser());
+app.use(fileUpload({
+    
+}));
 
 
 
@@ -58,10 +62,13 @@ app.use('/api', apiRouter);
 const registerRouter = require('./app/routers/web/registerRouter');
 const homeRouter = require('./app/routers/web/homeRouter');
 const loginRouter = require('./app/routers/web/loginRouter');
+const postsRouter = require('./app/routers/web/postsRouter');
+
 /** On créé le router web */
 const webRouter = express.Router();
 
 webRouter.use('/login', loginRouter);
+webRouter.use('/posts', postsRouter);
 webRouter.use('/register', registerRouter);
 webRouter.use('/', homeRouter);
 

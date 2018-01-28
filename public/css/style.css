@@ -23,3 +23,11 @@
       display: flex;
       justify-content: flex-start;
   }
+
+  .main{
+    margin: 40px
+  }
+
+  .ui.file.input input[type="file"] {
+    display: none;
+}
