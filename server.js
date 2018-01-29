@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const fileUpload = require('express-fileupload');
 
 /** On importe fichiers de configuration */
 const databaseConfig = require('./app/config/database');
@@ -25,9 +24,6 @@ app.use(session({
     secret: 'Jalousies'
 }));
 app.use(cookieParser());
-app.use(fileUpload({
-    
-}));
 
 
 

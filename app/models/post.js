@@ -10,11 +10,10 @@ const postSchema = new Schema({
             required: [true, 'Pas de contenue de message'],
         }
     ,
-    path:{
+    path:[{
         type: String
-    }
-    }
-)
+    }]
+});
 
 /** On exporte le modèle */
 module.exports = mongoose.model('Post', postSchema);
