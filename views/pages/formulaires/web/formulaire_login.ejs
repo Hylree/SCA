@@ -2,17 +2,20 @@
     <div class="field">
         <h3>Connectez-vous</h3>
 
-        <label for="message"> E-mail </label>
-        <input name="username" id="username" type="email"></input>
+        <div class="input-field">
+            <input name="username" id="username" type="email" class="validate"></input>
+            <label for="message"> E-mail </label>
+        </div>
 
-        <label for="message"> Mot de passe </label>
-        <input name="password" id="password" type="password"></input>
-        
+        <div class="input-field">
+            
+            <input name="password" id="password" type="password" class="validate"></input>
+            <label for="message"> Mot de passe </label>
+        </div>
         <a href="/register">Créer un compte</a>
     </div>
 
-    <button type="submit" class="ui blue labeled submit icon button" >
-        <i class="icon edit"></i>Envoyer
+    <button type="submit" class="btn waves-effect waves-light" name="action">Envoyer
+        <i class="material-icons right">send</i>
     </button>
-
 </form>

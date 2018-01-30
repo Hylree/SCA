@@ -1,28 +1,40 @@
-        <div class="ui secondary pointing menu">
-            <a href="/" class="item">
-            Acceuil
-            </a>
-            <a href="/posts"class="item ">
-            En ce moment
-            </a>
+<nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+
+        <li><a href="/posts">En ce moment</a></li>
+
         <% if(locals.authToken){ %>
-            <div class="right menu">
-                <div class="ui dropdown item">
-                    Mon Compte <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item">Mon compte</a>
-                                <% if(locals.profil === "admin"){ %>
-                                    <a href="/administration" class="item">Administration</a>
-                                <% } %>
-                        <a href="/login/logout"class="item">Se déconnecter</a>
-                    </div>
-                </div>
-            </div>
+        <li><a href="#">Mon Compte</a></li>
+
+            <% if(locals.profil === "admin"){ %>
+                <li><a href="/administration">Administration</a></li>
+            <% } %>
+            
+                <li><a href="/login/logout">Se déconnecter</a></li>
         <% }else{ %>
-            <div class="right menu">
-                <a href="/login" class="ui item">
-                Login
-                </a>
-            </div>
+                <li><a href="/login">Se connecter</a></li>
         <% } %>
-        </div>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+ <li><a href="/posts">En ce moment</a></li>
+
+        <% if(locals.authToken){ %>
+        <li><a href="#">Mon Compte</a></li>
+
+            <% if(locals.profil === "admin"){ %>
+                <li><a href="/administration">Administration</a></li>
+            <% } %>
+            
+                <li><a href="/login/logout">Se déconnecter</a></li>
+        <% }else{ %>
+                <li><a href="/login">Se connecter</a></li>
+        <% } %>
+      </ul>
+    </div>
+</nav>

@@ -1,3 +1,5 @@
+$(".button-collapse").sideNav();
+
 //Dropmenu
 $('.ui.dropdown').dropdown();
 

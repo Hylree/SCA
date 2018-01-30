@@ -42,17 +42,20 @@ const postPost = (req, res) =>{
                 
                 console.log("pour qsdfqsdf: ");
                 console.log(arrayOfFiles);
+
                 if(arrayOfFiles.length > 0){
                     var fileNames = [];
 
                     arrayOfFiles.forEach((eachFile) => {
+                        
+                console.log(eachFile.files.path);
                         fileNames.push(eachFile.files.name);
                     });
 
 
                     res.status(201).redirect('/administration/post');
                     Post.create(fields, (err, message) => {
-                        Post.update({ _id: message._id }, { $set: { path : fileNames}});
+                        Post.update({ _id: message._id }, { $set: { path : fileNames[0]}});
                     });
 
                 }else{
