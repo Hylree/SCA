@@ -1,33 +1,11 @@
-
-.container_flex{
-    display: flex;
-    flex-flow: row wrap;
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
-.container_flex > * {
-    padding: 10px;
-    flex: 1 100%;
-  }
-
-  @media all and (min-width: 600px) {
-    .aside { flex: 1 auto; }
-  }
-  
-  @media all and (min-width: 800px) {
-    .aside-1 { order: 1; } 
-    .aside-2 { order: 2; }
-    .aside-3 { order: 3; }
-  }
-
-  .align_flex{
-      display: flex;
-      justify-content: flex-start;
-  }
-
-  .main{
+.main{
     margin: 40px
   }
 
-  .ui.file.input input[type="file"] {
+.ui.file.input input[type="file"] {
     display: none;
 }

@@ -1,28 +1,23 @@
 <% include ../../../partials/_header %>
   
+<div class="row">
 <% posts.forEach(function(post) { %>
-    <div class="ui items">
-        <div class="item">
-            <div class="image">
-                <img src="/assets/img/posts/<%= post.path %>">
-            </div>
-            <div class="content">
-                <a class="header">header</a>
-
-                <div class="meta">
-                    <span>Description</span>
-                </div>
-                
-                <div class="description">
-                    <p><%= post.message %></p>
-                </div>
-
-                <div class="extra">
-                    Additional Details
-                </div>
-            </div>
-        </div>
+<div class="col s12 m4 l4">
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="/assets/img/posts/<%= post.path %>">
     </div>
-  
-    <% }); %>
+    <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Plus d'infos<i class="material-icons right">more_vert</i></span>
+        <p><a href="#"></a></p>
+    </div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <p><%= post.message %></p>
+    </div>
+</div>
+</div>
+<% }); %>        
+</div>
+
 <% include ../../../partials/_footer %>

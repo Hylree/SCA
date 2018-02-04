@@ -1,26 +1,14 @@
-<div class="card-panel red darken-1">
-This is a card panel with a teal lighten-2 class
-</div>
 <% if(locals.flashErrors){ %>
-
-            
-
-        <div class="ui negative message">
-                <h4>Erreur</h4>
-            <div class="ui middle aligned divided list">
-                <% flashErrors.forEach((error) => { %>
-                    <div class="item">
-                            <div class="content">
-                                <%= error %>
-                            </div>
-                    </div>
+        <div class="card-panel red darken-1">
+                <h5>Erreur</h5>
+                <% flashErrors.forEach((element) => { %>
+                                <%= element %>
                 <% }); %>
-            </div>
         </div>
-        
         <% } %>
+
         <% if(locals.errors){ %>
-        <div class="ui negative message">
+        <div class="card-panel red darken-1">
                 <h4>Erreur</h4>
             <div class="ui middle aligned divided list">
                 <% errors.forEach((error) => { %>
@@ -36,14 +24,10 @@ This is a card panel with a teal lighten-2 class
         <% } %>
 
         <% if(locals.flashSuccess){ %>
-            <div class="ui positive message">
-                    <h4>success</h4>
+        <div class="card-panel green">
+                    <h5>Succès</h5>
                     <% flashSuccess.forEach((element) => { %>
-                        <div class="item">
-                                <div class="content">
                                     <%= element %>
-                                </div>
-                        </div>
                     <% }); %>
             </div>
         
