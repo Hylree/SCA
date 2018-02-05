@@ -1,7 +1,7 @@
 /** On importe les librairies */
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
-
+const url = require('url');
 /** On importe les fichiers de configuration */
 const jwtConfig = require('../../config/jwt');
 
@@ -14,13 +14,15 @@ const viewLogin = (req, res) => {
 /** On déclare les fonctions liées aux animaux */
 const login = (req, res) => {
     const errors = [];
+    const success = [];
     const username = req.body.username;
     const password = req.body.password;
 
     if (!username || !password || username === '' || password === '') {
         errors.push("Vous devez renseigné l'identifiant ainsi que le mot de passe.");
-        res.cookie('flashErrors', errors);
-        res.status(200).redirect( '/login' );
+        //res.cookie('flashErrors', errors);
+        res.status(200).render('pages/vue/web/login', { flashErrors : errors});
+        //res.status(200).redirect( '/login' );
     } else {
         
     
@@ -28,17 +30,15 @@ const login = (req, res) => {
 
             if (!user) {
                 errors.push("L'identifiant ou le mot de passe sont invalide.");
-                res.cookie('flashErrors', errors);
-                res.status(200).redirect( '/login' );
+
+                res.status(200).render('pages/vue/web/login', { flashErrors : errors});
             } else {
 
                 const isPasswordValid = bcrypt.compareSync(password, user.password);
 
                 if (!isPasswordValid) {
                     errors.push("L'identifiant ou le mot de passe sont invalide.");
-                    
-                    res.cookie('flashErrors', errors);
-                    res.status(200).redirect( '/login' );
+                    res.status(200).render('pages/vue/web/login', { flashErrors : errors});
                 } else {
 
                     jwt.sign({
@@ -53,9 +53,11 @@ const login = (req, res) => {
                             req.session.authToken = authToken;
                             req.session.username = username;
                             req.session.profil = user.profil;
-                            res.cookie('flashSuccess', ['Vous êtes désormais connecté.']);
-                            //res.cookie('cookieSession', authToken);
-                            res.status(200).redirect( '/' );
+
+                            success.push("Vous êtes désormais connecté.");
+                            req.session.flashSuccess = success;
+
+                            res.redirect(200, "/");
                         })
 
                     });

@@ -1,160 +1,162 @@
-<div class="row">
-<form action="/register" method="post" class="col s12">
+<div class="main_form">
     <div class="row">
+        <form action="/register" method="post" class="col s12">
+            <div class="row">
 
-        <h3>Informations de connexion</h3>
+                <h3>Informations de connexion</h3>
 
-        <div class="input-field">
-          <input id="username" name="username" type="email" class="validate">
-          <label for="mail">E-mail</label>
-        </div>
+                <div class="input-field">
+                <input id="username" name="username" type="email" class="validate">
+                <label for="mail">E-mail</label>
+                </div>
 
-        <div class="input-field">
-          <input id="password" name="password" type="password" class="validate">
-          <label for="password">Mot de passe</label>
-        </div>
+                <div class="input-field">
+                <input id="password" name="password" type="password" class="validate">
+                <label for="password">Mot de passe</label>
+                </div>
 
-        <div class="input-field">
-            <input id="password_confirm" name="password_confirm" type="password" class="validate">
-            <label for="password_confirm">Comfirmer le mot de passe</label>
-        </div>
+                <div class="input-field">
+                    <input id="password_confirm" name="password_confirm" type="password" class="validate">
+                    <label for="password_confirm">Comfirmer le mot de passe</label>
+                </div>
 
-        <h3>Informations personnelles</h3>
-        
-        <div class="row">
-            <div class="col s12 m12 l12">
+                <h3>Informations personnelles</h3>
+                
+                <div class="row">
+                    <div class="col s12 m12 l12">
 
-            <div class="input-field">
-                <select id="civilite">
-                    <option value="" disabled selected>Choisir votre civilité...</option>
-                    <option value="Mme">Madame</option>
-                    <option value="M">Monsieur</option>
-                </select>
-                    <label>Civilité</label>
+                    <div class="input-field">
+                        <select name="civilite" id="civilite">
+                            <option value="" disabled selected>Choisir votre civilité...</option>
+                            <option value="Mme">Madame</option>
+                            <option value="M">Monsieur</option>
+                        </select>
+                            <label>Civilité</label>
+                    </div>
+
+
+                        <div class="input-field">
+                            <input id="last_name" name="last_name" type="text" style="text-transform:uppercase" class="validate">
+                            <label for="last name">Nom de famille</label>
+                        </div>   
+
+                        <div class="input-field">
+                            <input id="first_name" name="first_name" type="text" class="validate">
+                            <label for="first name">Prénom</label>
+                        </div>
+
+                        <div class="input-field">
+                            <input id="tel" name="tel" type="tel" class="cleave-tel validate">
+                            <label for="telephone">Téléphone</label>
+                        </div>
+
+                        <div class="input-field">
+                            <input name="bday" id="bday" type="text" class="datepicker">  
+                            <label for="date naissance">Date de naissance</label>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m3 l3">
+                        <div class="input-field">
+                            <input id="num_street" name="num_street" type="text" class="validate">
+                            <label for="Nrue">Numero, Voie</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col s12 m9 l9">
+                        <div class="input-field">
+                            <input id="name_street" name="name_street" type="text" class="validate">
+                            <label for="adresse">Adresse</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l12">
+                        <div class="input-field">
+                            <input id="more_street" name="more_street" type="text" class="validate">
+                            <label for="complement">Complément</label>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m3 l3">
+                        <div class="input-field">
+                            <input id="code" name="code" type="text" class="validate">
+                            <label for="code">Code postale</label>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m9 l9">
+                        <div class="input-field">
+                            <input id="city" name="city" type="text">
+                            <label for="complement">Ville</label>
+                        </div>
+                    </div>
+
+                    <div class="collection" id="output"></div>
+
+                    <div class="col s12 m6 l6">
+                        <div class="input-field">
+                            <select name="home_type" id="home_type">
+                                <option value="" disabled selected>Choisir...</option>
+                                <option value="Appartement">Appartement</option>
+                                <option value="Maison">Maison</option>
+                                <option value="Autres">Autres</option>
+                            </select>
+                                <label>Type de logement de votre habitation principale</label>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l6">
+                        <div class="input-field">
+                            <select name="tenant_type" id="tenant_type">
+                                <option value="" disabled selected>Choisir...</option>
+                                <option value="Location">Location</option>
+                                <option value="Propriétaire">Propriétaire</option>
+                                <option value="Autres">Autres</option>
+                            </select>
+                                <label>Qualité de l'occupant de votre habitaion principale</label>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l6">
+                        <div class="input-field">
+                            <select name="situation_fam" id="situation_fam">
+                                <option value="" disabled selected>Choisir...</option>
+                                <option value="Célibataire">Célibataire</option>
+                                <option value="Concubinage">Concubinage</option>
+                                <option value="Marié">Marié</option>
+                                <option value="Séparer">Séparer</option>
+                                <option value="Divorcé">Divorcé</option>
+                                <option value="Veuf">Veuf</option>
+                                <option value="Pacs">Pacs</option>
+                            </select>
+                                <label>Situation familiale</label>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m6 l6">
+                        <div class="input-field">
+                            <select name="situation_pro" id="situation_pro">
+                                <option value="" disabled selected>Choisir...</option>
+                                <option value="Artisan">Artisan</option>
+                                <option value="Exploitant agricol">Exploitant agricole</option>
+                                <option value="Profession libérale">Profession libérale</option>
+                                <option value="Chef d'entreprise">Chef d'entreprise</option>
+                                <option value="Salarié">Salarié</option>
+                                <option value="Fonctionnaire">Fonctionnaire</option>
+                                <option value="Sans profession">Sans profession</option>
+                                <option value="Retraité">Retraité</option>
+                                <option value="Recherche d'emploi">Recherche d'emploi</option>
+                                <option value="Ecclasiastique">Ecclasiastique</option>
+                            </select>
+                                <label>Situation Profésionnelle</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn waves-effect waves-light" name="action">Envoyer
+                        <i class="material-icons right">send</i>
+                    </button>
+
+                </div>
             </div>
-
-
-                <div class="input-field">
-                    <input id="last_name" name="last_name" type="text" style="text-transform:uppercase" class="validate">
-                    <label for="last name">Nom de famille</label>
-                </div>   
-
-                <div class="input-field">
-                    <input id="first_name" name="first_name" type="text" class="validate">
-                    <label for="first name">Prénom</label>
-                </div>
-
-                <div class="input-field">
-                    <input id="tel" name="tel" type="tel" class="cleave-tel validate">
-                    <label for="telephone">Téléphone</label>
-                </div>
-
-                <div class="input-field">
-                    <input name="birthday" id="bday" type="text" class="datepicker">  
-                    <label for="date naissance">Date de naissance</label>
-                </div>
-            </div>
-
-            <div class="col s12 m3 l3">
-                <div class="input-field">
-                    <input id="num_street" name="num_street" type="text" class="validate">
-                    <label for="Nrue">Numero, Voie</label>
-                </div>
-            </div>
-            
-            <div class="col s12 m9 l9">
-                <div class="input-field">
-                    <input id="name_street" name="name_street" type="text" class="validate">
-                    <label for="adresse">Adresse</label>
-                </div>
-            </div>
-            <div class="col s12 m12 l12">
-                <div class="input-field">
-                    <input id="more_street" name="more_street" type="text" class="validate">
-                    <label for="complement">Complément</label>
-                </div>
-            </div>
-
-            <div class="col s12 m3 l3">
-                <div class="input-field">
-                    <input id="code" name="code" type="text" class="validate">
-                    <label for="code">Code postale</label>
-                </div>
-            </div>
-
-            <div class="col s12 m9 l9">
-                <div class="input-field">
-                    <input id="city" name="city" type="text">
-                    <label for="complement">Ville</label>
-                </div>
-            </div>
-
-            <div class="collection" id="output"></div>
-
-            <div class="col s12 m6 l6">
-                <div class="input-field">
-                    <select id="home_type">
-                        <option value="" disabled selected>Choisir...</option>
-                        <option value="Appartement">Appartement</option>
-                        <option value="Maison">Maison</option>
-                        <option value="Autres">Autres</option>
-                    </select>
-                        <label>Type de logement de votre habitation principale</label>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l6">
-                <div class="input-field">
-                    <select id="tenant_type">
-                        <option value="" disabled selected>Choisir...</option>
-                        <option value="Location">Location</option>
-                        <option value="Propriétaire">Propriétaire</option>
-                        <option value="Autres">Autres</option>
-                    </select>
-                        <label>Qualité de l'occupant de votre habitaion principale</label>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l6">
-                <div class="input-field">
-                    <select id="situation_fam">
-                        <option value="" disabled selected>Choisir...</option>
-                        <option value="Célibataire">Célibataire</option>
-                        <option value="Concubinage">Concubinage</option>
-                        <option value="Marié">Marié</option>
-                        <option value="Séparer">Séparer</option>
-                        <option value="Divorcé">Divorcé</option>
-                        <option value="Veuf">Veuf</option>
-                        <option value="Pacs">Pacs</option>
-                    </select>
-                        <label>Situation familiale</label>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l6">
-                <div class="input-field">
-                    <select id="situation_fam">
-                        <option value="" disabled selected>Choisir...</option>
-                        <option value="Artisan">Artisan</option>
-                        <option value="Exploitant agricol">Exploitant agricole</option>
-                        <option value="Profession libérale">Profession libérale</option>
-                        <option value="Chef d'entreprise">Chef d'entreprise</option>
-                        <option value="Salarié">Salarié</option>
-                        <option value="Fonctionnaire">Fonctionnaire</option>
-                        <option value="Sans profession">Sans profession</option>
-                        <option value="Retraité">Retraité</option>
-                        <option value="Recherche d'emploi">Recherche d'emploi</option>
-                        <option value="Ecclasiastique">Ecclasiastique</option>
-                    </select>
-                        <label>Situation Profésionnelle</label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn waves-effect waves-light" name="action">Envoyer
-                <i class="material-icons right">send</i>
-            </button>
-
-        </div>
+        </form>
     </div>
-</form>
 </div>

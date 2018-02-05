@@ -28,7 +28,6 @@ app.use(cookieParser());
 
 
 /** On importe les middlewares */
-const flashMessageMiddleware = require('./app/middlewares/flashMessageMiddleware');
 const authMiddleware = require('./app/middlewares/authMiddleware');
 const authProfilMiddleware = require('./app/middlewares/authProfilMiddleware');
 
@@ -69,7 +68,7 @@ webRouter.use('/register', registerRouter);
 webRouter.use('/', homeRouter);
 
 /** On implémente le router Web */
-app.use('/', [authMiddleware, flashMessageMiddleware, webRouter]);
+app.use('/', [authMiddleware, webRouter]);
 
 
 const postRouter = require('./app/routers/admin/postRouter');
@@ -81,7 +80,7 @@ const adminMainRouter = express.Router();
 adminMainRouter.use('/post', postRouter);
 adminMainRouter.use('/', adminRouter)
 
-app.use('/administration', [authMiddleware, authProfilMiddleware, flashMessageMiddleware, adminMainRouter]);
+app.use('/administration', [authMiddleware, authProfilMiddleware, adminMainRouter]);
 /** fin routers 
  * ______________________________________________________________
 */

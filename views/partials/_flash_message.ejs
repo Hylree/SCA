@@ -1,29 +1,15 @@
-<% if(locals.flashErrors){ %>
+<% if(locals.flashErrors && locals.flashErrors.length > 0){ %>
         <div class="card-panel red darken-1">
                 <h5>Erreur</h5>
+                <ul class="collection">
                 <% flashErrors.forEach((element) => { %>
-                                <%= element %>
+                                <li class="collection-item"><%= element %></li>
                 <% }); %>
+                </ul>
         </div>
         <% } %>
 
-        <% if(locals.errors){ %>
-        <div class="card-panel red darken-1">
-                <h4>Erreur</h4>
-            <div class="ui middle aligned divided list">
-                <% errors.forEach((error) => { %>
-                    <div class="item">
-                            <div class="content">
-                                <%= error %>
-                            </div>
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-        
-        <% } %>
-
-        <% if(locals.flashSuccess){ %>
+        <% if(locals.flashSuccess && locals.flashSuccess.length > 0){ %>
         <div class="card-panel green">
                     <h5>Succès</h5>
                     <% flashSuccess.forEach((element) => { %>

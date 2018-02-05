@@ -6,12 +6,17 @@
 /** On déclare les fonctions */
 
 const viewHome = (req, res) => {
-    console.log('cookies ', req.cookies);
-    console.log('=========================');
     
-    console.log('session ', req.session);
-    console.log('local ', res.locals);
-    res.render('pages/vue/web/home',  req.locals);
+    const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
+    const flashErrors = req.session.flashErrors ? req.session.flashErrors : [];
+
+    delete req.session.flashSuccess;
+    delete req.session.flashErrors;
+
+    res.render('pages/vue/web/home',  {
+        flashSuccess: flashSuccess,
+        flashErrors: flashErrors
+    });
 }
 
 module.exports = {

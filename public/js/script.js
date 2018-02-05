@@ -1,9 +1,5 @@
 
-//Téléphone Francais 
-var cleave = new Cleave('.cleave-tel', { 
-    phone: true, 
-    phoneRegionCode: 'FR' 
-}); 
+ $(".button-collapse").sideNav();
  
 /** Récupération de la ville et code postale avec vicopo*/ 
  

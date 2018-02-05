@@ -10,17 +10,14 @@ const Profil = require('../../models/profil');
 /** On déclare les fonctions */
 
 const viewRegister = (req, res) => {
-    res.render('pages/vue/web/register', req.locals);
+    res.status(200).render('pages/vue/web/register');
 }
 
 const postRegister = (req, res) => {
     const errors = [];
     const dateNow = new Date();
-    let dateRes;
     const cp = req.body.code;
     const typeHab = req.body.home_type;
-    let date = req.body.bday;
-    let   year, month, day;
     const regex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/gmi;
 
 
@@ -40,22 +37,12 @@ const postRegister = (req, res) => {
     }
 
     if(req.body.bday == ''){
-        year = req.body.year;
-        month = testMonthWord(req.body.month);
-        day = req.body.day;
+        errors.push("La date de naissance doit être renseignée: " + req.body.bday);
 
     }else{
-        year = date.substring(0,4),
-        month = date.substring(5,7),
-        day = date.substring(8,10);
-
+    
+        req.body.date_naissance = new Date(req.body.bday);
     }
-
-    console.log(day + ' ' + month + ' ' + year);
-    dateRes = month + '.' + day + '.' + year;
-    //dateRes.setFullYear(year);
-    //dateRes.setMonth(month);
-    //dateRes.setDate();
             
 
     if(cp.length !== 5){
@@ -71,14 +58,13 @@ const postRegister = (req, res) => {
     }
 
     if(checkSituationFamily(req.body.situation_fam) === false){
-        errors.push("La suitation de famille esti nvalide." + req.body.situation_fam);
+        errors.push("La situation de famille est invalide." + req.body.situation_fam);
     }
 
     if(checkSituationPro(req.body.situation_pro) === false){
-        errors.push("La situation proféssionnel est invalide. " + req.body.situation_pro);
+        errors.push("La situation professionnel est invalide. " + req.body.situation_pro);
     }
     
-    req.body.date_naissance = new Date(dateRes);
 
     Profil.findOne({'id' : 'prospect'}, (err, profil) => {
         req.body.profil = profil.id;
@@ -96,38 +82,22 @@ const postRegister = (req, res) => {
                         }
                     } 
                 }
-                res.cookie('flashErrors', errors);
-                res.status(201).redirect('/register');
+                //res.cookie('flashErrors', errors);
+                
+                res.status(200).render('pages/vue/web/register', { flashErrors : errors } );
                 
             }
             else {
-                
-                res.cookie('flashSuccess', ['Bravo']);
-                res.status(201).redirect( '/' );
+                let success = [];
+                success.push("Compte enregistré.");
+                //res.cookie('flashSuccess', ['Bravo']);
+                res.status(200).render('pages/vue/web/home', { flashSuccess : success } );                
+                //res.status(201).redirect( '/' );
             }
         });
     });
 
     
-}
-
-function testMonthWord(month){
-
-    const arrayMonthTest = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-    let res = 0;
-    arrayMonthTest.forEach(function(element, index) {
-        if(element == month){
-            res = index + 1 ;
-            if(res < 10){
-                res = '0' + res.toString();
-            }else{
-                
-            res = res.toString();
-            }
-        }
-    }, this);
-
-    return res;
 }
 
 function checkTypeHab(type){

@@ -48,6 +48,7 @@ const authMiddleware = (req, res, next) => {
                                     }, { new: true }, (err, user) => {
                                         res.locals.authToken = authToken;
                                         res.locals.profil = user.profil;
+                                        console.log('je suis passé!');
                                         next();
                                     });
                                 }
