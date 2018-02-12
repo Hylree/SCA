@@ -17,23 +17,6 @@ const userSchema = new Schema({
         unique: false,
         minlength: [8, 'Le mot de passe doit être supérieur à 8 caractères.']
     },
-    //modif
-    /**genre:{
-        type: String,
-        required: [true, 'Vous êtes un homme ou une femme?'],
-        validate: {
-            validator : function(v){
-                if(v != "Homme" || v != "Femme"){
-                    return true;
-                }else{ 
-                    re
-                }
-        },
-        message : [true, 'Vous avez rentré une mauvaise donnée.']
-    }
-    }
-
-    },*/
     profil : {
         type : Schema.Types.String,
         ref: 'Profil',

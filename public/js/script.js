@@ -1,6 +1,12 @@
 
  $(".button-collapse").sideNav();
- 
+
+
+ function closeCard(){
+     var view_card = $(".card_view");
+
+     view_card.slideUp();
+ }
 /** Récupération de la ville et code postale avec vicopo*/ 
  
 jQuery(function($) { 

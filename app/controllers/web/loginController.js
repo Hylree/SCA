@@ -57,7 +57,7 @@ const login = (req, res) => {
                             success.push("Vous êtes désormais connecté.");
                             req.session.flashSuccess = success;
 
-                            res.redirect(200, "/");
+                            res.redirect("/");
                         })
 
                     });

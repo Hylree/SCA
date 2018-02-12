@@ -3,6 +3,7 @@ const formidable = require('formidable');
 /** On importe les modèles */
 const Post = require('../../models/post');
 
+const Image = require('../../models/image');
 
 const postPost = (req, res) =>{
 
@@ -38,7 +39,7 @@ const postPost = (req, res) =>{
 
                 console.log("pour files: ");
                 
-                console.log(fields.message);
+                console.log(fields);
                 
                 console.log("pour qsdfqsdf: ");
                 console.log(arrayOfFiles);
@@ -46,16 +47,20 @@ const postPost = (req, res) =>{
                 if(arrayOfFiles.length > 0){
                     var fileNames = [];
 
-                    arrayOfFiles.forEach((eachFile) => {
+                    Post.create({message: fields.message}, (err, post) => {
+
+                        arrayOfFiles.forEach((eachFile) => {
                         
-                console.log(eachFile.files.path);
-                        fileNames.push(eachFile.files.name);
-                    });
+                            Image.Image.create(eachFile.files, (err, image) => {
 
+                                Image.RelationImage.create({id_image: image._id , id_post: post._id }, (err, relationimagePost) => {
 
-                    res.status(201).redirect('/administration/post');
-                    Post.create(fields, (err, message) => {
-                        Post.update({ _id: message._id }, { $set: { path : fileNames[0]}});
+                                }); 
+                                
+                            });
+                        });
+                        
+                        res.status(201).redirect('/administration/post');
                     });
 
                 }else{
@@ -68,7 +73,17 @@ const postPost = (req, res) =>{
 }
 
 const viewPost = (req, res) =>{
-        res.render('pages/vue/admin/post');
+
+    const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
+    const flashErrors = req.session.flashErrors ? req.session.flashErrors : [];
+
+    delete req.session.flashSuccess;
+    delete req.session.flashErrors;
+
+    res.render('pages/vue/admin/post',  {
+        flashSuccess: flashSuccess,
+        flashErrors: flashErrors
+    });
 }
 
 

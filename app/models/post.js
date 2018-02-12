@@ -8,11 +8,11 @@ const postSchema = new Schema({
         message:{
             type: String,
             required: [true, 'Pas de contenue de message'],
+        },
+        date: {
+            type: Date,
+            default: Date.now   
         }
-    ,
-    path:{
-        type: String
-    }
 });
 
 /** On exporte le modèle */

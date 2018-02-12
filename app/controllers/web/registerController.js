@@ -10,7 +10,17 @@ const Profil = require('../../models/profil');
 /** On déclare les fonctions */
 
 const viewRegister = (req, res) => {
-    res.status(200).render('pages/vue/web/register');
+
+    const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
+    const flashErrors = req.session.flashErrors ? req.session.flashErrors : [];
+
+    delete req.session.flashSuccess;
+    delete req.session.flashErrors;
+
+    res.render('pages/vue/web/register',  {
+        flashSuccess: flashSuccess,
+        flashErrors: flashErrors
+    });
 }
 
 const postRegister = (req, res) => {

@@ -1,0 +1,12 @@
+.navbar-fixed {
+    position: fixed;
+    z-index:999999999;
+}
+
+.icon_menu{
+    color: white;
+}
+
+.color_ul_large a{
+    color: white;
+}

@@ -3,8 +3,8 @@ html {
 }
 
 
-.main{
-    margin: 40px
+.container-main{
+    padding: 80px 40px 40px 40px;
   }
 
 .ui.file.input input[type="file"] {

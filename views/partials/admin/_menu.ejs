@@ -3,17 +3,11 @@
             <a href="/administration" class="brand-logo">Logo</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-
-            <li><a href="/posts">En ce moment</a></li>
-            <% if(locals.authToken){ %>
-                <li><a href="#">Mon Compte</a></li>
-            <% if(locals.profil === "admin"){ %>
-                    <li><a href="/administration">Administration</a></li>
-            <% } %>
-                    <li><a href="/login/logout">Se déconnecter</a></li>
-            <% }else{ %>
-                    <li><a href="/login">Se connecter</a></li>
-            <% } %>
+        
+            <li><a href="/administration/post">Gestionnaire des posts</a></li>
+            <li><a href="#">Mon Compte</a></li>
+            <li><a href="/login/logout">Se déconnecter</a></li>
+            <li class="teal lighten-1"><a href="/">Retour au site web</a></li>
 
         </ul>
         <ul class="side-nav" id="mobile-demo">

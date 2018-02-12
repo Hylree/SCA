@@ -2,7 +2,17 @@
 
 
 const viewAdmin = (req, res) =>{
-        res.render('pages/vue/admin/admin');
+
+    const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
+    const flashErrors = req.session.flashErrors ? req.session.flashErrors : [];
+
+    delete req.session.flashSuccess;
+    delete req.session.flashErrors;
+
+    res.render('pages/vue/admin/admin',  {
+        flashSuccess: flashSuccess,
+        flashErrors: flashErrors
+    });
 }
 
 
