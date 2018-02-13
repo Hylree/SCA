@@ -14,6 +14,7 @@ const app = express();
 /** On définie le template */
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('public'));
+app.use('/public', express.static('public'));
 app.use('/res', express.static('node_modules'));
 
 /** On applique des middlewares */

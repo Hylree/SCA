@@ -1,23 +1,39 @@
 <% include ../../../partials/_header %>
-  
-<div class="row">
-<% posts.forEach(function(post) { %>
-<div class="col s12 m4 l4">
-<div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="/assets/img/posts/<%= post.path %>">
+
+<% if(locals.posts && locals.posts.length > 0){ %>
+    <div class="row">
+        <% posts.forEach(function(post) { %>
+            <div class="col s12 m4 l4">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <% if(post.images && post.images.length > 0){ %>
+
+                                  <div class="carousel carousel-slider center" data-indicators="true">
+                            <% post.images.forEach(function(image){ %>
+                                        <div class="carousel-item red white-text">
+                                            <img class="activator" src="<%= image.path %>">
+                                        </div>
+                            <% }); %>
+
+
+                                    </div>
+                        <% }else{ %>
+                                <p>pas d'image</p>
+                        <% } %>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Plus d'infos<i class="material-icons right">more_vert</i></span>
+                        <p><a href="#"></a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                        <p><%= post.post.message %></p>
+                    </div>
+                </div>
+            </div>
+        <% }); %>        
     </div>
-    <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Plus d'infos<i class="material-icons right">more_vert</i></span>
-        <p><a href="#"></a></p>
-    </div>
-    <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-        <p><%= post.message %></p>
-    </div>
-</div>
-</div>
-<% }); %>        
-</div>
+<% } %>
 
 <% include ../../../partials/_footer %>
+
