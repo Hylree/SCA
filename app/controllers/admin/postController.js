@@ -44,13 +44,59 @@ const postPost = (req, res) =>{
                 console.log("pour qsdfqsdf: ");
                 console.log(arrayOfFiles);
 
+
+/*
+                Post.find({}, async (err, posts) => {
+                    const numberPosts = posts.length;
+                    let arrayPosts = [];
+            
+                    
+                    for (post of posts) {
+                        let relationsImagesTab = await Image.RelationImage.find({id_post : post._id}).exec();
+                        let object = { post: post, images: [] };
+            
+                        for (relation of relationsImagesTab) {
+            
+                            object.images.push(await Image.Image.findOne({ _id: relation.id_image }).exec());
+            
+                        };
+            
+                        arrayPosts.push(object);
+                    };
+            
+*/
+
                 if(arrayOfFiles.length > 0){
                     var fileNames = [];
 
-                    Post.create({message: fields.message}, (err, post) => {
+                    Post.create({message: fields.message}, async (err, post) => {
 
-                        arrayOfFiles.forEach((eachFile) => {
+                        //arrayOfFiles.forEach((eachFile) => {
                         
+                            console.log("eachFile");
+                            console.log(arrayOfFiles);
+
+                            for (eachFile of arrayOfFiles){
+                                console.log("eachFile");
+                                console.log(eachFile);
+                                Image.Image.create(eachFile.files, async (err, images) => {
+                                    
+
+                                    for(image of images){
+                                        console.log("image");
+                                        console.log(image);
+                                        Image.RelationImage.create({id_image: image._id, id_post: post._id}, async (err, relationimagePost) => {
+                                            console.log("relationimage");
+                                            console.log(relationimagePost);
+                                        });
+                                    }
+                                    
+                                });
+
+
+                            }
+                            
+                           /* console.log(eachFile);
                             Image.Image.create(eachFile.files, (err, image) => {
 
                                 Image.RelationImage.create({id_image: image._id , id_post: post._id }, (err, relationimagePost) => {
@@ -58,7 +104,7 @@ const postPost = (req, res) =>{
                                 }); 
                                 
                             });
-                        });
+                        });*/
                         
                         res.status(201).redirect('/administration/post');
                     });
