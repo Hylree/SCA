@@ -72,12 +72,20 @@ webRouter.use('/', homeRouter);
 app.use('/', [authMiddleware, webRouter]);
 
 
+/** -----------------------------------------------------------
+ * Section admin
+ * ------------------------------------------------------------
+ */
+
+
 const postRouter = require('./app/routers/admin/postRouter');
 const adminRouter = require('./app/routers/admin/adminRouter');
+const usersRouter = require('./app/routers/admin/usersRouter');
 
 /** On créé le router l'administration */
 const adminMainRouter = express.Router();
 
+adminMainRouter.use('/users', usersRouter);
 adminMainRouter.use('/post', postRouter);
 adminMainRouter.use('/', adminRouter)
 
