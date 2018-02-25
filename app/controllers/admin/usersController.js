@@ -1,5 +1,6 @@
 /** On importe les librairies */
 
+
 /** On importe les modèles */
 
 
@@ -12,6 +13,7 @@ const usersView = (req, res) => {
 
     delete req.session.flashSuccess;
     delete req.session.flashErrors;
+
 
     res.render('pages/vue/admin/users',  {
         flashSuccess: flashSuccess,

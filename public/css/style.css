@@ -20,3 +20,7 @@ html {
     height:300px;
     object-fit: cover;
 }
+
+.suppr_margin{
+  margin-bottom: 0;
+}

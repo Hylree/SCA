@@ -47,6 +47,7 @@ const apiRouter = express.Router();
 
 
 apiRouter.use('/auth', authRouter);
+apiRouter.use('/users', userRouter);
 //apiRouter.use('/users', [authMiddleware, userRouter]);
 
 /** On implémente le router API */

@@ -1,24 +1,4 @@
 <% include ../../../partials/admin/_header %>
-{
-    "_id" : ObjectId("5a782898b5c2460fb4b3c6a3"),
-    "username" : "test@coucou",
-    "password" : "$2a$10$zhYT0Bfh8idvUtrzEybb8.5kbebJr5QxTRvDMHQrYWVP7y502I2ni",
-    "civilite" : "Mme",
-    "last_name" : "mon",
-    "first_name" : "Valentin",
-    "tel" : "06 09 78 80 48",
-    "num_street" : 29,
-    "name_street" : "ADressee",
-    "more_street" : "cocuocu",
-    "code" : "21000",
-    "city" : "DIJON",
-    "home_type" : "Appartement",
-    "situation_fam" : "Marié",
-    "situation_pro" : "Salarié",
-    "date_naissance" : ISODate("2018-02-22T00:00:00.000+01:00"),
-    "profil" : "prospect",
-    "__v" : 0
-}
 
  <table class="highlight">
     <thead>
@@ -28,27 +8,47 @@
             <th>Prénom</th>
             <th>E-mail</th>
             <th>Téléphone</th>
-            <th>Adresse</th>
-            <th>Complément</th>
             <th>code Postal</th>
             <th>Ville</th>
             <th>Profil</th>
         </tr>
     </thead>
-
-    <tbody>
-        <tr>
-            <td>Civilité</td>
-            <td>Nom</td>
-            <td>Prénom</td>
-            <td>E-mail</td>
-            <td>Téléphone</td>
-            <td>Adresse</td>
-            <td>Complément</td>
-            <td>code Postal</td>
-            <td>Ville</td>
-            <td>Profil</td>
-        </tr>
-    </tbody>
+<tbody id="table_users"></tbody>
 </table>
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <ul id="tabs-swipe-demo" class="tabs">
+        <li class="tab col s3"><a class="active" href="#user-swipe-infos">Informations</a></li>
+        <li class="tab col s3"><a href="#user-swipe-contrat">Contrats</a></li>
+        <li class="tab col s3"><a href="#user-swipe-demandes">Les demandes</a></li>
+    </ul>
+    <div class="modal-content">
+        <div id="user-swipe-infos" class="col s12"></div>
+        <div id="user-swipe-contrat" class="col s12"></div>
+        <div id="user-swipe-demandes" class="col s12 green"></div>
+    </div>
+    <div class="modal-footer">
+        <div class="row suppr_margin">
+            <div class="col m6 s6">
+                <div class="switch valign-wrapper">
+                    <label>
+                        Lecture
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                        Edition
+                    </label>
+                </div>
+            </div>
+            <div class="col m6 s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+            </div>
+        </div>
+     </div>
+  </div>
+
+<script type="text/javascript" src="/assets/js/script.users.js"></script>
 <% include ../../../partials/admin/_footer %>

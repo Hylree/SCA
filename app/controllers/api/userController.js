@@ -32,8 +32,16 @@ const postUsers = (req, res) => {
 
 };
 
+const getUniqueUser = (req, res) => {
+    let id = req.params.id;
+    User.findOne({ _id : id}, (err, user) => {
+        res.status(200).send({ success: true, user: user});
+    });
+};
+
 /** On exporte le controller */
 module.exports = {
     getUsers: getUsers,
-    postUsers: postUsers
+    postUsers: postUsers,
+    getUniqueUser: getUniqueUser
 };
