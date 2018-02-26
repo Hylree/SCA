@@ -1,8 +1,10 @@
 <% include ../../../partials/admin/_header %>
 
+<div class='container-fluid'>
  <table class="highlight">
     <thead>
         <tr>
+            <th>Numero client</th>
             <th>Civilité</th>
             <th>Nom</th>
             <th>Prénom</th>
@@ -15,9 +17,7 @@
     </thead>
 <tbody id="table_users"></tbody>
 </table>
-
-  <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+</div>
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
@@ -35,16 +35,16 @@
         <div class="row suppr_margin">
             <div class="col m6 s6">
                 <div class="switch valign-wrapper">
-                    <label>
+                    <label id="edition_mode">
                         Lecture
-                            <input type="checkbox">
+                            <input id="edition_mode_value" type="checkbox">
                             <span class="lever"></span>
                         Edition
                     </label>
                 </div>
             </div>
             <div class="col m6 s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Fermer la fenêtre</a>
             </div>
         </div>
      </div>

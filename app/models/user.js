@@ -11,6 +11,10 @@ const userSchema = new Schema({
         minlength: [3, 'L\'email doit être supérieur à 3 caractères'],
         maxlength: [255, 'L\'email doit être inférieur à 255 caractères']
     },
+    numero_client:{
+        type: String,
+        default: ""
+    },
     password: {
         type: String,
         required: [true, 'Le mot de passe doit être renseigné.'],
