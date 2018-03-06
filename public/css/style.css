@@ -24,3 +24,7 @@ html {
 .suppr_margin{
   margin-bottom: 0;
 }
+
+.padding_bottom{
+    padding-bottom: 15px
+}

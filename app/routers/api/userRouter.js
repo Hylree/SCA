@@ -10,7 +10,7 @@ const userRouter = express.Router();
 /** On déclare les routes */
 userRouter.get('/', userController.getUsers);
 userRouter.get('/:id', userController.getUniqueUser);
-userRouter.post('/', userController.postUsers);
+userRouter.post('/updateOneUser/:id', userController.updateOneUser);
 
 /** On exporte le router */
 module.exports = userRouter;
