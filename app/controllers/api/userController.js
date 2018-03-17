@@ -11,12 +11,21 @@ const FunctionApp = require('../../functions/appFunctions');
 
 const getUsers = (req, res) => {
 
-    User.find({}, (err, users) => {
-        if (err) throw err;
+    User.find({},null, {sort : {numero_client : 1}}, (err, users) => {
 
         res.status(200).send({ success: true, users: users });
     });
 
+};
+
+
+const getUsersFilter = (req, res) => {
+
+    const nameFilter = req.params.nameFilter;
+    const sensFilter = req.params.sensFilter;
+    User.find({}, null, {sort: {nameFilter : sensFilter}}, (err, users) => {
+        res.status(200).send({sucess: true, users : users});
+    });
 };
 
 const postUsers = (req, res) => {
@@ -72,9 +81,11 @@ const updateOneUser = (req, res) => {
             errors.push("La date de naissance doit être renseignée: " + req.body.bday);
     
         }else{
-          let date = req.body.bday.toLocaleString('en-US');
-          console.log(date);
-            req.body.date_naissance = new Date(Date.UTC(req.body.bday).toLocaleString('en-US'));
+        let date = req.body.bday;
+        var chunks = date.split('/');
+        var formattedDate = [chunks[1],chunks[0],chunks[2]].join("/");
+        console.log(formattedDate);
+        req.body.date_naissance = new Date(formattedDate);
         }
                 
         if(req.body.code.length !== 5){
@@ -110,74 +121,24 @@ const updateOneUser = (req, res) => {
                             }
                         } 
                     }
-                    //res.cookie('flashErrors', errors);
                     
-                    res.status(200).send({ resultat : errors });
-                    
+                    res.status(200).render('pages/vue/admin/users', { flashErrors : errors } );
+                      
                 }
                 else {
                     success.push("Compte enregistré.");
-                    //res.cookie('flashSuccess', ['Bravo']);
-                    res.status(200).render({ resultat : success });                
-                    //res.status(201).redirect( '/' );
+                    res.status(200).render('pages/vue/admin/users', { flashSuccess : success } );
                 }
             });
 
     
 };
-function checkTypeHab(type){
-    const arrayTypeHabitation = ['Appartement', 'Maison', 'Autres'];
-    let res = false;
 
-    arrayTypeHabitation.forEach(function(element) {
-        if(element === type){
-            res = true;
-        }
-    }, this);
-
-    return res;
-}
-
-function checkQualityForHab(quality){
-    const arrayQuality = ['Location', 'Propriétaire', 'Autres'];
-    let res = false;
-
-    arrayQuality.forEach(function(element) {
-        if(element === quality){
-            res = true;
-        }
-    }, this);
-    return res;
-}
-
-function checkSituationFamily(sit){
-    const arraySitation = ['Célibataire', 'Marié', 'Concubinage', 'Séparer', 'Divorcé', 'Veuf', 'Pacs'];
-    let res = false;
-
-    arraySitation.forEach(function(element) {
-        if(element === sit){
-            res = true;
-        }
-    }, this);
-    return res;
-}
-
-function checkSituationPro(sit){
-    const arraySituation = ['Artisan', 'Exploitant agricole', 'Profession libérale', "Chef d'entreprise", 'Salarié', 'Fonctionnaire', 'VRP', 'Etudiant', 'Sans profession', "Recherche d'emploi", 'Ecclasiastique'];
-    let res = false;
-
-    arraySituation.forEach(function(element) {
-        if(element === sit){
-            res = true;
-        }
-    }, this);
-
-    return res;
-}
 /** On exporte le controller */
 module.exports = {
     getUsers: getUsers,
     postUsers: postUsers,
     getUniqueUser: getUniqueUser,
-    updateOneUser : updateOneUser
+    updateOneUser : updateOneUser,
+    getUsersFilter :getUsersFilter
 };

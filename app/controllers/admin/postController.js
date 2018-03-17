@@ -95,16 +95,6 @@ const postPost = (req, res) =>{
 
 
                             }
-                            
-                           /* console.log(eachFile);
-                            Image.Image.create(eachFile.files, (err, image) => {
-
-                                Image.RelationImage.create({id_image: image._id , id_post: post._id }, (err, relationimagePost) => {
-
-                                }); 
-                                
-                            });
-                        });*/
                         
                         res.status(201).redirect('/administration/post');
                     });

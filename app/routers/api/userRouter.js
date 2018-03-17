@@ -11,6 +11,7 @@ const userRouter = express.Router();
 userRouter.get('/', userController.getUsers);
 userRouter.get('/:id', userController.getUniqueUser);
 userRouter.post('/updateOneUser/:id', userController.updateOneUser);
+userRouter.get('/getUserFilter/:nameFilter/:sensFilter', userController.getUsersFilter);
 
 /** On exporte le router */
 module.exports = userRouter;

@@ -15,6 +15,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('public'));
 app.use('/public', express.static('public'));
+/**Methode static pour les dossiers js */
+app.use('/appjs', express.static('public/js/app'));
 app.use('/res', express.static('node_modules'));
 
 /** On applique des middlewares */
