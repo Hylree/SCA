@@ -1,5 +1,33 @@
-<% include ../../../partials/_header %>
-<% include ../../formulaires/web/formulaire_register %>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/res/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/register.css">
+    <link rel="stylesheet" href="/assets/css/style_navbar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/res/cleave.js/dist/cleave.min.js"></script>
+    <script src="/res/cleave.js/dist/addons/cleave-phone.fr.js"></script>
+    <script src="/res/vicopo/api.min.js"></script>
+    <title>SCA assurances</title>
+</head>
+<body>
 
+        <% include ../../../partials/menus/_menu %> 
+        <% include ../../../partials/messages/_flash_message %>
+
+        <div class="main-container">
+            <div class="valign-wrapper row login-box">
+                <div class="col card hoverable s10 pull-s1 m10 pull-m1 l8 pull-l2">
+            <% include ../../formulaires/web/formulaire_register %>
+                </div>
+            </div>
+        </div>
+<script type="text/javascript" src="/res/materialize-css/dist/js/materialize.min.js"></script>
 <script type="text/javascript" src="/assets/js/script.phone.js"></script>
-<% include ../../../partials/_footer %>
+<script type="text/javascript" src="/assets/js/register.script.js"></script>
+<% include ../../../partials/footers/_footer %>

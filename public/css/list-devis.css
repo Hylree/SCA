@@ -1,0 +1,121 @@
+.main-container{
+    padding-top: 7em;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+footer{
+    padding: 50px 0;
+    background-color: #23334B;
+    color: white;
+}
+
+.image .mask{
+    height: 0;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.image { 
+    position: relative; 
+    height: 350px;
+    width: 100%; /* for IE 6 */
+    overflow: hidden;
+    float: left;
+    box-shadow: 0px 0px 5px #aaa;
+    cursor: pointer;
+    
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+ }
+
+ .image img{
+     
+    display: block;
+    height: 350px;
+    width: 100%;
+    object-fit: none;
+    position: relative; 
+ }
+
+ h2 { 
+     z-index: 9999;
+    position: absolute; 
+    top: 200px; 
+    left: 0; 
+    width: 100%; 
+ }
+
+ h2 span { 
+    color: white; 
+    font: bold 24px/45px Helvetica, Sans-Serif; 
+    letter-spacing: -1px;  
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px; 
+ }
+
+ h2 span.spacer {
+    padding:0 5px;
+ }
+ 
+ .second-effect .mask {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    cursor: pointer;
+    border-radius: 50px;
+    border-width: 50px;
+    display: inline-block;
+    height: 100%;
+    width: 200px;
+    border: 200px solid rgba(0, 0, 0, 0.7);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    opacity: 1;
+    visibility: visible;
+    -moz-transform: scale(4);
+    -webkit-transform: scale(4);
+    -o-transform: scale(4);
+    -ms-transform: scale(4);
+    transform: scale(4);
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+ }
+ .second-effect a.info {
+    position:relative;
+    top:-10px;
+    opacity:0;
+    -moz-transform:scale(0,0);
+    -webkit-transform:scale(0,0);
+    -o-transform:scale(0,0);
+    -ms-transform:scale(0,0);
+    transform:scale(0,0);
+    -webkit-transition: -webkit-transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
+    -moz-transition: -moz-transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
+    -o-transition: -o-transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
+    -ms-transition: -ms-transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
+    transition: transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
+ }
+ .second-effect:hover .mask {
+    opacity: 0;
+    border:0px solid rgba(0,0,0,0.7);
+    visibility:hidden;
+ }
+                 

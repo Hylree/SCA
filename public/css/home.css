@@ -1,0 +1,200 @@
+*, *::bifore, *::after{
+  box-sizing: inherit;
+}
+
+.main-container{
+  padding-top: 7em;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #A1A7AF;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer{
+  padding: 50px 0;
+  background-color: #23334B;
+  color: white;
+}
+
+
+.heading{
+  color : #fafafa;
+  padding-top: 190px;
+  background: linear-gradient(50deg, rgb(60, 55, 50), rgb(19, 65, 103));
+}
+
+.heading .row{
+  margin-bottom: 0;
+}
+
+.heading .heading-text{
+  padding-bottom: 50px;
+}
+
+.container-wide{
+  padding: 0 2em;
+}
+
+.btn-devis{
+  margin-top: 10px;
+  width: 100%;
+  max-width: 240px;
+  border-radius: 20px;
+  background-color: brown;
+  z-index: 0;
+  letter-spacing: .5px;
+  font-weight: 500;
+}
+
+.heading .heading-img-col{
+  padding: 0;
+  margin-bottom: -6px;
+}
+
+img.responsive-img{
+  max-width: 100%;
+  height: auto;
+  
+}
+
+.heading-img{
+  opacity: 0.8;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+  border-radius: 8px;
+}
+
+
+/** main container */
+.container-main{
+  padding:80px 0 80px;
+  margin: 0px;
+}
+
+.container-citation{
+  padding-top: 80px;
+  color: #6c747f;
+}
+
+.card-citation{
+  padding: 30px 50px 30px 50px;
+}
+
+.citation-author{
+  font-size: 11px;
+  letter-spacing: .5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-top: 3px;
+  color: #A1A7AF;
+}
+
+.citation-dir{
+  padding-top: 20px;
+  max-width: 400px;
+  color: #A1A7AF;
+  font-weight: 400;
+}
+
+.icon-for-down{
+  background-color: HSLA(205, 85%, 92%, 1);
+  position: absolute;
+  margin-top: 210px;
+  margin-left: 0.75em;
+  width: 60px;
+  height: 60px;
+  border-radius: 10000px;
+  padding: 20px 0 20px;
+}
+
+.icon-for-down-valid{
+  background-color: HSLA(205, 85%, 92%, 1);
+  position: relative;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 10000px;
+  padding: 20px 0 20px;
+}
+
+.border-right{
+  border-left: 3px dashed HSLA(205, 85%, 92%, 1);
+}
+
+.list-devis{
+  padding: 60px 0 0 150px; 
+  margin-left: 30px;
+  margin-top: 230px;
+}
+
+.list-devis .description{
+  max-width: 450px;
+}
+
+.list-devis .card-list-devis{
+  padding-bottom: 40px;
+  padding-top: 40px;
+  width: auto;
+  color: #616161 ;
+}
+.list-devis .material-icons{
+  color: #d32f2f;
+}
+
+.icon-for-down i {
+  line-height: 20px;
+  font-size: 60px;
+  color: #d32f2f ;
+}
+
+.icon-for-down-valid i {
+  line-height: 20px;
+  font-size: 60px;
+  color: #d32f2f ;
+}
+
+.carousel .image{
+  position: relative;
+}
+
+.carousel .image img{
+  height: 500px;
+  width: 100%;
+  object-fit: none;
+  z-index: 0;
+}
+
+
+.content-carousel{
+
+  position: absolute;
+  top: 200px; 
+  left: 0;
+  
+}
+
+
+
+.content-carousel h4{
+  color: white; 
+  font-weight: 400; 
+  letter-spacing: 2px;  
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+}
+
+.content-carousel p{
+  color: white;
+  width: 100%;
+  text-align: left;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+}

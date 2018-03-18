@@ -1,0 +1,28 @@
+*, *::bifore, *::after{
+    box-sizing: inherit;
+}
+
+.main-container{
+    padding-top: 7em;
+}
+
+body {
+    min-height: 100vh;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #A1A7AF;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+footer{
+    padding: 50px 0;
+    background-color: #23334B;
+    color: white;
+}
+
+.login-box {
+  height: 100%;
+}

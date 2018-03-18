@@ -15,6 +15,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('public'));
 app.use('/public', express.static('public'));
+app.use('/img', express.static('public/img'));
 /**Methode static pour les dossiers js */
 app.use('/appjs', express.static('public/js/app'));
 app.use('/res', express.static('node_modules'));
@@ -62,6 +63,7 @@ const registerRouter = require('./app/routers/web/registerRouter');
 const homeRouter = require('./app/routers/web/homeRouter');
 const loginRouter = require('./app/routers/web/loginRouter');
 const postsRouter = require('./app/routers/web/postsRouter');
+const listDevisRouter = require('./app/routers/web/list-devis');
 
 /** On créé le router web */
 const webRouter = express.Router();
@@ -69,6 +71,7 @@ const webRouter = express.Router();
 webRouter.use('/login', loginRouter);
 webRouter.use('/posts', postsRouter);
 webRouter.use('/register', registerRouter);
+webRouter.use('/list-devis', listDevisRouter);
 webRouter.use('/', homeRouter);
 
 /** On implémente le router Web */
