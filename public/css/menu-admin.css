@@ -1,0 +1,102 @@
+
+/* Menu */
+.avatar-status {
+    position: relative;
+    display: inline-block;
+    line-height: 50px;
+    width: 28px;
+    white-space: nowrap;
+    border-radius: 1000px;
+    vertical-align: bottom;
+}
+
+.avatar-status img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    background: #e6e6e6;
+    border: 0 none;
+    border-radius: 1000px;
+}
+
+.avatar-online i {
+    background-color: #00E676;
+}
+
+.avatar-status i {
+    position: absolute;
+    right: -2px;
+    bottom: 18px;
+    width: 9px !important;
+    height: 9px !important;
+    border: 1px solid #fff;
+    border-radius: 100%;
+}
+
+.orange.accent-3 {
+    background-color: #ff9100 !important;
+}
+
+.notification-badge {
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    right: 5px;
+    top: -20px;
+    color: #ffffff;
+    background-color: #29b6f6;
+    margin: 0 -.8em;
+    border-radius: 50%;
+    padding: 2px 5px;
+}
+small {
+    font-size: 0.8rem;
+}
+
+
+/* horizontal menu */
+#horizontal-nav ul li {
+    text-align: center;
+}
+
+#ul-horizontal-nav > li > a {
+    padding: 0 18px;
+}
+
+#horizontal-nav ul li a i {
+    height: 0px;
+    line-height: 45px;
+    font-size: 1.4rem;
+    color: #787878;
+}
+
+#horizontal-nav ul li a span {
+    position: relative;
+    top: 14px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+#horizontal-nav .dropdown-menu span i {
+    font-size: 14px;
+    position: absolute;
+    top: -12px;
+    right: -14px;
+}
+
+#horizontal-nav ul li a i {
+    height: 0px;
+    line-height: 45px;
+    font-size: 1.4rem;
+    color: #787878;
+}
+
+.dropdown-horizontal-list li a {
+    min-width: 150px;
+    text-align: left;
+    font-size: 1.0rem;
+    padding: 10px;
+    font-weight: 400;
+}
+
+.dropdown-content li a {
+    color: rgba(0, 0, 0, 0.87);
+}

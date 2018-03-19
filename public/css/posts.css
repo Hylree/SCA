@@ -1,0 +1,30 @@
+.main-container{
+    padding-top: 7em;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+footer{
+    padding: 50px 0;
+    background-color: #23334B;
+    color: white;
+}
+
+
+.center_img{ 
+    top: -9999px; 
+    left: -9999px; 
+    right: -9999px; 
+    bottom: -9999px; 
+    margin: auto; 
+      height:300px; 
+      object-fit: cover; 
+}

@@ -1,3 +1,27 @@
-<% include ../../../partials/admin/_header %>
-<h1> je suis la page d'acceuil pour l'administration <h1>
-<% include ../../../partials/admin/_footer %>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/res/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/home-admin.css">
+    <link rel="stylesheet" href="/assets/css/menu-admin.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+    <title>Administration - SCA assurances</title>
+</head>
+<body>
+
+        <% include ../../../partials/menus/_menu_admin %> 
+        <% include ../../../partials/messages/_flash_message %>
+    <div class="main-container">
+    
+    </div>
+
+        <!-- Scripts -->
+        <script type="text/javascript" src="/res/materialize-css/dist/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/assets/js/home-admin.script.js"></script>
+</body>
+</html>
