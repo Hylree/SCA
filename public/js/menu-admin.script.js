@@ -95,12 +95,6 @@
       }
     }
 
-    // Swipeable Tabs Demo Init
-    if ($('#tabs-swipe-demo').length) {
-      $('#tabs-swipe-demo').tabs({
-        'swipeable': true
-      });
-    }
 
     // Plugin initialization
 
@@ -138,9 +132,7 @@
       stopPropagation: false
     });
 
-    // Materialize Tabs
-    $('.tab-demo').show().tabs();
-    $('.tab-demo-active').show().tabs();
+  
 
     // Materialize Parallax
     $('.parallax').parallax();
