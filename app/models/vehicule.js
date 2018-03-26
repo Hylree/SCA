@@ -54,7 +54,12 @@ const vehiculeSchema = new Schema({
     protection_vol:{
         type: Schema.Types.ObjectId,
         ref: 'ProctectionVol'
-    }
+    },
+    usage:[{
+        usage : {
+            type : String
+        }
+    }]
 
 });
 

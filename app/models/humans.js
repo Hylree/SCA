@@ -3,13 +3,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const humanSchema = new Schema({
-    user:{
+    user_id:{
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    conducteur:{
+    conducteur_id:{
         type: Schema.Types.ObjectId,
         ref: 'Conducteur'
+    },
+    client_id:{
+        type: Schema.Types.ObjectId,
+        ref: 'Client'
     }
 });
 

@@ -11,17 +11,13 @@ const userSchema = new Schema({
         minlength: [3, 'L\'email doit être supérieur à 3 caractères'],
         maxlength: [255, 'L\'email doit être inférieur à 255 caractères']
     },
-    numero_client:{
-        type: String,
-        default: ""
-    },
     password: {
         type: String,
         required: [true, 'Le mot de passe doit être renseigné.'],
         unique: false,
         minlength: [8, 'Le mot de passe doit être supérieur à 8 caractères.']
     },
-    profil : {
+    profil:{
         type : Schema.Types.String,
         ref: 'Profil',
         default: 'prospect'
@@ -30,7 +26,6 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'La civilité doit être renseigné.']
     },
-
     last_name : {
         type : String,
         required : [true, 'Le nom de famille doit être renseigné.']
@@ -50,7 +45,7 @@ const userSchema = new Schema({
     num_street :{
         type: Number
     },
-    name_street :{
+    name_street:{
         type: String,
         required: [true, "L'adresse doit être rensaigné."]
     },

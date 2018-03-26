@@ -8,7 +8,6 @@ const profilSchema = new Schema({
         id: {
             type: String
         },
-
         name:{
             type: String,
         },
@@ -24,9 +23,6 @@ const profilSchema = new Schema({
             }]
         }]
     });
-
-
-
 
 /** On exporte le modèle Profil */
 var Profil = module.exports = mongoose.model('Profil', profilSchema)
