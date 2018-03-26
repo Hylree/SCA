@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
         message:{
             type: String,
-            required: [true, 'Pas de contenue de message'],
+            required: [true, 'Pas de contenue de message']
         },
         date: {
             type: Date,

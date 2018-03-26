@@ -342,7 +342,7 @@ let chargeModal = () => {
                                                 "<td>Situation Familiale:</td>" +
                                                 "<td>" + data.user.situation_fam + "</td>" +
                                             "</tr>" +
-    
+                                            
                                             "<tr>" +
                                                 "<td>Situation Professionnel:</td>" +
                                                 "<td>" + data.user.situation_pro + "</td>" +
@@ -351,7 +351,6 @@ let chargeModal = () => {
                                         "</tbody>" +
                                     "</table>"+
                                 "</div>");
-                    console.log(data.user._id);
     
                     });
                 }

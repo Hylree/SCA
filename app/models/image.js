@@ -2,8 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-/** On déclare le schéma */
-
+/** On déclare les schémas */
 const imageSchema = new Schema({
     name:{
         type: String
@@ -26,6 +25,7 @@ const imageSchema = new Schema({
 /** On exporte le modèle */
 var Image = mongoose.model('Image', imageSchema);
 
+/** Relation entre les posts et images */
 const relationImagePostSchema = new Schema({
     id_image:{
         type : Schema.Types.ObjectId,
