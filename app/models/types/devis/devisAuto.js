@@ -1,14 +1,22 @@
 /** On importe les librairies */
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const   mongoose = require('mongoose'),
+        extend = require('mongoose-schema-extend');
+const   Schema = mongoose.Schema;
 
-/** on déclare les schémas */
+/** On importe les Schemas */
+const Devis = require('../../devis');
 
-const devisAutoSchema = new Schema({
-    conducteurs:{
+/** Type de devis */
+const devisAutoSchema = Devis.devisSchema.extend({
+    conducteurs_principal:{
         type: Schema.Types.ObjectId,
-        ref:'RelactionConducteurDevisAuto'
+        ref:'Conducteur'
     },
+    conducteurs_secondaire:{
+        type: Schema.Types.ObjectId,
+        ref:'Conducteur'
+    },
+    
     vehicule:{
         type: Schema,Types,ObjectId,
         ref:'Vehicule'
@@ -28,9 +36,11 @@ const devisAutoSchema = new Schema({
         type: Boolean,
         required: [true, 'Vous devez valider.']
     }
-
 });
 
+
+
+/** On exporte le modèle */
 var DevisAuto = mongoose.model('DevisAuto', devisAutoSchema);
 
 module.exports = {

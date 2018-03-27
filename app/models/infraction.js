@@ -3,9 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const infractionSchema = new Schema({
-    conducteur_vehicule : {
+    conducteur_id:{
         type: Schema.Types.ObjectId,
-        ref: 'RelationInfractionConducteurVehicule'
+        ref : 'Conducteur'
+    },
+    vehicule_id:{
+        type: Schema.Types.ObjectId,
+        ref: 'Vehicule'
     },
     alcool: {
         type: Boolean,

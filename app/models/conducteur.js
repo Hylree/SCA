@@ -4,18 +4,6 @@ const Schema = mongoose.Schema;
 
 /**On construit les schémas */
 const conducteurSchema = new Schema({
-    nom:{
-        type: String,
-        required: [true, 'Vous devez renseigné le nom.']
-    },
-    prenom:{
-        type: String,
-        required: [true, 'Vous devez renseigné le prénom.']
-    },
-    date_naissance:{
-        type: Date,
-        default: Date.now
-    },
     permis:{
         type: Schema.Types.ObjectId,
         ref: 'Permis',
@@ -28,14 +16,6 @@ const conducteurSchema = new Schema({
     antecedant_assurance_id:{
         type: Schema.Types.ObjectId,
         ref: 'AntecedantAssurance'
-    },
-    sinistre_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'RelationSinistreConducteur'
-    },
-    infractions:{
-        types: Schema.Types.ObjectId,
-        ref: 'relationInfractionConducteurVehicule'
     }
 });
 

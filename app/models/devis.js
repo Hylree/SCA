@@ -3,12 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /** On déclare les schémas */
-const demandeDevisSchema = new Schema({
-    devis_id : {
-        type: Schema.Type,ObjectId,
-        ref :'Devis',
-        required: [true, 'Une type de devis est requis.']
-    },
+const devisSchema = new Schema({
     demandeur: {
         type: Schema.Type.ObjectId,
         ref: 'User',
@@ -26,12 +21,16 @@ const demandeDevisSchema = new Schema({
         type: String,
         required: [true, 'Un statut est requis.']
     }
+},{ 
+    colletion: 'devis',
+    discriminatorKey : '_type'
 });
 
 
 /** On exporte le modèle */
-var DemandeDevis = mongoose.model('DemandeDevis', demandeDevisSchema);
+var Devis = mongoose.model('Devis', devisSchema);
 
 module.exports = {
-    DemandeDevis: DemandeDevis
+    Devis : Devis,
+    devisSchema : devisSchema
 };

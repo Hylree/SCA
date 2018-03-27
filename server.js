@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const Promise = require('bluebird');
 
 /** On importe fichiers de configuration */
 const databaseConfig = require('./app/config/database');
@@ -102,6 +103,7 @@ app.use('/administration', [authMiddleware, authProfilMiddleware, adminMainRoute
 
 
 /** Connexion à la base MongoDB */
+Promise.promisifyAll(require('mongoose'));
 mongoose.connect(databaseConfig.url, { useMongoClient: true }, (err) => {
     console.log('Connexion établie à la base de données');
 });
