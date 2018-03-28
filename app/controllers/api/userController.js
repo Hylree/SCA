@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 /** On importe les modèles */
 const User = require('../../models/user');
 const Human = require('../../models/human');
+const Client = require('../../models/client');
 
 /** On importe de ficher des fonctions de l'application */
 const FunctionApp = require('../../functions/appFunctions');
@@ -15,9 +16,11 @@ const getAllHumans = (req, res) => {
 
     Human.Human.
     find().
+    populate('client_id').
     populate('user_id').
     exec((err, users) => {
         
+        res.status(200).send({sucess: true, users : users});
     });
 
 };

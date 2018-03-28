@@ -17,7 +17,7 @@ const conducteurSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'AntecedantAssurance'
     }
-});
+},{ colletion : 'conducteur'});
 
 /** On exporte le modèle */
 var Conducteur = mongoose.model('Conducteur', conducteurSchema);
