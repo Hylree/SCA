@@ -103,7 +103,7 @@ app.use('/administration', [authMiddleware, authProfilMiddleware, adminMainRoute
 
 
 /** Connexion à la base MongoDB */
-Promise.promisifyAll(require('mongoose'));
+mongoose.Promise = global.Promise;
 mongoose.connect(databaseConfig.url, { useMongoClient: true }, (err) => {
     console.log('Connexion établie à la base de données');
 });

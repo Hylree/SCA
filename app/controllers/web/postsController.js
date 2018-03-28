@@ -1,6 +1,6 @@
 /** On importe les modèles */
 const Post = require('../../models/post');
-const Image = require('../../models/image');
+const Image = require('../../models/image/post/imagePost');
 
 const postsView = (req, res) => {
 

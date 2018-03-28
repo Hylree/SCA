@@ -3,29 +3,33 @@ const bcrypt = require('bcrypt-nodejs');
 
 /** On importe les modèles */
 const User = require('../../models/user');
+const Human = require('../../models/human');
 
 /** On importe de ficher des fonctions de l'application */
 const FunctionApp = require('../../functions/appFunctions');
 
 /** On déclare les fonctions liées aux animaux */
+  
 
-const getUsers = (req, res) => {
+const getAllHumans = (req, res) => {
 
-    User.find({},null, {sort : {numero_client : 1}}, (err, users) => {
-
-        res.status(200).send({ success: true, users: users });
+    Human.Human.
+    find().
+    populate('user_id').
+    exec((err, users) => {
+        
     });
 
 };
 
 
 const getUsersFilter = (req, res) => {
-
     const nameFilter = req.params.nameFilter;
     const sensFilter = req.params.sensFilter;
     User.find({}, null, {sort: {nameFilter : sensFilter}}, (err, users) => {
         res.status(200).send({sucess: true, users : users});
     });
+
 };
 
 const postUsers = (req, res) => {
@@ -136,7 +140,7 @@ const updateOneUser = (req, res) => {
 
 /** On exporte le controller */
 module.exports = {
-    getUsers: getUsers,
+    getAllHumans: getAllHumans,
     postUsers: postUsers,
     getUniqueUser: getUniqueUser,
     updateOneUser : updateOneUser,

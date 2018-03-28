@@ -27,6 +27,7 @@ const viewRegister = (req, res) => {
 
 const postRegister = (req, res) => {
     const errors = [];
+    const success = [];
     const dateNow = new Date();
     const cp = req.body.code;
     const typeHab = req.body.home_type;
@@ -77,21 +78,24 @@ const postRegister = (req, res) => {
         errors.push("La situation professionnel est invalide. " + req.body.situation_pro);
     }
     
-    Profil.findOne({'id' : 'prospect'}).then((profil) => {
+
+    var profilQuery = Profil.findOne({'id' : 'prospect'}).exec();
+    profilQuery.then((profil) => {
         req.body.profil = profil.id;
         const user = new User(req.body);
-
-        user.save().then((user) => {
-            req.body.user_id = user._id;
-
-            const human = Human.Human(user._id);
-            human.save().then((human) => {
-                console.log('Cest fait')
-            });
-        });
-    
+        return userSave = user.save();
+    }).then((user) => {
+        req.body.user_id = user._id;
+        const human = new Human.Human(req.body);
+        return humanSave = human.save();
+    }).then((human) => {                            
+        success.push("Vous êtes désormais connecté.");
+        req.session.flashSuccess = success;
+        res.redirect("/");
+    }).catch((err) => {
+        res.status(200).render('pages/vue/web/register', { flashErrors : errors});
     });
-
+   
     /*Profil.findOne({'id' : 'prospect'}, (err, profil) => {
         req.body.profil = profil.id;
         const user = new User(req.body);

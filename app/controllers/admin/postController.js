@@ -1,18 +1,12 @@
 
+/**On importe les librairies */
 const formidable = require('formidable');
 /** On importe les modèles */
 const Post = require('../../models/post');
 
-const Image = require('../../models/image');
+const Image = require('../../models/image/post/imagePost');
 
 const postPost = (req, res) =>{
-
-
-    console.log(req.body);
-
-    
-        console.log(req);
-
 
         var form = new formidable.IncomingForm();
 
@@ -37,64 +31,30 @@ const postPost = (req, res) =>{
                 }
 
 
-                console.log("pour files: ");
-                
-                console.log(fields);
-                
-                console.log("pour qsdfqsdf: ");
-                console.log(arrayOfFiles);
-
-
-/*
-                Post.find({}, async (err, posts) => {
-                    const numberPosts = posts.length;
-                    let arrayPosts = [];
-            
-                    
-                    for (post of posts) {
-                        let relationsImagesTab = await Image.RelationImage.find({id_post : post._id}).exec();
-                        let object = { post: post, images: [] };
-            
-                        for (relation of relationsImagesTab) {
-            
-                            object.images.push(await Image.Image.findOne({ _id: relation.id_image }).exec());
-            
-                        };
-            
-                        arrayPosts.push(object);
-                    };
-            
-*/
-
                 if(arrayOfFiles.length > 0){
                     var fileNames = [];
 
                     Post.create({message: fields.message}, async (err, post) => {
 
-                        //arrayOfFiles.forEach((eachFile) => {
-                        
+                        for (eachFile of arrayOfFiles){
                             console.log("eachFile");
-                            console.log(arrayOfFiles);
+                            console.log(eachFile);
+                            Image.Image.create(eachFile.files, async (err, images) => {
+                                
 
-                            for (eachFile of arrayOfFiles){
-                                console.log("eachFile");
-                                console.log(eachFile);
-                                Image.Image.create(eachFile.files, async (err, images) => {
-                                    
-
-                                    for(image of images){
-                                        console.log("image");
-                                        console.log(image);
-                                        Image.RelationImage.create({id_image: image._id, id_post: post._id}, async (err, relationimagePost) => {
-                                            console.log("relationimage");
-                                            console.log(relationimagePost);
-                                        });
-                                    }
-                                    
-                                });
+                                for(image of images){
+                                    console.log("image");
+                                    console.log(image);
+                                    Image.RelationImage.create({id_image: image._id, id_post: post._id}, async (err, relationimagePost) => {
+                                        console.log("relationimage");
+                                        console.log(relationimagePost);
+                                    });
+                                }
+                                
+                            });
 
 
-                            }
+                        }
                         
                         res.status(201).redirect('/administration/post');
                     });
