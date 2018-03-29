@@ -27,9 +27,8 @@ let filter = () => {
 
 $('#filter_alphabet_name').click(() => {
     if( $('#filter_alphabet_name').is(':checked') ) {
-        console.log('name');
         $("#filter_nclient").prop('checked', false);   //forcé la checkbox a false
-        getUsers("last_name", -1);
+        getUsers("last_name");
         chargeModal();
 
     }else{
@@ -39,7 +38,7 @@ $('#filter_alphabet_name').click(() => {
     
 $('#filter_nclient').click(() => {
     if($('#filter_nclient').is(':checked')){
-        console.log('num');
+
         $('#filter_alphabet_name').prop('checked', false);   //forcé la checkbox a false
 
         getUsers();
@@ -53,33 +52,51 @@ $('#filter_nclient').click(() => {
  * Afficher tous les utilisateurs
  * Par défault getUsers retourne les utilisateurs trié par numéro client
  */
-function getUsers(nameFilter, sensFilter){
+function getUsers(nameFilter){
 
     $('#table_users').empty();
     /**On vide le tableau avent l'operation */
-    if(nameFilter && sensFilter){        
-        let urlAllUsers = "http://localhost:3000/api/users/getUserFilter/" + nameFilter + "/" + sensFilter;
+    if(nameFilter){        
+        let urlAllUsers = "http://localhost:3000/api/users/getUserFilter/" + nameFilter;
+
+
+
         //récuperation des données utilisateurs
         $.getJSON(urlAllUsers,{
             format: "json"
         })
         .done((data) => {
             $.each(data.users, (i, item) => {
-                
-                    $('<tr>').attr("id", item._id).attr("href", "#modal1").attr("class", "modal-trigger").appendTo("#table_users");
+            
+                /** On verifie si l'humain est un client */
+            if(typeof item.client_id === 'undefined'){
+                item.client_id = {
+                    numero_client : ""
+                };
+            }
 
-                    $('#table_users tr:last')
-                        .append(
-                            '<td>'+ item.numero_client +'</td>' +
-                            '<td>'+ item.civilite +'</td>' +
-                            '<td>'+ item.last_name +'</td>' +
-                            '<td>'+ item.first_name +'</td>' +
-                            '<td>'+ item.username +'</td>' +
-                            '<td>'+ item.tel +'</td>' +
-                            '<td>'+ item.code +'</td>' +
-                            '<td>'+ item.city +'</td>'+
-                            '<td>'+ item.profil +'</td>'
-                        );
+            /** On verifie si l'humain est un utilisateur */
+            if(typeof item.user_id === 'undefined'){
+                item.user_id = {
+                    username : "",
+                    profil : ""
+                };
+            }
+
+            $('<tr>').attr("id", item._id).attr("href", "#modal1").attr("class", "modal-trigger").appendTo("#table_users");
+
+            $('#table_users tr:last')
+                .append(
+                   '<td>'+ item.client_id.numero_client +'</td>' +
+                    '<td>'+ item.civilite +'</td>' +
+                    '<td>'+ item.last_name +'</td>' +
+                    '<td>'+ item.first_name +'</td>' +
+                    '<td>'+ item.user_id.username +'</td>' +
+                    '<td>'+ item.tel +'</td>' +
+                    '<td>'+ item.code +'</td>' +
+                    '<td>'+ item.city +'</td>'+
+                    '<td>'+ item.user_id.profil +'</td>'
+                );
             });
             initialFunction();
         });
@@ -92,21 +109,36 @@ function getUsers(nameFilter, sensFilter){
         })
         .done((data) => {
             $.each(data.users, (i, item) => {
-                
-                    $('<tr>').attr("id", item._id).attr("href", "#modal1").attr("class", "modal-trigger").appendTo("#table_users");
-        
-                    $('#table_users tr:last')
-                        .append(
-                            '<td>'+ item.numero_client +'</td>' +
-                            '<td>'+ item.civilite +'</td>' +
-                            '<td>'+ item.last_name +'</td>' +
-                            '<td>'+ item.first_name +'</td>' +
-                            '<td>'+ item.username +'</td>' +
-                            '<td>'+ item.tel +'</td>' +
-                            '<td>'+ item.code +'</td>' +
-                            '<td>'+ item.city +'</td>'+
-                            '<td>'+ item.profil +'</td>'
-                        );
+
+            /** On verifie si l'humain est un client */
+            if(typeof item.client_id === 'undefined'){
+                item.client_id = {
+                    numero_client : ""
+                };
+            }
+
+            /** On verifie si l'humain est un utilisateur */
+            if(typeof item.user_id === 'undefined'){
+                item.user_id = {
+                    username : "",
+                    profil : ""
+                };
+            }
+
+            $('<tr>').attr("id", item._id).attr("href", "#modal1").attr("class", "modal-trigger").appendTo("#table_users");
+
+            $('#table_users tr:last')
+                .append(
+                    '<td>'+ item.client_id.numero_client +'</td>' +
+                    '<td>'+ item.civilite +'</td>' +
+                    '<td>'+ item.last_name +'</td>' +
+                    '<td>'+ item.first_name +'</td>' +
+                    '<td>'+ item.user_id.username +'</td>' +
+                    '<td>'+ item.tel +'</td>' +
+                    '<td>'+ item.code +'</td>' +
+                    '<td>'+ item.city +'</td>'+
+                    '<td>'+ item.user_id.profil +'</td>'
+                );
             });
             initialFunction();
         });
@@ -128,6 +160,21 @@ let chargeModal = () => {
             format: "json"
         })
         .done((data) => {
+            
+            /** On verifie si l'humain est un client */
+            if(typeof data.client_id === 'undefined'){
+                data.client_id = {
+                    numero_client : ""
+                };
+            }
+
+            /** On verifie si l'humain est un utilisateur */
+            if(typeof data.user_id === 'undefined'){
+                data.user_id = {
+                    username : "",
+                    profil : ""
+                };
+            }
             //forcé la checkbox a false
             $('#edition_mode_value').prop('checked', false);
     
@@ -277,81 +324,102 @@ let chargeModal = () => {
                     $.getJSON(urlUser,{
                         format: "json"
                     }) .done((data) => {
-                        $('#user-swipe-infos')
-                            .html(  "<div class='row'>" +
-                                    "<table class='bordered'>" +
-                                        "<tbody>" +
-                                            "<tr>" +
-                                                "<td>Civilité:</td>" +
-                                                "<td>" + data.user.civilite + "</td>" +
-                                            "</tr>" +
-                                            "<tr>" +
-                                                "<td>Nom de famille:</td>" +
-                                                "<td>" + data.user.last_name + "</td>" +
-                                            "</tr>" +
-                                            "<tr>" +
-                                                "<td>Prénom:</td>" +
-                                                "<td>" + data.user.first_name + "</td>" +
-                                            "</tr>" +
+                        $.each(data.user, (i, item) => {
+                    console.log(item);
+                                     
+                    /** On verifie si l'humain est un client */
+                    if(typeof data.client_id === 'undefined'){
+                        data.client_id = {
+                            numero_client : ""
+                        };
+                    }
+
+                    /** On verifie si l'humain est un utilisateur */
+                    if(typeof data.user_id === 'undefined'){
+                        data.user_id = {
+                            username : "",
+                            profil : ""
+                        };
+                    }
+
+                    $('#user-swipe-infos')
+                    .html(  "<div class='row'>" +
+                            "<table class='bordered'>" +
+                                "<tbody>" +
+                                    "<tr>" +
+                                        "<td>Civilité:</td>" +
+                                        "<td>" + item.civilite + "</td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td>Nom de famille:</td>" +
+                                        "<td>" + item.last_name + "</td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td>Prénom:</td>" +
+                                        "<td>" + item.first_name + "</td>" +
+                                    "</tr>" +
+
+                                    "<tr>" +
+                                        "<td>Date de naissance:</td>" +
+                                        "<td>" +  dateNaissance + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Email:</td>" +
+                                        "<td>" + item.username + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Téléphone:</td>" +
+                                        "<td>" + item.tel + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Profil:</td>" +
+                                        "<td>" + item.profil + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Adresse:</td>" +
+                                        "<td>" + item.num_street + " " + item.name_street + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Complément d'adresse:</td>" +
+                                        "<td>" + item.more_street + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Ville:</td>" +
+                                        "<td>" + item.code + " - " + item.city +"</td>" +
+                                    "</tr>" +
+
+                                    "<tr>" +
+                                        "<td>Type de logement:</td>" +
+                                        "<td>" + item.home_type + "</td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td>Qualité de l'occupant:</td>" +
+                                        "<td>" + item.tenant_type + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Situation Familiale:</td>" +
+                                        "<td>" + item.situation_fam + "</td>" +
+                                    "</tr>" +
+                                    
+                                    "<tr>" +
+                                        "<td>Situation Professionnel:</td>" +
+                                        "<td>" + item.situation_pro + "</td>" +
+                                    "</tr>" +
+
+                                "</tbody>" +
+                            "</table>"+
+                        "</div>");
     
-                                            "<tr>" +
-                                                "<td>Date de naissance:</td>" +
-                                                "<td>" +  dateNaissance + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Email:</td>" +
-                                                "<td>" + data.user.username + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Téléphone:</td>" +
-                                                "<td>" + data.user.tel + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Profil:</td>" +
-                                                "<td>" + data.user.profil + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Adresse:</td>" +
-                                                "<td>" + data.user.num_street + " " + data.user.name_street + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Complément d'adresse:</td>" +
-                                                "<td>" + data.user.more_street + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Ville:</td>" +
-                                                "<td>" + data.user.code + " - " + data.user.city +"</td>" +
-                                            "</tr>" +
-    
-                                            "<tr>" +
-                                                "<td>Type de logement:</td>" +
-                                                "<td>" + data.user.home_type + "</td>" +
-                                            "</tr>" +
-                                            "<tr>" +
-                                                "<td>Qualité de l'occupant:</td>" +
-                                                "<td>" + data.user.tenant_type + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Situation Familiale:</td>" +
-                                                "<td>" + data.user.situation_fam + "</td>" +
-                                            "</tr>" +
-                                            
-                                            "<tr>" +
-                                                "<td>Situation Professionnel:</td>" +
-                                                "<td>" + data.user.situation_pro + "</td>" +
-                                            "</tr>" +
-    
-                                        "</tbody>" +
-                                    "</table>"+
-                                "</div>");
-    
+                    });
+               
+                   
                     });
                 }
             });

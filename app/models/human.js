@@ -45,6 +45,10 @@ const humanSchema = new Schema({
         type: String,
         required : [true, "Le type de logement principal doit être renseigné"]
     },
+    tenant_type: {
+        type: String,
+        required: [true, "La qualité doit être renseigné."]
+    },
     situation_fam: {
         type: String,
         required : [true, "La situation familliale doit être renseigné"]

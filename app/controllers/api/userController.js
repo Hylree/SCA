@@ -1,10 +1,14 @@
 /** On importe les librairies */
 const bcrypt = require('bcrypt-nodejs');
 
-/** On importe les modèles */
+/** 
+ * On importe les modèles
+ * !!! Il faut importer les modules pour les populates !!!
+ *  */
 const User = require('../../models/user');
 const Human = require('../../models/human');
 const Client = require('../../models/client');
+const Conducteur = require('../../models/conducteur');
 
 /** On importe de ficher des fonctions de l'application */
 const FunctionApp = require('../../functions/appFunctions');
@@ -12,25 +16,30 @@ const FunctionApp = require('../../functions/appFunctions');
 /** On déclare les fonctions liées aux animaux */
   
 
+/**
+ * Récupere tout les humains avec les références
+ */
 const getAllHumans = (req, res) => {
-
     Human.Human.
     find().
-    populate('client_id').
-    populate('user_id').
-    exec((err, users) => {
-        
-        res.status(200).send({sucess: true, users : users});
+    populate('user_id client_id conducteur_id').
+    exec((err, humans) => {
+        res.status(200).send({sucess: true, users : humans});
     });
 
 };
 
 
 const getUsersFilter = (req, res) => {
+
     const nameFilter = req.params.nameFilter;
-    const sensFilter = req.params.sensFilter;
-    User.find({}, null, {sort: {nameFilter : sensFilter}}, (err, users) => {
-        res.status(200).send({sucess: true, users : users});
+
+    Human.Human.
+    find({}).
+    sort(nameFilter).
+    populate('user_id client_id conducteur_id').
+    exec((err, humans) => {
+        res.status(200).send({sucess: true, users : humans});
     });
 
 };
@@ -53,8 +62,12 @@ const postUsers = (req, res) => {
 
 const getUniqueUser = (req, res) => {
     let id = req.params.id;
-    User.findOne({ _id : id}, (err, user) => {
-        res.status(200).send({ success: true, user: user});
+
+    Human.Human.
+    find({ _id : id}).
+    populate('user_id client_id conducteur_id').
+    exec((err, human) => {
+        res.status(200).send({sucess: true, user: human});
     });
 };
 
