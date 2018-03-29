@@ -160,21 +160,22 @@ let chargeModal = () => {
             format: "json"
         })
         .done((data) => {
-            
-            /** On verifie si l'humain est un client */
-            if(typeof data.client_id === 'undefined'){
-                data.client_id = {
-                    numero_client : ""
-                };
-            }
+            $.each(data.user, (i, item) => {
+                                     
+                /** On verifie si l'humain est un client */
+                if(typeof item.client_id === 'undefined'){
+                    item.client_id = {
+                        numero_client : ""
+                    };
+                }
 
-            /** On verifie si l'humain est un utilisateur */
-            if(typeof data.user_id === 'undefined'){
-                data.user_id = {
-                    username : "",
-                    profil : ""
-                };
-            }
+                /** On verifie si l'humain est un utilisateur */
+                if(typeof item.user_id === 'undefined'){
+                    item.user_id = {
+                        username : "",
+                        profil : ""
+                    };
+                }
             //forcé la checkbox a false
             $('#edition_mode_value').prop('checked', false);
     
@@ -187,6 +188,22 @@ let chargeModal = () => {
                     $(this).ready(function() {
                         $('select').material_select();
                     });
+                        $.each(data.user, (i, item) => {
+                                        
+                            /** On verifie si l'humain est un client */
+                            if(typeof item.client_id === 'undefined'){
+                                item.client_id = {
+                                    numero_client : ""
+                                };
+                            }
+
+                            /** On verifie si l'humain est un utilisateur */
+                            if(typeof item.user_id === 'undefined'){
+                                item.user_id = {
+                                    username : "",
+                                    profil : ""
+                                };
+                            }
     
                     //Mode édition activé
                     $('#user-swipe-infos')
@@ -195,22 +212,22 @@ let chargeModal = () => {
                                 "<div class='row'>" +
                                 
                                     "<div class='input-field col m2 s12'>" +
-                                        "<input value='"+ data.user.numero_client +"' id='numero_client' name='numero_client' type='text' class='validate'>" +
+                                        "<input value='"+ item.user_id.numero_client +"' id='numero_client' name='numero_client' type='text' class='validate'>" +
                                         "<label class='active' for'numero_client'>N° client:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m2 s12'>" +
-                                        "<input value='"+ data.user.civilite +"' id='civilite' name='civilite' type='text' class='validate'>" +
+                                        "<input value='"+ item.civilite +"' id='civilite' name='civilite' type='text' class='validate'>" +
                                         "<label class='active' for'civilite'>Civilité:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m4 s12'>" +
-                                        "<input value='"+ data.user.last_name +"' id='last_name' name='last_name' type='text' class='validate'>" +
+                                        "<input value='"+ item.last_name +"' id='last_name' name='last_name' type='text' class='validate'>" +
                                         "<label class='active' for'last_name'>Nom de famille:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m4 s12'>" +
-                                        "<input value='"+ data.user.first_name +"' id='first_name'  name='first_name' type='text' class='validate'>" +
+                                        "<input value='"+ item.first_name +"' id='first_name'  name='first_name' type='text' class='validate'>" +
                                         "<label class='active' for'first_name'>Prénom:</label>" +
                                     "</div>" +
     
@@ -220,48 +237,48 @@ let chargeModal = () => {
                                     "</div>" +
                                     
                                     "<div class='input-field col m6 s12'>" +
-                                        "<input value='"+ data.user.tel +"' id='tel' name='tel' type='text' class='validate'>" +
+                                        "<input value='"+ item.tel +"' id='tel' name='tel' type='text' class='validate'>" +
                                         "<label class='active' for'tel'>Téléphone:</label>" +
                                     "</div>" +
                                     
                                     "<div class='input-field col m6 s12'>" +
-                                        "<input value='"+ data.user.username +"' id='username' name='username' type='text' class='validate'>" +
+                                        "<input value='"+ item.username +"' id='username' name='username' type='text' class='validate'>" +
                                         "<label class='active' for'username'>Email:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m6 s12'>" +
-                                        "<input value='"+ data.user.profil +"' id='profil' name='profil' type='text' class='validate'>" +
+                                        "<input value='"+ item.profil +"' id='profil' name='profil' type='text' class='validate'>" +
                                         "<label class='active' for'profil'>Profil:</label>" +
                                     "</div>" +    
     
                                     "<div class='input-field col m3 s12'>" +
-                                        "<input value='"+ data.user.num_street +"' id='num_street' name='num_street' type='text' class='validate'>" +
+                                        "<input value='"+ item.num_street +"' id='num_street' name='num_street' type='text' class='validate'>" +
                                         "<label class='active' for'num_street'>N° Rue:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m9 s12'>" +
-                                        "<input value='"+ data.user.name_street +"' id='name_street' name='name_street' type='text' class='validate'>" +
+                                        "<input value='"+ item.name_street +"' id='name_street' name='name_street' type='text' class='validate'>" +
                                         "<label class='active' for'name_street'>Nom de rue:</label>" +
                                     "</div>" +
                                     
                                     "<div class='input-field col m12 s12'>" +
-                                        "<input value='"+ data.user.more_street +"' id='more_street' name='more_street' type='text' class='validate'>" +
+                                        "<input value='"+ item.more_street +"' id='more_street' name='more_street' type='text' class='validate'>" +
                                         "<label class='active' for'more_street'>Nom de rue:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m6 s12'>" +
-                                        "<input value='"+ data.user.code +"' id='code' name='code' type='text' class='validate'>" +
+                                        "<input value='"+ item.code +"' id='code' name='code' type='text' class='validate'>" +
                                         "<label class='active' for'code'>CP:</label>" +
                                     "</div>" +
                                     
                                     "<div class='input-field col m6 s12'>" +
-                                        "<input value='"+ data.user.city +"' id='city' name='city' type='text' class='validate'>" +
+                                        "<input value='"+ item.city +"' id='city' name='city' type='text' class='validate'>" +
                                         "<label class='active' for'city'>Ville:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m6 s12'>" +
                                         "<select name='tenant_type' id='tenant_type'>" +
-                                            "<option value='" + data.user.tenant_type + "' selected>" + data.user.tenant_type + "</option>" +
+                                            "<option value='" + item.tenant_type + "' selected>" + item.tenant_type + "</option>" +
                                             "<option value='Location'>Location</option>" +
                                             "<option value='Propriétaire'>Propriétaire</option>" +
                                             "<option value='Autres'>Autres</option>" +
@@ -272,7 +289,7 @@ let chargeModal = () => {
     
                                     "<div class='input-field col s12 m6 l6'>" +
                                         "<select name='home_type' id='home_type'>" +
-                                            "<option value='" + data.user.home_type + "'  selected>" + data.user.home_type + "</option>" +
+                                            "<option value='" + item.home_type + "'  selected>" + data.user.home_type + "</option>" +
                                             "<option value='Appartement'>Appartement</option>" +
                                             "<option value='Maison'>Maison</option>" +
                                             "<option value='Autres'>Autres</option>" +
@@ -282,7 +299,7 @@ let chargeModal = () => {
     
                                     "<div class='input-field col s12 m6 l6'>" +
                                         "<select name='situation_fam' id='situation_fam'>" +
-                                            "<option value='" + data.user.situation_fam +"'  selected>" + data.user.situation_fam +"</option>" +
+                                            "<option value='" + item.situation_fam +"'  selected>" + item.situation_fam +"</option>" +
                                             "<option value='Célibataire'>Célibataire</option>" +
                                             "<option value='Concubinage'>Concubinage</option>" +
                                             "<option value='Marié'>Marié</option>" +
@@ -296,7 +313,7 @@ let chargeModal = () => {
     
                                     "<div class='input-field col s12 m6 l6'>" +
                                         "<select name='situation_pro' id='situation_pro'>" +
-                                            '<option value="' + data.user.situation_pro + '" selected>' + data.user.situation_pro + '</option>' +
+                                            '<option value="' + item.situation_pro + '" selected>' + item.situation_pro + '</option>' +
                                             "<option value='Artisan'>Artisan</option>" +
                                             "<option value='Exploitant agricole'>Exploitant agricole</option>" +
                                             "<option value='Profession libérale'>Profession libérale</option>" +
@@ -319,128 +336,130 @@ let chargeModal = () => {
     
                             "</form>"
                         );
+                    });
                 }else{
                     //Mode édition désactivé
                     $.getJSON(urlUser,{
                         format: "json"
                     }) .done((data) => {
                         $.each(data.user, (i, item) => {
-                    console.log(item);
                                      
-                    /** On verifie si l'humain est un client */
-                    if(typeof data.client_id === 'undefined'){
-                        data.client_id = {
-                            numero_client : ""
-                        };
-                    }
+                        /** On verifie si l'humain est un client */
+                        if(typeof item.client_id === 'undefined'){
+                            item.client_id = {
+                                numero_client : ""
+                            };
+                        }
 
-                    /** On verifie si l'humain est un utilisateur */
-                    if(typeof data.user_id === 'undefined'){
-                        data.user_id = {
-                            username : "",
-                            profil : ""
-                        };
-                    }
+                        /** On verifie si l'humain est un utilisateur */
+                        if(typeof item.user_id === 'undefined'){
+                            item.user_id = {
+                                username : "",
+                                profil : ""
+                            };
+                        }
 
-                    $('#user-swipe-infos')
-                    .html(  "<div class='row'>" +
-                            "<table class='bordered'>" +
-                                "<tbody>" +
-                                    "<tr>" +
-                                        "<td>Civilité:</td>" +
-                                        "<td>" + item.civilite + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>Nom de famille:</td>" +
-                                        "<td>" + item.last_name + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>Prénom:</td>" +
-                                        "<td>" + item.first_name + "</td>" +
-                                    "</tr>" +
+                        $('#user-swipe-infos')
+                        .html(  "<div class='row'>" +
+                                "<table class='bordered'>" +
+                                    "<tbody>" +
+                                        "<tr>" +
+                                            "<td>Civilité:</td>" +
+                                            "<td>" + item.civilite + "</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td>Nom de famille:</td>" +
+                                            "<td>" + item.last_name + "</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td>Prénom:</td>" +
+                                            "<td>" + item.first_name + "</td>" +
+                                        "</tr>" +
 
-                                    "<tr>" +
-                                        "<td>Date de naissance:</td>" +
-                                        "<td>" +  dateNaissance + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Email:</td>" +
-                                        "<td>" + item.username + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Téléphone:</td>" +
-                                        "<td>" + item.tel + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Profil:</td>" +
-                                        "<td>" + item.profil + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Adresse:</td>" +
-                                        "<td>" + item.num_street + " " + item.name_street + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Complément d'adresse:</td>" +
-                                        "<td>" + item.more_street + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Ville:</td>" +
-                                        "<td>" + item.code + " - " + item.city +"</td>" +
-                                    "</tr>" +
+                                        "<tr>" +
+                                            "<td>Date de naissance:</td>" +
+                                            "<td>" +  dateNaissance + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Email:</td>" +
+                                            "<td>" + item.username + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Téléphone:</td>" +
+                                            "<td>" + item.tel + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Profil:</td>" +
+                                            "<td>" + item.profil + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Adresse:</td>" +
+                                            "<td>" + item.num_street + " " + item.name_street + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Complément d'adresse:</td>" +
+                                            "<td>" + item.more_street + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Ville:</td>" +
+                                            "<td>" + item.code + " - " + item.city +"</td>" +
+                                        "</tr>" +
 
-                                    "<tr>" +
-                                        "<td>Type de logement:</td>" +
-                                        "<td>" + item.home_type + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>Qualité de l'occupant:</td>" +
-                                        "<td>" + item.tenant_type + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Situation Familiale:</td>" +
-                                        "<td>" + item.situation_fam + "</td>" +
-                                    "</tr>" +
-                                    
-                                    "<tr>" +
-                                        "<td>Situation Professionnel:</td>" +
-                                        "<td>" + item.situation_pro + "</td>" +
-                                    "</tr>" +
+                                        "<tr>" +
+                                            "<td>Type de logement:</td>" +
+                                            "<td>" + item.home_type + "</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td>Qualité de l'occupant:</td>" +
+                                            "<td>" + item.tenant_type + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Situation Familiale:</td>" +
+                                            "<td>" + item.situation_fam + "</td>" +
+                                        "</tr>" +
+                                        
+                                        "<tr>" +
+                                            "<td>Situation Professionnel:</td>" +
+                                            "<td>" + item.situation_pro + "</td>" +
+                                        "</tr>" +
 
-                                "</tbody>" +
-                            "</table>"+
-                        "</div>");
-    
-                    });
-               
-                   
+                                    "</tbody>" +
+                                "</table>"+
+                            "</div>");
+                        });
                     });
                 }
             });
     
             let dateNaissance = new Date(data.user.date_naissance).toLocaleDateString();
+            
             /** Contruction du modal de l'user */
                 $('#user-swipe-infos')
                 .html(  "<div class='row'>" +
                         "<table class='bordered'>" +
                             "<tbody>" +
                                 "<tr>" +
+                                    "<td>Numéro client:</td>" +
+                                    "<td>" + item.client_id  + "</td>" +
+                                "</tr>" +
+                                "<tr>" +
                                     "<td>Civilité:</td>" +
-                                    "<td>" + data.user.civilite + "</td>" +
+                                    "<td>" + item.civilite + "</td>" +
                                 "</tr>" +
                                 "<tr>" +
                                     "<td>Nom de famille:</td>" +
-                                    "<td>" + data.user.last_name + "</td>" +
+                                    "<td>" + item.last_name + "</td>" +
                                 "</tr>" +
                                 "<tr>" +
                                     "<td>Prénom:</td>" +
-                                    "<td>" + data.user.first_name + "</td>" +
+                                    "<td>" + item.first_name + "</td>" +
                                 "</tr>" +
     
                                 "<tr>" +
@@ -450,56 +469,55 @@ let chargeModal = () => {
                                 
                                 "<tr>" +
                                     "<td>Email:</td>" +
-                                    "<td>" + data.user.username + "</td>" +
+                                    "<td>" + item.user_id.username + "</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
                                     "<td>Téléphone:</td>" +
-                                    "<td>" + data.user.tel + "</td>" +
+                                    "<td>" + item.tel + "</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
                                     "<td>Profil:</td>" +
-                                    "<td>" + data.user.profil + "</td>" +
+                                    "<td>" + item.profil + "</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
                                     "<td>Adresse:</td>" +
-                                    "<td>" + data.user.num_street + " " + data.user.name_street + "</td>" +
+                                    "<td>" + item.num_street + " " + item.name_street + "</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
                                     "<td>Complément d'adresse:</td>" +
-                                    "<td>" + data.user.more_street + "</td>" +
+                                    "<td>" + item.more_street + "</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
                                     "<td>Ville:</td>" +
-                                    "<td>" + data.user.code + " - " + data.user.city +"</td>" +
+                                    "<td>" + item.code + " - " + item.city +"</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
                                     "<td>Type de logement:</td>" +
-                                    "<td>" + data.user.home_type + "</td>" +
+                                    "<td>" + item.home_type + "</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
                                     "<td>Situation Familiale:</td>" +
-                                    "<td>" + data.user.situation_fam + "</td>" +
+                                    "<td>" + item.situation_fam + "</td>" +
                                 "</tr>" +
     
                                 "<tr>" +
                                     "<td>Situation Professionnel:</td>" +
-                                    "<td>" + data.user.situation_pro + "</td>" +
+                                    "<td>" + item.situation_pro + "</td>" +
                                 "</tr>" +
     
                             "</tbody>" +
                         "</table>"+
                     "</div>");
     
-            
-                    console.log(data.user._id);
     
                 });
+            });
         });
     };
