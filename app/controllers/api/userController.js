@@ -81,7 +81,7 @@ const updateOneUser = (req, res) => {
     const typeHab = req.body.home_type;
     const regex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/gmi;
 
-    console.log(req.body);
+
         if(req.body.password !== req.body.password_confirm){
             errors.push("Le mot de passe est invalide");
         }else{
@@ -101,11 +101,13 @@ const updateOneUser = (req, res) => {
             errors.push("La date de naissance doit être renseignée: " + req.body.bday);
     
         }else{
+
         let date = req.body.bday;
         var chunks = date.split('/');
         var formattedDate = [chunks[1],chunks[0],chunks[2]].join("/");
         console.log(formattedDate);
         req.body.date_naissance = new Date(formattedDate);
+
         }
                 
         if(req.body.code.length !== 5){
@@ -128,29 +130,18 @@ const updateOneUser = (req, res) => {
             errors.push("La situation professionnel est invalide. " + req.body.situation_pro);
         }
 
-            User.findByIdAndUpdate(id, {$set :req.body}, (err, resultat) => {
-                if (err || errors.length > 0) {
-                    console.log(err);
-                    if(err){
-                        if(err.code === 11000){
-                            errors.push("L'utilisateur existe déjà.");
-                        }
-                        for(const error in err.errors){
-                            if (err.errors[error].name === 'ValidatorError') {
-                                errors.push(err.errors[error].properties.message);
-                            }
-                        } 
-                    }
-                    
-                    res.status(200).render('pages/vue/admin/users', { flashErrors : errors } );
-                      
-                }
-                else {
-                    success.push("Compte enregistré.");
-                    res.status(200).render('pages/vue/admin/users', { flashSuccess : success } );
-                }
+            
+            var humanFindById = Human.Human.findByIdAndUpdate(id, {$set :req.body}).exec();
+            humanFindById.then((human) => {
+                return User.findByIdAndUpdate(human.user_id, {$set :req.body});
+            }).then((user) => {
+                return Client.Client.findByIdAndUpdate(human.client_id, {$set :req.body});
+            }).then((client) => {
+                success.push("L'humain est modifié.");
+                res.status(200).render('pages/vue/admin/users', { flashSuccess : success});
+            }).catch((err) => {
+                res.status(200).render('pages/vue/admin/users', { flashErrors : errors});
             });
-
     
 };
 

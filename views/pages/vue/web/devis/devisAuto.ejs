@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/res/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/devis-auto.css">
+    <link rel="stylesheet" href="/assets/css/style_navbar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+    <title>SCA assurances</title>
+</head>
+<body>
+    
+        <% include ../../../../partials/menus/_menu %>
+        <% include ../../../../partials/messages/_flash_message %>
+
+        <div class="main-container">
+            <div class="valign-wrapper row login-box">
+                <div class="col card hoverable s10 pull-s1 m10 pull-m1 l8 pull-l2">
+                
+                    <form action="/register" method="post" class="col s12">
+                        <ul class="collapsible popout" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">person</i>Le Souscripteur</div>
+                                <div class="collapsible-body">
+                                        <div class="row">
+                                            <div class="col m4">Nom : <span> coucou</span></div>
+                                            <div class="col m4">Prénom : <span> coucou</span></div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col m7">
+
+                                                <div class="col m12">Adresse : <span>coucou</span></div>
+                                                <div class="col m12">Complément d'adresse : <span> coucou</span></div>
+                                                <div class="row">
+                                                    <div class="col 4">Code postal : <span> coucou</span></div>
+                                                    <div class="col 6">Ville : <span> coucou</span></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col m5">
+
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                            </li>
+                        </ul>
+        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <% include ../../../../partials/footers/_footer %>
+
+    <!-- Scripts -->
+        <script type="text/javascript" src="/res/materialize-css/dist/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/assets/js/devis/devis.auto.script.js"></script>
+    </body>
+
+</html>

@@ -212,7 +212,7 @@ let chargeModal = () => {
                                 "<div class='row'>" +
                                 
                                     "<div class='input-field col m2 s12'>" +
-                                        "<input value='"+ item.user_id.numero_client +"' id='numero_client' name='numero_client' type='text' class='validate'>" +
+                                        "<input value='"+ item.client_id.numero_client +"' id='numero_client' name='numero_client' type='text' class='validate'>" +
                                         "<label class='active' for'numero_client'>N° client:</label>" +
                                     "</div>" +
     
@@ -242,12 +242,12 @@ let chargeModal = () => {
                                     "</div>" +
                                     
                                     "<div class='input-field col m6 s12'>" +
-                                        "<input value='"+ item.username +"' id='username' name='username' type='text' class='validate'>" +
+                                        "<input value='"+ item.user_id.username +"' id='username' name='username' type='text' class='validate'>" +
                                         "<label class='active' for'username'>Email:</label>" +
                                     "</div>" +
     
                                     "<div class='input-field col m6 s12'>" +
-                                        "<input value='"+ item.profil +"' id='profil' name='profil' type='text' class='validate'>" +
+                                        "<input value='"+ item.user_id.profil +"' id='profil' name='profil' type='text' class='validate'>" +
                                         "<label class='active' for'profil'>Profil:</label>" +
                                     "</div>" +    
     
@@ -289,7 +289,7 @@ let chargeModal = () => {
     
                                     "<div class='input-field col s12 m6 l6'>" +
                                         "<select name='home_type' id='home_type'>" +
-                                            "<option value='" + item.home_type + "'  selected>" + data.user.home_type + "</option>" +
+                                            "<option value='" + item.home_type + "'  selected>" + data.home_type + "</option>" +
                                             "<option value='Appartement'>Appartement</option>" +
                                             "<option value='Maison'>Maison</option>" +
                                             "<option value='Autres'>Autres</option>" +
@@ -364,6 +364,10 @@ let chargeModal = () => {
                                 "<table class='bordered'>" +
                                     "<tbody>" +
                                         "<tr>" +
+                                            "<td>Numéro client:</td>" +
+                                            "<td>" + item.client_id.numero_client + "</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
                                             "<td>Civilité:</td>" +
                                             "<td>" + item.civilite + "</td>" +
                                         "</tr>" +
@@ -383,7 +387,7 @@ let chargeModal = () => {
                                         
                                         "<tr>" +
                                             "<td>Email:</td>" +
-                                            "<td>" + item.username + "</td>" +
+                                            "<td>" + item.user_id.username + "</td>" +
                                         "</tr>" +
                                         
                                         "<tr>" +
@@ -393,7 +397,7 @@ let chargeModal = () => {
                                         
                                         "<tr>" +
                                             "<td>Profil:</td>" +
-                                            "<td>" + item.profil + "</td>" +
+                                            "<td>" + item.user_id.profil + "</td>" +
                                         "</tr>" +
                                         
                                         "<tr>" +
@@ -438,7 +442,7 @@ let chargeModal = () => {
                 }
             });
     
-            let dateNaissance = new Date(data.user.date_naissance).toLocaleDateString();
+            let dateNaissance = new Date(item.date_naissance).toLocaleDateString();
             
             /** Contruction du modal de l'user */
                 $('#user-swipe-infos')
@@ -447,7 +451,7 @@ let chargeModal = () => {
                             "<tbody>" +
                                 "<tr>" +
                                     "<td>Numéro client:</td>" +
-                                    "<td>" + item.client_id  + "</td>" +
+                                    "<td>" + item.client_id.numero_client + "</td>" +
                                 "</tr>" +
                                 "<tr>" +
                                     "<td>Civilité:</td>" +
@@ -479,7 +483,7 @@ let chargeModal = () => {
                                 
                                 "<tr>" +
                                     "<td>Profil:</td>" +
-                                    "<td>" + item.profil + "</td>" +
+                                    "<td>" + item.user_id.profil + "</td>" +
                                 "</tr>" +
                                 
                                 "<tr>" +
@@ -501,7 +505,12 @@ let chargeModal = () => {
                                     "<td>Type de logement:</td>" +
                                     "<td>" + item.home_type + "</td>" +
                                 "</tr>" +
-                                
+                                    
+                                "<tr>" +
+                                    "<td>Qualité de l'occupant:</td>" +
+                                    "<td>" + item.tenant_type + "</td>" +
+                                "</tr>" +
+                                    
                                 "<tr>" +
                                     "<td>Situation Familiale:</td>" +
                                     "<td>" + item.situation_fam + "</td>" +

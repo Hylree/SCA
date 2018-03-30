@@ -58,17 +58,20 @@ apiRouter.use('/users', userRouter);
 app.use('/api', apiRouter);
 
 
-/** _____________________________________________________________ */
+/** _____________________________________________________________ 
+ * ROUTER WEB
+*/
 
 const registerRouter = require('./app/routers/web/registerRouter');
 const homeRouter = require('./app/routers/web/homeRouter');
 const loginRouter = require('./app/routers/web/loginRouter');
 const postsRouter = require('./app/routers/web/postsRouter');
 const listDevisRouter = require('./app/routers/web/list-devis');
+const devisRouter = require('./app/routers/web/devisRouter');
 
 /** On créé le router web */
 const webRouter = express.Router();
-
+webRouter.use('/devis', devisRouter);
 webRouter.use('/login', loginRouter);
 webRouter.use('/posts', postsRouter);
 webRouter.use('/register', registerRouter);
