@@ -10,12 +10,12 @@ initialFunction = () => {
 $('.modal').modal(); //On initialise la boite modal
 $('select').material_select(); //On initialise les selects
 
-chargeModal(); //On charge les boite modals
+chargeModal(); //On charge les boites modals
    
 };
 
  
-/**Detecte un changement les filtres pour les utilisateurs */
+/** Detecte un changement les filtres pour les utilisateurs */
 filter();
 
 initialFunction();

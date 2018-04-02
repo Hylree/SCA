@@ -7,6 +7,8 @@ const jwtConfig = require('../../config/jwt');
 
 /** On importe les modèles */
 const User = require('../../models/user');
+const Human = require('../../models/human');
+const Client = require('../../models/client');
 
 const viewLogin = (req, res) => {
     res.render('pages/vue/web/login', req.locals);
@@ -45,20 +47,30 @@ const login = (req, res) => {
                         username: username
                     }, jwtConfig.secret, {}, (err, authToken) => {
 
-                        User.findOneAndUpdate({ _id: user._id }, {
+                    var userUpdate = User.findByIdAndUpdate(user._id, {
                             authToken: authToken,
                             validUntil: new Date((new Date()).setHours((new Date()).getHours() + 1))
-                        }, { new: true }, (err, user) => {
-
-                            req.session.authToken = authToken;
-                            req.session.username = username;
-                            req.session.profil = user.profil;
+                        },{new: true}).exec();
+                    userUpdate.then((user) => {
+                        
+                        Human.Human.find({ user_id: user._id }).
+                        populate('user_id').
+                        then((human) => {
+                            
+                            req.session.authToken = human[0].user_id.authToken;
+                            req.session.username = human[0].user_id.username;
+                            req.session.profil = human[0].user_id.profil;
+                            req.session.human = human[0];
 
                             success.push("Vous êtes désormais connecté.");
                             req.session.flashSuccess = success;
 
-                            res.redirect("/");
-                        })
+                            
+                        res.status(200).redirect( '/' );
+                        });
+                    });
+
+
 
                     });
 

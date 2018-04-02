@@ -7,6 +7,9 @@ const relationConducteurVehiculeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Conducteur'
     },
+    conducteur_principal: {
+        type: Boolean
+    },
     vehicule_id:{
         type: Schema.Types.ObjectId,
         ref:'Vehicule'

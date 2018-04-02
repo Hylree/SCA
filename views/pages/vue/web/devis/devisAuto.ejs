@@ -18,40 +18,104 @@
         <% include ../../../../partials/messages/_flash_message %>
 
         <div class="main-container">
+                <%= human %>
             <div class="valign-wrapper row login-box">
                 <div class="col card hoverable s10 pull-s1 m10 pull-m1 l8 pull-l2">
                 
                     <form action="/register" method="post" class="col s12">
                         <ul class="collapsible popout" data-collapsible="accordion">
                             <li>
-                                <div class="collapsible-header"><i class="material-icons">person</i>Le Souscripteur</div>
+                                <div class="collapsible-header"><i class="material-icons">person</i>Souscripteur</div>
                                 <div class="collapsible-body">
-                                        <div class="row">
-                                            <div class="col m4">Nom : <span> coucou</span></div>
-                                            <div class="col m4">Prénom : <span> coucou</span></div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="col m7">
-
-                                                <div class="col m12">Adresse : <span>coucou</span></div>
-                                                <div class="col m12">Complément d'adresse : <span> coucou</span></div>
-                                                <div class="row">
-                                                    <div class="col 4">Code postal : <span> coucou</span></div>
-                                                    <div class="col 6">Ville : <span> coucou</span></div>
+                                        <% if(locals.human){ %>  
+                                            <div class="row">
+                                                <div class="input-field col m2 s12">
+                                                        <input disabled value="<%= human[0].civilite %>" id="disabled" type="text" class="validate">
+                                                        <label for="disabled">Civilité</label>
                                                 </div>
+                                                <div class="input-field col m5 s12">
+                                                    <input disabled value="<%= human[0].last_name %>" id="disabled" type="text" class="validate">
+                                                    <label for="disabled">Nom</label>
+                                                </div>
+                                                <div class="input-field col m5 s12">
+                                                        <input disabled value="<%= human[0].first_name %>" id="disabled" type="text" class="validate">
+                                                        <label for="disabled">Prénom</label>
+                                                </div>
+                                                
                                             </div>
+                                                <div class="row">
+                                                    
+                                                    <div class="input-field col m8 s12">
+                                                        <input disabled value="<%= human[0].user_id.username %>" id="disabled" type="email" class="validate">
+                                                        <label for="disabled">Email</label>
+                                                    </div>
+                                                    <div class="input-field col m4 s12">
+                                                        <input disabled value="<%= human[0].tel %>" id="disabled" type="tel" class="validate">
+                                                        <label for="disabled">Téléphone</label>
+                                                    </div>
+                                                    <div class="input-field col m4 s12">
+                                                        <input disabled value="<%= human[0].num_street %>" id="disabled" type="text" class="validate">
+                                                        <label for="disabled">N°</label>
+                                                    </div>
+                                                    <div class="input-field col m8 s12">
+                                                        <input disabled value="<%= human[0].name_street %>" id="disabled" type="text" class="validate">
+                                                        <label for="disabled">Adresse</label>
+                                                    </div>
+                                                    <div class="input-field col m12 s12">
+                                                        <input disabled value="<%= human[0].more_street %>" id="disabled" type="text" class="validate">
+                                                        <label for="disabled">Complément d'adresse</label>
+                                                    </div>
+                                                    <div class="row">
+                                                    
+                                                        <div class="input-field col m4 s12">
+                                                            <input disabled value="<%= human[0].code %>" id="disabled" type="text" class="validate">
+                                                            <label for="disabled">Code postal</label>
+                                                        </div>
+                                                        <div class="input-field col m8 s12">
+                                                            <input disabled value="<%= human[0].city %>" id="disabled" type="text" class="validate">
+                                                            <label for="disabled">Ville</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             
-                                            <div class="col m5">
-
-                                            </div>
-                                        </div>
-
+                                        <% } %>
+                                        
                                 </div>
                             </li>
                             <li>
-                                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                <div class="collapsible-header"><i class="material-icons">people</i>Conducteurs</div>
+                                <div class="collapsible-body">
+                                    <div id="conducteur-data">
+                                        <div class="row">
+                                            <div class="switch-zone">
+
+                                                <div class="switch valign-wrapper">
+                                                    <label>
+                                                        Conducteur principal
+                                                        <input id="filter_nclient" type="checkbox">
+                                                        <span class="lever"></span>
+                                                        
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="input-field col m2 s12">
+                                                <input value="<%= human[0].civilite %>"  type="text" class="validate">
+                                                <label for="disabled">Civilité</label>
+                                            </div>
+                                            <div class="input-field col m5 s12">
+                                                <input value="<%= human[0].last_name %>" type="text" class="validate">
+                                                <label for="disabled">Nom</label>
+                                            </div>
+                                            <div class="input-field col m5 s12">
+                                                <input  value="<%= human[0].first_name %>" type="text" class="validate">
+                                                <label for="disabled">Prénom</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a id="trigger-button-conducteur" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                </div>
+                               
                             </li>
                             <li>
                                 <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
