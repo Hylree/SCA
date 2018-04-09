@@ -20,11 +20,20 @@ $(document).ready(() => {
         closeOnSelect: false // Close upon selecting a date,
     });
 
+    $('#conduite_accompagne_principal').click(() => {
+        if($('#conduite_accompagne_principal').is(':checked')){
+            
+            $('#conducteur_0 .permis_item').attr('disabled', '');
+        }else{
+            
+            $('#conducteur_0 .permis_item').removeAttr('disabled');
+        }
+    });
 
     $('.conduite_accompagne').click((event) => {
         var id = event.target.id;
         if($('#conducteur_autre_' + id + ' .conduite_accompagne').is(':checked')){
-            
+        
             console.log('check')
             $('#conducteur_autre_' + id +' .permis_item').attr('disabled', '');
         }else{
@@ -32,6 +41,7 @@ $(document).ready(() => {
             console.log('check not')
             $('#conducteur_autre_' + id +' .permis_item').removeAttr('disabled');
         }
+
     });
 
     $('.close-conducteur-item').click((event) => {
@@ -56,16 +66,20 @@ $(document).ready(() => {
 
     var conducteurs = [];
     var conducteur = {};
+    var countNumberOfItemInput = numberOfItemInput;
     $(".conducteur-item .conducteur-item_input").each((i, item) => {
         var name = $(item).attr('name');
         var value = $(item).val();
+        console.log("number: " + numberOfItemInput);
         
-        console.log(i);
+        console.log("index: " + i);
         conducteur[name] = value;
-        if(i == numberOfItemInput - 1){
-            numberOfItemInput += numberOfItemInput;
+        if(i == countNumberOfItemInput - 1 ){
+            countNumberOfItemInput = countNumberOfItemInput + numberOfItemInput;
             conducteurs.push(conducteur);
             conducteur = {};
+            
+            console.log("conducteurs"+i);
             console.log(conducteurs);
             if(i == numItemsInputsConducteur - 1){
                 $.extend(data.conducteurs, conducteurs);
@@ -106,8 +120,9 @@ $('.conducteur_me').click(() => {
             $.each(data.user, (i, item) => {
 
                 $('.conducteur_for_me').html(
-                    '<div class="conducteur-item">' +
-                    '<div class="switch-zone">' +
+                    
+                    '<div id="conducteur_0" class="conducteur-item">' +
+                        '<div class="switch-zone">' +
                             '<div class="switch valign-wrapper">'+
                                 '<label>' +
                             
@@ -117,87 +132,87 @@ $('.conducteur_me').click(() => {
                                 '</label>' +
                             '</div>' +
                         '</div>' +
-                '<div class="row">' +
+                    '<div class="row">' +
                     
-                    '<div class="input-field col m2 s12">' +
-                        '<input disabled value="' + item.civilite +'" name="civilite_conducteur"  type="text" class="conducteur-item_input">' +
-                        '<label for="disabled">Civilité</label>' +
-                    '</div>' +
-            
-                    '<div class="input-field col m5 s12">' +
-                        '<input disabled value="' + item.last_name +'" name="last_name_conducteur"  type="text" class="conducteur-item_input">' +
-                        '<label for="disabled">Nom</label>' +
-                    '</div>' +
-            
-                    '<div class="input-field col m5 s12">' +
-                        '<input disabled value="' + item.first_name +'" name="first_name_conducteur" type="text" class="conducteur-item_input">' +
-                        '<label for="disabled">Prénom</label>' +
-                    '</div>' +
-            
-                    '<div class="input-field col m12 s12">' +
-                        '<input disabled placeholder="' + item.date_naissance +'" name="bday_conducteur" type="text" class="datepicker conducteur-item_input">' +
-                        '<label for="date_naissance">Date de naissance</label>' +
-                    '</div>' +
-            
-                    '<div class="input-field col s12 m6 l6">' +
-                        '<select disabled name="situation_pro" id="situation_pro" class="conducteur-item_input">' +
-                            '<option value="' + item.situation_pro +'" selected>' + item.situation_pro +'</option>' +
-                            '<option value="Artisan">Artisan</option>' +
-                            '<option value="Exploitant agricole">Exploitant agricole</option>' +
-                            '<option value="Profession libérale">Profession libérale</option>' +
-                            '<option value="Chef d\'entreprise">Chef d\'entreprise</option>' +
-                            '<option value="Salarié">Salarié</option>' +
-                            '<option value="Fonctionnaire">Fonctionnaire</option>' +
-                            '<option value="Sans profession">Sans profession</option>' +
-                            '<option value="Retraité">Retraité</option>' +
-                            '<option value="Recherche d\'emploi">Recherche d\'emploi</option>' +
-                            '<option value="Ecclasiastique">Ecclasiastique</option>' +
-                       '</select>' +
-                            '<label>Situation Profésionnelle</label>' +
-                    '</div>' +
-            
-                    '<div class="input-field col s12 m6 l6">' +
-                        '<select disabled name="situation_fam" id="situation_fam" class="conducteur-item_input">' +
-                            '<option value="' + item.situation_fam +'" selected>' + item.situation_fam +'</option>' +
-                            '<option value="Célibataire">Célibataire</option>' +
-                            '<option value="Concubinage">Concubinage</option>' +
-                            '<option value="Marié">Marié</option>' +
-                            '<option value="Séparer">Séparer</option>' +
-                            '<option value="Divorcé">Divorcé</option>' +
-                            '<option value="Veuf">Veuf</option>' +
-                            '<option value="Pacs">Pacs</option>' +
+                        '<div class="input-field col m2 s12">' +
+                            '<input disabled value="' + item.civilite +'" name="civilite_conducteur"  type="text" class="conducteur-item_input">' +
+                            '<label for="disabled">Civilité</label>' +
+                        '</div>' +
+                
+                        '<div class="input-field col m5 s12">' +
+                            '<input disabled value="' + item.last_name +'" name="last_name_conducteur"  type="text" class="conducteur-item_input">' +
+                            '<label for="disabled">Nom</label>' +
+                        '</div>' +
+                
+                        '<div class="input-field col m5 s12">' +
+                            '<input disabled value="' + item.first_name +'" name="first_name_conducteur" type="text" class="conducteur-item_input">' +
+                            '<label for="disabled">Prénom</label>' +
+                        '</div>' +
+                
+                        '<div class="input-field col m12 s12">' +
+                            '<input disabled placeholder="' + item.date_naissance +'" name="bday_conducteur" type="text" class="datepicker conducteur-item_input">' +
+                            '<label for="date_naissance">Date de naissance</label>' +
+                        '</div>' +
+                
+                        '<div class="input-field col s12 m6 l6">' +
+                            '<select disabled name="situation_pro" id="situation_pro" class="conducteur-item_input">' +
+                                '<option value="' + item.situation_pro +'" selected>' + item.situation_pro +'</option>' +
+                                '<option value="Artisan">Artisan</option>' +
+                                '<option value="Exploitant agricole">Exploitant agricole</option>' +
+                                '<option value="Profession libérale">Profession libérale</option>' +
+                                '<option value="Chef d\'entreprise">Chef d\'entreprise</option>' +
+                                '<option value="Salarié">Salarié</option>' +
+                                '<option value="Fonctionnaire">Fonctionnaire</option>' +
+                                '<option value="Sans profession">Sans profession</option>' +
+                                '<option value="Retraité">Retraité</option>' +
+                                '<option value="Recherche d\'emploi">Recherche d\'emploi</option>' +
+                                '<option value="Ecclasiastique">Ecclasiastique</option>' +
                         '</select>' +
-                            '<label>Situation familiale</label>' +
-                    "</div>" +
-            
+                                '<label>Situation Profésionnelle</label>' +
+                        '</div>' +
+                
+                        '<div class="input-field col s12 m6 l6">' +
+                            '<select disabled name="situation_fam" id="situation_fam" class="conducteur-item_input">' +
+                                '<option value="' + item.situation_fam +'" selected>' + item.situation_fam +'</option>' +
+                                '<option value="Célibataire">Célibataire</option>' +
+                                '<option value="Concubinage">Concubinage</option>' +
+                                '<option value="Marié">Marié</option>' +
+                                '<option value="Séparer">Séparer</option>' +
+                                '<option value="Divorcé">Divorcé</option>' +
+                                '<option value="Veuf">Veuf</option>' +
+                                '<option value="Pacs">Pacs</option>' +
+                            '</select>' +
+                                '<label>Situation familiale</label>' +
+                        "</div>" +
+                
             
                         '<div class="switch valign-wrapper col m12 s12">' +
                             '<label>' +
                         
-                                '<input name="conduite_accompagne" class="conduite_accompagne conducteur-permis-item_input" type="checkbox">' +
+                                '<input name="conduite_accompagne" class="conduite_accompagne conducteur-item_input" type="checkbox">' +
                                 '<span class="lever"></span>' +
                                 'Conduite accompagné' +
                             '</label>' +
                         '</div>' +
                         '<div class="input-field col m12 s12">' +
-                            '<input disabled name="date_obtention" type="text" class="datepicker permis_item conducteur-permis-item_input">' +
+                            '<input disabled name="date_obtention" type="text" class="datepicker permis_item conducteur-item_input">' +
                             '<label for="date_obtention">Date d\'obtention du permis</label>' +
                         '</div>' +
             
                         '<div class="input-field col m12 s12">' +
-                            '<input disabled name="bday_permis" type="text" class="datepicker permis_item conducteur-permis-item_input">' +  
+                            '<input disabled name="bday_permis" type="text" class="datepicker permis_item conducteur-item_input">' +  
                             '<label for="date_permis">Nouvelle de permis si annulation</label>' +
                         '</div>' +
                         '<div class="input-field col s12 m4 l4">' +
-                            '<select disabled name="lieu_obtention" id="lieu_obtention" class="permis_item conducteur-permis-item_input">' +
+                            '<select disabled name="lieu_obtention" id="lieu_obtention" class="permis_item conducteur-item_input">' +
                                 '<option value="France" selected>France</option>' +
                                 '<option value="EEE">EEE</option>' +
                                 '<option value="Hors EEE">Hors EEE</option>' +
                             '</select>' +
                                 '<label>Lieu d\'obtention du permis</label>' +
                         '</div>' +
-                '</div>' +
-            '</div>');
+                    '</div>' +
+                '</div>');
 
             });
             
@@ -301,22 +316,22 @@ let getOtherConducteur = () => {
                     '<div class="switch valign-wrapper col m12 s12">' +
                         '<label>' +
                     
-                            '<input id="'+ nbrConducteur +'" name="conduite_accompagne" class="conduite_accompagne conducteur-permis-item_input" type="checkbox">' +
+                            '<input id="'+ nbrConducteur +'" name="conduite_accompagne" class="conduite_accompagne conducteur-item_input" type="checkbox">' +
                             '<span class="lever"></span>' +
                             'Conduite accompagné' +
                         '</label>' +
                     '</div>' +
                     '<div class="input-field col m12 s12">' +
-                        '<input name="date_obtention" type="text" class="datepicker permis_item conducteur-permis-item_input">' +
+                        '<input name="date_obtention" type="text" class="datepicker permis_item conducteur-item_input">' +
                         '<label for="date_obtention">Date d\'obtention du permis</label>'+
                     '</div>' +
 
                     '<div class="input-field col m12 s12">' +
-                        '<input name="bday_permis" type="text" class="datepicker permis_item conducteur-permis-item_input">'+
+                        '<input name="bday_permis" type="text" class="datepicker permis_item conducteur-item_input">'+
                         '<label for="date_permis">Nouvelle de permis si annulation</label>'+
                     '</div>' +
                     '<div class="input-field col s12 m4 l4">' +
-                        '<select name="lieu_obtention" id="lieu_obtention" class="permis_item conducteur-permis-item_input">' +
+                        '<select name="lieu_obtention" id="lieu_obtention" class="permis_item conducteur-item_input">' +
                             '<option value="France" selected>France</option>' +
                             '<option value="EEE">EEE</option>' +
                             '<option value="Hors EEE">Hors EEE</option>' +
