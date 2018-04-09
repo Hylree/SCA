@@ -9,10 +9,6 @@ const conducteurSchema = new Schema({
         ref: 'Permis',
         required: [true, 'Renseigné le permis de conduire.']
     },
-    situation_familliale:{
-        type: String,
-        required: [true, 'Vous devez renseigné votre situation familliale.']
-    },
     antecedant_assurance_id:{
         type: Schema.Types.ObjectId,
         ref: 'AntecedantAssurance'

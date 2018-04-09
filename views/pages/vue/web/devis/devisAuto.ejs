@@ -11,6 +11,7 @@
     
     <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
     <title>SCA assurances</title>
+
 </head>
 <body>
     
@@ -26,20 +27,22 @@
                         <ul class="collapsible popout" data-collapsible="accordion">
                             <li>
                                 <div class="collapsible-header"><i class="material-icons">person</i>Souscripteur</div>
+                                
                                 <div class="collapsible-body">
+                                    <div id="sousripteur-item">
                                         <% if(locals.human){ %>  
                                             <div class="row">
                                                 <div class="input-field col m2 s12">
-                                                        <input disabled value="<%= human[0].civilite %>" name="civilite_souscripteur" id="disabled" type="text" class="validate">
-                                                        <label for="disabled">Civilité</label>
+                                                    <input disabled value="<%= human[0].civilite %>" name="civilite_souscripteur" id="disabled" type="text" class="validate">
+                                                    <label for="disabled">Civilité</label>
                                                 </div>
                                                 <div class="input-field col m5 s12">
                                                     <input disabled value="<%= human[0].last_name %>" name="last_name_souscripteur" id="disabled" type="text" class="validate">
                                                     <label for="disabled">Nom</label>
                                                 </div>
                                                 <div class="input-field col m5 s12">
-                                                        <input disabled value="<%= human[0].first_name %>" name="first_name_souscripteur" id="disabled" type="text" class="validate">
-                                                        <label for="disabled">Prénom</label>
+                                                    <input disabled value="<%= human[0].first_name %>" name="first_name_souscripteur" id="disabled" type="text" class="validate">
+                                                    <label for="disabled">Prénom</label>
                                                 </div>
                                                 
                                             </div>
@@ -77,43 +80,120 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            
-                                        <% } %>
-                                        
+                                        <% } %>  
+                                    </div>
+      
                                 </div>
                             </li>
                             <li>
                                 <div class="collapsible-header"><i class="material-icons">people</i>Conducteurs</div>
                                 <div class="collapsible-body">
                                     <div id="conducteur-data">
-                                        <div class="conducteur-item">
-                                            <div id="conducteur-item0" class="row">
-                                                <div class="switch-zone">
+                                        <div class="switch valign-wrapper switch-zone">
+                                            <label>
+                                                
+                                                <input class="conducteur_me" type="checkbox">
+                                                <span class="lever"></span>
+                                                Je ne suis pas conducteur
+                                            </label>
+                                        </div>
+                                        <h5>Conducteur principal</h5>
 
-                                                    <div class="switch valign-wrapper">
-                                                        <label>
-                                                            Conducteur principal
-                                                            <input id="filter_nclient" type="checkbox">
-                                                            <span class="lever"></span>
-                                                            
-                                                        </label>
+                                        <div id="<%= human[0]._id %>" class="conducteur_for_me">
+                                            <div class="conducteur-item">
+                                                <div class="switch-zone">
+                                                        <div class="switch valign-wrapper">
+                                                            <label>
+                                                        
+                                                                <input id="0" name="conducteur_principal" class="me conducteur-item_input" type="checkbox">
+                                                                <span class="lever"></span>
+                                                                Conducteur principal
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                            <div class="row">
                                                 
                                                 <div class="input-field col m2 s12">
-                                                    <input value="<%= human[0].civilite %>" name="civilite_conducteur" type="text" class="validate">
+                                                    <input disabled value="<%= human[0].civilite %>" name="civilite_conducteur"  type="text" class="conducteur-item_input">
                                                     <label for="disabled">Civilité</label>
                                                 </div>
+
                                                 <div class="input-field col m5 s12">
-                                                    <input value="<%= human[0].last_name %>" name="last_name_conducteur" type="text" class="validate">
+                                                    <input disabled value="<%= human[0].last_name %>" name="last_name_conducteur"  type="text" class="conducteur-item_input">
                                                     <label for="disabled">Nom</label>
                                                 </div>
+
                                                 <div class="input-field col m5 s12">
-                                                    <input  value="<%= human[0].first_name %>" name="first_name_conducteur" type="text" class="validate">
+                                                    <input disabled value="<%= human[0].first_name %>" name="first_name_conducteur" type="text" class="conducteur-item_input">
                                                     <label for="disabled">Prénom</label>
                                                 </div>
+
+                                                <div class="input-field col m12 s12">
+                                                    <input disabled name="bday_conducteur" type="text" class="datepicker conducteur-item_input">  
+                                                    <label for="date_naissance">Date de naissance</label>
+                                                </div>
+
+                                                <div class='input-field col s12 m6 l6'>
+                                                    <select disabled name='situation_pro' id="situation_pro" class="conducteur-item_input">
+                                                        <option value="<%= human[0].situation_pro %>" selected><%= human[0].situation_pro %></option>
+                                                        <option value="Artisan">Artisan</option>
+                                                        <option value="Exploitant agricole">Exploitant agricole</option>
+                                                        <option value="Profession libérale">Profession libérale</option>
+                                                        <option value="Chef d'entreprise">Chef d'entreprise</option>
+                                                        <option value="Salarié">Salarié</option>
+                                                        <option value="Fonctionnaire">Fonctionnaire</option>
+                                                        <option value="Sans profession">Sans profession</option>
+                                                        <option value="Retraité">Retraité</option>
+                                                        <option value="Recherche d'emploi">Recherche d'emploi</option>
+                                                        <option value="Ecclasiastique">Ecclasiastique</option>
+                                                    </select>
+                                                        <label>Situation Profésionnelle</label>
+                                                </div>
+
+                                                <div class='input-field col s12 m6 l6'>
+                                                    <select disabled name='situation_fam' id='situation_fam' class="conducteur-item_input">
+                                                        <option value="<%= human[0].situation_fam %>" selected><%= human[0].situation_fam %></option>
+                                                        <option value='Célibataire'>Célibataire</option>
+                                                        <option value='Concubinage'>Concubinage</option>
+                                                        <option value='Marié'>Marié</option>
+                                                        <option value='Séparer'>Séparer</option>
+                                                        <option value='Divorcé'>Divorcé</option>
+                                                        <option value='Veuf'>Veuf</option>
+                                                        <option value='Pacs'>Pacs</option>
+                                                    </select>
+                                                        <label>Situation familiale</label>
+                                                </div>
+
+
+                                                    <div class="switch valign-wrapper col m12 s12">
+                                                        <label>
+                                                    
+                                                            <input name="conduite_accompagne" class="conduite_accompagne conducteur-permis-item_input" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Conduite accompagné
+                                                        </label>
+                                                    </div>
+                                                    <div class="input-field col m12 s12">
+                                                        <input disabled name="date_obtention" type="text" class="datepicker permis_item conducteur-permis-item_input">  
+                                                        <label for="date_obtention">Date d'obtention du permis</label>
+                                                    </div>
+
+                                                    <div class="input-field col m12 s12">
+                                                        <input disabled name="bday_permis" type="text" class="datepicker permis_item conducteur-permis-item_input">  
+                                                        <label for="date_permis">Nouvelle de permis si annulation</label>
+                                                    </div>
+                                                    <div class='input-field col s12 m4 l4'>
+                                                        <select disabled name='lieu_obtention' id='lieu_obtention' class="permis_item conducteur-permis-item_input">
+                                                            <option value="France" selected>France</option>
+                                                            <option value='EEE'>EEE</option>
+                                                            <option value='Hors EEE'>Hors EEE</option>
+                                                        </select>
+                                                            <label>Lieu d'obtention du permis</label>
+                                                    </div>
                                             </div>
                                         </div>
+                                        </div>
+                                        <div id="list_autres_conducteurs"></div>
                                     </div>
                                     <a id="trigger-button-conducteur" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">add</i></a>
                                 </div>

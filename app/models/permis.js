@@ -3,20 +3,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const permisSchema = new Schema({
-    conducteur:{
+    conducteur_id:{
         type: Schema.Types.ObjectId,
         ref: 'Conducteur',
         required: [true, 'Vous devez renseigné le conducteur.']
     },
     date_obtention:{
-        type: Date,
-        required: [true, 'Vous devez renseigné la date d\'obtention du permis.']
+        type: Date
+    },
+    nouvelle_date_obtention:{
+        type: Date
+    },
+    lieu_obtention:{
+        type: String
     },
     conduite_accompagne:{
-        type: Boolean,
-        required: [true, 'Vous devez indiqué si oui ou non le conducteur à passer la conduite accompagné.']
-    }
-});
+        type: Boolean
+    },
+},{collection : 'permis'});
 
 /** On exporte le modèle */
 var Permis = mongoose.model('Permis', permisSchema);
