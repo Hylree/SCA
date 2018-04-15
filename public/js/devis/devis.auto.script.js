@@ -1,14 +1,14 @@
 /**On initialise une fonction vide */
 let initialFunction = () => {};
 
-const idSoucripteur = $('.conducteur_for_me').attr('id');
+const idSoucripteur = $('.conducteur_for_me').parent().attr('id');
 let urlGetConducteurMe = "http://localhost:3000/API/users/" + idSoucripteur;
 
 $(document).ready(() => {
 
     initialFunction = () => {
 
-    /** Boite modal */
+    $('.button-collapse').sideNav();
     $('select').material_select(); //On initialise les selects
     $('.collapsible').collapsible();
     $('.datepicker').pickadate({
@@ -70,16 +70,16 @@ $(document).ready(() => {
     $(".conducteur-item .conducteur-item_input").each((i, item) => {
         var name = $(item).attr('name');
         var value = $(item).val();
-        console.log("number: " + numberOfItemInput);
-        
-        console.log("index: " + i);
-        conducteur[name] = value;
+
+        if(name != null){
+            conducteur[name] = value;
+        }
+
         if(i == countNumberOfItemInput - 1 ){
             countNumberOfItemInput = countNumberOfItemInput + numberOfItemInput;
             conducteurs.push(conducteur);
             conducteur = {};
             
-            console.log("conducteurs"+i);
             console.log(conducteurs);
             if(i == numItemsInputsConducteur - 1){
                 $.extend(data.conducteurs, conducteurs);
@@ -121,7 +121,7 @@ $('.conducteur_me').click(() => {
 
                 $('.conducteur_for_me').html(
                     
-                    '<div id="conducteur_0" class="conducteur-item">' +
+                    '<div class="conducteur-item">' +
                         '<div class="switch-zone">' +
                             '<div class="switch valign-wrapper">'+
                                 '<label>' +

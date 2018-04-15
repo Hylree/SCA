@@ -98,99 +98,102 @@
                                             </label>
                                         </div>
                                         <h5>Liste des conducteurs</h5>
-                                            <div id="<%= human[0]._id %>" class="conducteur_for_me">
-                                                <div id="conducteur_0" class="conducteur-item">
-                                                    <div class="switch-zone">
-                                                        <div class="switch valign-wrapper">
+                                            <div id="<%= human[0]._id %>" >
+                                                <div id="conducteur_0" class="conducteur_for_me">
+                                                    <div  class="conducteur-item">
+                                                        <div class="switch-zone">
+                                                            <div class="switch valign-wrapper">
+                                                                    <label>
+                                                                
+                                                                        <input id="0" name="conducteur_principal" class="me conducteur-item_input" type="checkbox">
+                                                                        <span class="lever"></span>
+                                                                        Conducteur principal
+                                                                    </label>
+                                                                </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            
+                                                            <div class="input-field col m2 s12">
+                                                                <input disabled value="<%= human[0].civilite %>" name="civilite_conducteur"  type="text" class="conducteur-item_input">
+                                                                <label for="disabled">Civilité</label>
+                                                            </div>
+
+                                                            <div class="input-field col m5 s12">
+                                                                <input disabled value="<%= human[0].last_name %>" name="last_name_conducteur"  type="text" class="conducteur-item_input">
+                                                                <label for="disabled">Nom</label>
+                                                            </div>
+
+                                                            <div class="input-field col m5 s12">
+                                                                <input disabled value="<%= human[0].first_name %>" name="first_name_conducteur" type="text" class="conducteur-item_input">
+                                                                <label for="disabled">Prénom</label>
+                                                            </div>
+
+                                                            <div class="input-field col m12 s12">
+                                                                <input disabled name="bday_conducteur" type="text" class="datepicker conducteur-item_input">  
+                                                                <label for="date_naissance">Date de naissance</label>
+                                                            </div>
+
+                                                            <div class='input-field col s12 m6 l6'>
+                                                                <select disabled name='situation_pro' id="situation_pro" class="conducteur-item_input">
+                                                                    <option value="<%= human[0].situation_pro %>" selected><%= human[0].situation_pro %></option>
+                                                                    <option value="Artisan">Artisan</option>
+                                                                    <option value="Exploitant agricole">Exploitant agricole</option>
+                                                                    <option value="Profession libérale">Profession libérale</option>
+                                                                    <option value="Chef d'entreprise">Chef d'entreprise</option>
+                                                                    <option value="Salarié">Salarié</option>
+                                                                    <option value="Fonctionnaire">Fonctionnaire</option>
+                                                                    <option value="Sans profession">Sans profession</option>
+                                                                    <option value="Retraité">Retraité</option>
+                                                                    <option value="Recherche d'emploi">Recherche d'emploi</option>
+                                                                    <option value="Ecclasiastique">Ecclasiastique</option>
+                                                                </select>
+                                                                    <label>Situation Profésionnelle</label>
+                                                            </div>
+
+                                                            <div class='input-field col s12 m6 l6'>
+                                                                <select disabled name='situation_fam' id='situation_fam' class="conducteur-item_input">
+                                                                    <option value="<%= human[0].situation_fam %>" selected><%= human[0].situation_fam %></option>
+                                                                    <option value='Célibataire'>Célibataire</option>
+                                                                    <option value='Concubinage'>Concubinage</option>
+                                                                    <option value='Marié'>Marié</option>
+                                                                    <option value='Séparer'>Séparer</option>
+                                                                    <option value='Divorcé'>Divorcé</option>
+                                                                    <option value='Veuf'>Veuf</option>
+                                                                    <option value='Pacs'>Pacs</option>
+                                                                </select>
+                                                                    <label>Situation familiale</label>
+                                                            </div>
+
+
+                                                            <div class="switch valign-wrapper switch-zone col m12 s12">
                                                                 <label>
                                                             
-                                                                    <input id="0" name="conducteur_principal" class="me conducteur-item_input" type="checkbox">
+                                                                    <input name="conduite_accompagne" id="conduite_accompagne_principal" class="conducteur-item_input" type="checkbox">
                                                                     <span class="lever"></span>
-                                                                    Conducteur principal
+                                                                    Conduite accompagné
                                                                 </label>
                                                             </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        
-                                                        <div class="input-field col m2 s12">
-                                                            <input disabled value="<%= human[0].civilite %>" name="civilite_conducteur"  type="text" class="conducteur-item_input">
-                                                            <label for="disabled">Civilité</label>
-                                                        </div>
+                                                            <div class="input-field col m12 s12">
+                                                                <input name="date_obtention" type="text" class="datepicker permis_item conducteur-item_input">  
+                                                                <label for="date_obtention">Date d'obtention du permis</label>
+                                                            </div>
 
-                                                        <div class="input-field col m5 s12">
-                                                            <input disabled value="<%= human[0].last_name %>" name="last_name_conducteur"  type="text" class="conducteur-item_input">
-                                                            <label for="disabled">Nom</label>
-                                                        </div>
-
-                                                        <div class="input-field col m5 s12">
-                                                            <input disabled value="<%= human[0].first_name %>" name="first_name_conducteur" type="text" class="conducteur-item_input">
-                                                            <label for="disabled">Prénom</label>
-                                                        </div>
-
-                                                        <div class="input-field col m12 s12">
-                                                            <input disabled name="bday_conducteur" type="text" class="datepicker conducteur-item_input">  
-                                                            <label for="date_naissance">Date de naissance</label>
-                                                        </div>
-
-                                                        <div class='input-field col s12 m6 l6'>
-                                                            <select disabled name='situation_pro' id="situation_pro" class="conducteur-item_input">
-                                                                <option value="<%= human[0].situation_pro %>" selected><%= human[0].situation_pro %></option>
-                                                                <option value="Artisan">Artisan</option>
-                                                                <option value="Exploitant agricole">Exploitant agricole</option>
-                                                                <option value="Profession libérale">Profession libérale</option>
-                                                                <option value="Chef d'entreprise">Chef d'entreprise</option>
-                                                                <option value="Salarié">Salarié</option>
-                                                                <option value="Fonctionnaire">Fonctionnaire</option>
-                                                                <option value="Sans profession">Sans profession</option>
-                                                                <option value="Retraité">Retraité</option>
-                                                                <option value="Recherche d'emploi">Recherche d'emploi</option>
-                                                                <option value="Ecclasiastique">Ecclasiastique</option>
-                                                            </select>
-                                                                <label>Situation Profésionnelle</label>
-                                                        </div>
-
-                                                        <div class='input-field col s12 m6 l6'>
-                                                            <select disabled name='situation_fam' id='situation_fam' class="conducteur-item_input">
-                                                                <option value="<%= human[0].situation_fam %>" selected><%= human[0].situation_fam %></option>
-                                                                <option value='Célibataire'>Célibataire</option>
-                                                                <option value='Concubinage'>Concubinage</option>
-                                                                <option value='Marié'>Marié</option>
-                                                                <option value='Séparer'>Séparer</option>
-                                                                <option value='Divorcé'>Divorcé</option>
-                                                                <option value='Veuf'>Veuf</option>
-                                                                <option value='Pacs'>Pacs</option>
-                                                            </select>
-                                                                <label>Situation familiale</label>
-                                                        </div>
-
-
-                                                        <div class="switch valign-wrapper col m12 s12">
-                                                            <label>
-                                                        
-                                                                <input name="conduite_accompagne" id="conduite_accompagne_principal" class="conducteur-item_input" type="checkbox">
-                                                                <span class="lever"></span>
-                                                                Conduite accompagné
-                                                            </label>
-                                                        </div>
-                                                        <div class="input-field col m12 s12">
-                                                            <input name="date_obtention" type="text" class="datepicker permis_item conducteur-item_input">  
-                                                            <label for="date_obtention">Date d'obtention du permis</label>
-                                                        </div>
-
-                                                        <div class="input-field col m12 s12">
-                                                            <input name="bday_permis" type="text" class="datepicker permis_item conducteur-item_input">  
-                                                            <label for="date_permis">Nouvelle de permis si annulation</label>
-                                                        </div>
-                                                        <div class='input-field col s12 m4 l4'>
-                                                            <select name='lieu_obtention' id='lieu_obtention' class="permis_item conducteur-item_input">
-                                                                <option value="France" selected>France</option>
-                                                                <option value='EEE'>EEE</option>
-                                                                <option value='Hors EEE'>Hors EEE</option>
-                                                            </select>
-                                                                <label>Lieu d'obtention du permis</label>
+                                                            <div class="input-field col m12 s12">
+                                                                <input name="bday_permis" type="text" class="datepicker permis_item conducteur-item_input">  
+                                                                <label for="date_permis">Nouvelle de permis si annulation</label>
+                                                            </div>
+                                                            <div class='input-field col s12 m4 l4'>
+                                                                <select name='lieu_obtention' id='lieu_obtention' class="permis_item conducteur-item_input">
+                                                                    <option value="France" selected>France</option>
+                                                                    <option value='EEE'>EEE</option>
+                                                                    <option value='Hors EEE'>Hors EEE</option>
+                                                                </select>
+                                                                    <label>Lieu d'obtention du permis</label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                         <div id="list_autres_conducteurs"></div>
                                     </div>
                                     <a id="trigger-button-conducteur" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">add</i></a>
@@ -198,8 +201,73 @@
                                
                             </li>
                             <li>
-                                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                <div class="collapsible-header"><i class="material-icons">directions_car</i>Véhicule</div>
+                                <div class="collapsible-body">
+                                    <div id="vehicule_data">
+                                        <div class="row">
+                                                <div class="input-field col m6 s12">
+                                                        <input value="" name="marque"  type="text" class="">
+                                                        <label for="marque">Marque</label>
+                                                </div>
+                                                <div class="input-field col m6 s12">
+                                                    <input value="" name="modele"  type="text" class="">
+                                                    <label for="modele">Modèle</label>
+                                                </div>
+                                                <div class="input-field col m4 s12">
+                                                    <input value="" name="nbr_cv"  type="text" class="">
+                                                    <label for="nbr_cv">Nombre de CV</label>
+                                                </div>
+                                                <div class="input-field col m4 s12">
+                                                    <input value="" name="type_vehicule"  type="text" class="">
+                                                    <label for="type_vehicule">Type</label>
+                                                </div>
+                                                <div class="input-field col m4 s12">
+                                                    <input value="" name="energie"  type="text" class="">
+                                                    <label for="energie">Energie</label>
+                                                </div>
+                                                <div class="input-field col m6 s12">
+                                                    <input name="date_1ere_circulation" type="text" class="datepicker">  
+                                                    <label for="date_1ere_circulation">Date 1ère mise en circulation</label>
+                                                </div>
+                                                <div class="input-field col m4 s12">
+                                                    <input value="" name="immatriculation"  type="text" class="">
+                                                    <label for="immatriculation">Immatriculation</label>
+                                                </div>
+                                                <div class="switc valign-wrapper col m12 s12">
+                                                    <label>
+                                                
+                                                        <input name="immatriculation_etrangere" id="immatriculation_etrangere" class="" type="checkbox">
+                                                        <span class="lever"></span>
+                                                        Immatriculation étrangère / diplomatique
+                                                    </label>
+                                                </div>
+                                                <div class="input-field col m12 s12">
+                                                    <input value="" name="date_achat"  type="text" class="">
+                                                    <label for="date_achat">Date d'achat</label>
+                                                </div>                                                        
+                                                <div class='input-field col s12 m6 l12'>
+                                                    <select name='mode_aquisition' id='mode_aquisition' class="">
+                                                        <option value="Comptant - crédit" selected>Comptant - crédit</option>
+                                                        <option value='LOA-LLD'>LOA-LLD</option>
+                                                    </select>
+                                                        <label>Mode d'acquisition</label>
+                                                </div>
+
+                                                <div class='input-field col s12 m6 l12'>
+                                                    <select name='usage_vehicule' id='usage_vehicule' class="">
+                                                        <option value="Vie privée - promenade" selected>Vie privée - promenade</option>
+                                                        <option value='Vie privée et affaire - commerce'>Vie privée et affaire - commerce</option>
+                                                        <option value='Vie privée + Trajet travail'>Vie privée + Trajet travail</option>
+                                                        <option value='Tous déplacement'>Tous déplacement</option>
+                                                    </select>
+                                                        <label>Usage du vehicule</label>
+                                                </div>
+                                        </div>
+
+
+                                        
+                                    </div>
+                                </div>
                             </li>
                         </ul>
         
