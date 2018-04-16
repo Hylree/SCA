@@ -2,21 +2,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const antecedantAssuranceSchema = new Schema({
-    zero_douze : {
+const antecedentAssuranceSchema = new Schema({
+    0_12 : {
         type : Number
     },
-    treize_vingtquatre : {
+    13_24: {
         type : Number
     },
-    vingtcinq_trentesix: {
+    25_36: {
         type: Number
     },
     resiliation_id:{
         type: Schema.Types.ObjectId,
         ref: 'Resiliation'
     }
-});
+},{collection : "antecedent_assurance"});
 
 var AntecedantAssurance = mongoose.model('AntecedantAssurance' , antecedantAssuranceSchema);
 

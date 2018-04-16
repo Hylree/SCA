@@ -182,7 +182,7 @@
                                                                 <input name="bday_permis" type="text" class="datepicker permis_item conducteur-item_input">  
                                                                 <label for="date_permis">Nouvelle de permis si annulation</label>
                                                             </div>
-                                                            <div class='input-field col s12 m4 l4'>
+                                                            <div class='input-field col s12 m12 l12'>
                                                                 <select name='lieu_obtention' id='lieu_obtention' class="permis_item conducteur-item_input">
                                                                     <option value="France" selected>France</option>
                                                                     <option value='EEE'>EEE</option>
@@ -190,6 +190,144 @@
                                                                 </select>
                                                                     <label>Lieu d'obtention du permis</label>
                                                             </div>
+                                                            <div class="row">
+                                                                <h5>Les antécédents d'assurance</h5>
+                                                                <h6>(Au cours des 3 dérnières années)</h6>
+
+                                                                <label>Déja été assuré?</label>
+                                                                <div class="switch valign-wrapper col m12 s12">
+                                                                    <label>
+                                                                        Non
+                                                                        <input name="antecedant_assurance" class="antecedant_assurance_item conducteur-item_input" type="checkbox">
+                                                                        <span class="lever"></span>
+                                                                        Oui
+                                                                    </label>
+                                                                </div>
+
+                                                                <p>Si oui, répartir les mois d'assurance par période</p>
+                                                                <div class="input-field col m4 s12">
+                                                                    <input disabled value="0" name="0_12"  type="text" class="antecedant_assurance_item conducteur-item_input">
+                                                                    <label for="disabled">0 - 12 mois</label>
+                                                                </div>
+                                                                <div class="input-field col m4 s12">
+                                                                    <input disabled value="0" name="13_24"  type="text" class="antecedant_assurance_item conducteur-item_input">
+                                                                    <label for="disabled">13 - 14 mois</label>
+                                                                </div>
+                                                                <div class="input-field col m4 s12">
+                                                                    <input disabled value="0" name="25_36"  type="text" class="antecedant_assurance_item conducteur-item_input">
+                                                                    <label for="disabled">15 - 36 mois</label>
+                                                                </div>
+                                                                
+                                                                <label>Avez-vous été résilié?</label>
+                                                                <div class="switch valign-wrapper col m12 s12">
+                                                                    <label>
+                                                                        Non
+                                                                        <input name="antecedant_assurance" class="antecedant_assurance_item conducteur-item_input" type="checkbox">
+                                                                        <span class="lever"></span>
+                                                                        Oui
+                                                                    </label>
+                                                                </div>
+
+                                                                <label>Pour quelle motifs:</label>
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='alcool_stup' id='alcool_stup' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Résiliation pour Alcoolémie ou usage de stupéfiant</label>
+                                                                </div>
+
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='sinistre' id='sinistre' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Résiliation pour sinistre</label>
+                                                                </div>
+
+                                                                
+
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='non_paiement' id='non_paiement' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Résiliation pour Non-paiement</label>
+                                                                </div>
+                                                                
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='name_assureur' id='name_assureur' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="AXA" selected>AXA</option>
+                                                                    </select>
+                                                                        <label>Non du précédent assureurs</label>
+                                                                </div>
+
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='precedent_assureur_solde' id='precedent_assureur_solde' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Contentieux soldé</label>
+                                                                </div>
+
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='fausse_declaration' id='fausse_declaration' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Résiliation pour fausse déclaration</label>
+                                                                </div>
+
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='defaut_pieces' id='defaut_pieces' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Résiliation pour défaut de pièces</label>
+                                                                </div>
+
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='nullite_contrat' id='nullite_contrat' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Résiliation pour nullité de contrat</label>
+                                                                </div>
+
+                                                                <div class='input-field col s12 m12 l12'>
+                                                                    <select name='autres' id='autres' class="antecedant_assurance_item conducteur-item_input">
+                                                                        <option value="Non" selected>Non</option>
+                                                                        <option value='Oui'>Oui</option>
+                                                                    </select>
+                                                                        <label>Autres</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="input-field col m12 s12">
+                                                                <input name="civilite_conducteur" type="number" class="conducteur-item_input">
+                                                                <label for="disabled">Nombre d'infraction sur un periode de 3ans</label>
+                                                            </div>
+                                                            <div class="row infractions">
+                                                                <div class="col m6 s12" id="0">
+                                                                    <div class='input-field col s12 m12 l12'>
+                                                                        <select name='type_infraction' id="0" class="type_infraction infraction_item conducteur-item_input">
+                                                                            <option value="alcool" selected>Alcoolémie</option>
+                                                                            <option value="stupefiant">Usage de stupéfiant</option>
+                                                                            <option value="point">Défaut de point</option>
+                                                                            <option value="delit_fuite">Délit de fuite</option>
+                                                                            <option value="defaut_assurance">Défaut d'assurance</option>
+                                                                            <option value="refus_dobtempérer">Refus d'obtempérer</option>
+                                                                            <option value="Autre">Autre</option>
+                                                                        </select>
+                                                                            <label>Pour quel motifs?</label>
+                                                                    </div>
+
+                                                                    <div class="sanction_item"></div>
+                                                                </div>
+
+
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -233,7 +371,7 @@
                                                     <input value="" name="immatriculation"  type="text" class="">
                                                     <label for="immatriculation">Immatriculation</label>
                                                 </div>
-                                                <div class="switc valign-wrapper col m12 s12">
+                                                <div class="switch valign-wrapper col m12 s12">
                                                     <label>
                                                 
                                                         <input name="immatriculation_etrangere" id="immatriculation_etrangere" class="" type="checkbox">

@@ -44,6 +44,13 @@ $(document).ready(() => {
 
     });
 
+    $('.type_infraction').change((event) => {
+
+        var id = event.target.id;
+        
+        console.log(id);
+    });
+
     $('.close-conducteur-item').click((event) => {
         var id = event.target.parentElement.id;
         $("#conducteur_autre_" + id + "" ).remove();
@@ -189,22 +196,22 @@ $('.conducteur_me').click(() => {
                         '<div class="switch valign-wrapper col m12 s12">' +
                             '<label>' +
                         
-                                '<input name="conduite_accompagne" class="conduite_accompagne conducteur-item_input" type="checkbox">' +
+                                '<input  name="conduite_accompagne" id="conduite_accompagne_principal" class="conducteur-item_input" type="checkbox">' +
                                 '<span class="lever"></span>' +
                                 'Conduite accompagné' +
                             '</label>' +
                         '</div>' +
                         '<div class="input-field col m12 s12">' +
-                            '<input disabled name="date_obtention" type="text" class="datepicker permis_item conducteur-item_input">' +
+                            '<input name="date_obtention" type="text" class="datepicker permis_item conducteur-item_input">' +
                             '<label for="date_obtention">Date d\'obtention du permis</label>' +
                         '</div>' +
             
                         '<div class="input-field col m12 s12">' +
-                            '<input disabled name="bday_permis" type="text" class="datepicker permis_item conducteur-item_input">' +  
+                            '<input name="bday_permis" type="text" class="datepicker permis_item conducteur-item_input">' +  
                             '<label for="date_permis">Nouvelle de permis si annulation</label>' +
                         '</div>' +
                         '<div class="input-field col s12 m4 l4">' +
-                            '<select disabled name="lieu_obtention" id="lieu_obtention" class="permis_item conducteur-item_input">' +
+                            '<select name="lieu_obtention" id="lieu_obtention" class="permis_item conducteur-item_input">' +
                                 '<option value="France" selected>France</option>' +
                                 '<option value="EEE">EEE</option>' +
                                 '<option value="Hors EEE">Hors EEE</option>' +

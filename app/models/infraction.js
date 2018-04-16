@@ -7,45 +7,33 @@ const infractionSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref : 'Conducteur'
     },
-    vehicule_id:{
-        type: Schema.Types.ObjectId,
-        ref: 'Vehicule'
-    },
-    alcool: {
-        type: Boolean,
-        required: [true, 'Renseigné infraction par alcool.']
-    },
-    alcool_sinistre: {
-        type: Boolean,
-        required: [true, 'Renseigné infraction par alcool sinistre.']
-    },
-    stupefiant: {
-        type: Boolean,
-        required: [true, 'Renseigné infraction par stupefiant.']
-    },
-    stupefiant_sinistre: {
-        type: Boolean,
-        required: [true, 'Renseigné infraction par stupefiant.']
-    },
-    point: {
-        type: Boolean,
-        required: [true, 'Renseigné infraction par defaut de point.']
-    },
-    delit_fuite: {
-        type: Boolean,
-        required: [true, 'Renseigné infraction par delit de fuite.']
-    },
-    defaut_assurance: {
-        type: Boolean,
-        required: [true, 'Renseigné infraction par alcool.']
-    },
-    refus_dobtemperer:{
-        type: Boolean,
-        required: [true, 'Renseigné infraction par refus d\'obtempérer.']
-    },
-    sanction:{
+    sanction_id:{
         type: Schema.Types.ObjectId,
         ref: 'Sanction'
+    },
+    alcool: {
+        type: String
+    },
+    alcool_sinistre: {
+        type: String
+    },
+    stupefiant: {
+        type: String
+    },
+    stupefiant_sinistre: {
+        type: String
+    },
+    point: {
+        type: String
+    },
+    delit_fuite: {
+        type: String
+    },
+    defaut_assurance: {
+        type: String
+    },
+    refus_dobtemperer:{
+        type: String
     },
     autre:{
         type: String
