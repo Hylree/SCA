@@ -22,7 +22,7 @@ const profilSchema = new Schema({
                 type : String
             }]
         }]
-    });
+    },{collection : "profils"});
 
 /** On exporte le modèle Profil */
 var Profil = module.exports = mongoose.model('Profil', profilSchema)

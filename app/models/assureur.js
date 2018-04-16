@@ -7,7 +7,7 @@ const assureurSchema = new Schema({
     name:{
         type: String
     }
-});
+}, {collection: "assureurs"});
 
 /** On exporte le modèle */
 var Assureur = mongoose.model('Assureur', assureurSchema);

@@ -61,7 +61,7 @@ const vehiculeSchema = new Schema({
         }
     }]
 
-});
+},{collection : "vehicule"});
 
 var Vehicule = mongoose.model('Vehicule', vehiculeSchema);
 

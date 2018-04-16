@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 
 /**On construit les schémas */
 const conducteurSchema = new Schema({
-    permis:{
+    permis_id:{
         type: Schema.Types.ObjectId,
         ref: 'Permis',
         required: [true, 'Renseigné le permis de conduire.']
     },
-    antecedant_assurance_id:{
+    antecedent_assurance_id:{
         type: Schema.Types.ObjectId,
-        ref: 'AntecedantAssurance'
+        ref: 'AntecedentAssurance'
     }
 },{ colletion : 'conducteur'});
 

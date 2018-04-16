@@ -15,7 +15,7 @@ const remorqueSchema = new Schema({
         type: String,
         required: [true, 'L\'immatriculation est requise.']
     }
-});
+},{remorque : "remorque"});
 
 var Remorque = mongoose.model('Remorque', remorqueSchema);
 

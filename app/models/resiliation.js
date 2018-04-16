@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 /**On construit les schémas */
 const resiliationSchema = new Schema({
     
-    assureur:{
+    precedant_assureur_id:{
         type: Schema.Types.ObjectId,
         ref: 'Assureur'
     },

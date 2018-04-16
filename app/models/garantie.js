@@ -29,7 +29,7 @@ const GarantieSchema = new Schema({
         type: Boolean,
         required: [true, 'Ce champs doit être renseigné.']
     }
-});
+}, {collection : "garantie"});
 
 var Garantie = mongoose.model('Garantie', GarantieSchema);
 

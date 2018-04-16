@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const carteGriseSchema = new Schema({
     
-});
+}, {collection : "carte_grise"});
 
 var CarteGrise = mongoose.model('CarteGrise', carteGriseSchema);
 

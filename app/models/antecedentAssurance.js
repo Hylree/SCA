@@ -18,8 +18,8 @@ const antecedentAssuranceSchema = new Schema({
     }
 },{collection : "antecedent_assurance"});
 
-var AntecedantAssurance = mongoose.model('AntecedantAssurance' , antecedantAssuranceSchema);
+var AntecedantAssurance = mongoose.model('AntecedentAssurance' , antecedentAssuranceSchema);
 
 module.exports = {
-    AntecedantAssurance : AntecedantAssurance
+    AntecedentAssurance : AntecedentAssurance
 };

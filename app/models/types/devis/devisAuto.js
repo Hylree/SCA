@@ -36,7 +36,7 @@ const devisAutoSchema = Devis.devisSchema.extend({
         type: Boolean,
         required: [true, 'Vous devez valider.']
     }
-});
+},{ collection : "devis_auto"});
 
 
 

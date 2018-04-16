@@ -34,7 +34,7 @@ const userSchema = new Schema({
         required: false,
         unique: false
     }
-});
+},{collection : "users"});
 
 
 

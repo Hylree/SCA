@@ -69,7 +69,7 @@ const humanSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Client'
     }
-});
+},{collection : "humen"});
 
 var Human = mongoose.model('Human', humanSchema);
 
