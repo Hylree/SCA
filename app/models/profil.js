@@ -13,15 +13,7 @@ const profilSchema = new Schema({
         },
         description:{
             type : String
-        },
-        ressource : [{
-            id : {
-                type : String,
-            },
-            permissions : [{
-                type : String
-            }]
-        }]
+        }
     },{collection : "profils"});
 
 /** On exporte le modèle Profil */

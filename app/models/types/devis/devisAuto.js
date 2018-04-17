@@ -8,20 +8,12 @@ const Devis = require('../../devis');
 
 /** Type de devis */
 const devisAutoSchema = Devis.devisSchema.extend({
-    conducteurs_principal:{
-        type: Schema.Types.ObjectId,
-        ref:'Conducteur'
-    },
-    conducteurs_secondaire:{
-        type: Schema.Types.ObjectId,
-        ref:'Conducteur'
-    },
     
-    vehicule:{
-        type: Schema,Types,ObjectId,
+    vehicule_id:{
+        type: Schema.Types.ObjectId,
         ref:'Vehicule'
     },
-    garantie:{
+    garantie_id:{
         type: Schema.Types.ObjectId,
         ref :'Garantie'
     },

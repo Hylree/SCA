@@ -20,7 +20,7 @@ const imageSchema = new Schema({
         type: Date,
         default: Date.now
     }
-});
+}, {image : "image_post"});
 
 /** On exporte le modèle */
 var Image = mongoose.model('Image', imageSchema);
@@ -39,7 +39,7 @@ const relationImagePostSchema = new Schema({
         type: Date,
         default: Date.now
     }
-});
+},{collection : "relation_image_post"});
 
 /** On exporte le modèle */
 var RelationImage = mongoose.model('RelationImagePost', relationImagePostSchema);

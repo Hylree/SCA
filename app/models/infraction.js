@@ -7,10 +7,6 @@ const infractionSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref : 'Conducteur'
     },
-    sanction_id:{
-        type: Schema.Types.ObjectId,
-        ref: 'Sanction'
-    },
     alcool: {
         type: String
     },
@@ -38,7 +34,7 @@ const infractionSchema = new Schema({
     autre:{
         type: String
     }
-});
+},{collection : "infractions"});
 
 /** On exporte le modèle */
 var Infraction = mongoose.model('Infraction', infractionSchema);

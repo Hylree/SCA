@@ -47,19 +47,14 @@ const vehiculeSchema = new Schema({
         required: [true, 'le mode d\'acquisition du véhicule est requis.']
     },
     parcking: {
-        type: Schema.Types.ObjectId,
-        ref: 'Parcking',
-        required: [true, 'Le parcking doit être renseigné.']
+        type: String
     },
     protection_vol:{
-        type: Schema.Types.ObjectId,
-        ref: 'ProctectionVol'
+        type: String
     },
-    usage:[{
-        usage : {
+    usage:{
             type : String
-        }
-    }]
+    }
 
 },{collection : "vehicule"});
 

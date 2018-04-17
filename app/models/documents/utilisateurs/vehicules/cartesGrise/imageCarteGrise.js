@@ -23,7 +23,7 @@ const carteGriseImageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'CarteGrise'
     }
-});
+},{collection : "image_carte_grise"});
 
 var CarteGriseImage = mongoose.model('CarteGriseImage', carteGriseImageSchema);
 

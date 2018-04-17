@@ -23,7 +23,7 @@ const permisImageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Permis'
     }
-});
+},{collection : "image_permis"});
 
 var PermisImage = mongoose.model('PermisImage', permisImageSchema);
 

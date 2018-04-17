@@ -14,7 +14,7 @@ const relationConducteurVehiculeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref:'Vehicule'
     }
-});
+},{collection : "relation_conducteur_vehicule"});
 
 var RelationConducteurVehicule = mongoose.model('RelationConducteurVehicule', relationConducteurVehiculeSchema);
 

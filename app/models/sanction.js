@@ -7,6 +7,10 @@ const sanctionSchema = new Schema({
         type: String,
         required: [true, 'Le type de sanction est requis.']
     },
+    infration_id:{
+        type: Schema.Types.ObjectId,
+        ref: 'Infraction'
+    },
     date:{
         type: Date,
         required: [true, 'La date de la sanction est requis']
@@ -14,7 +18,7 @@ const sanctionSchema = new Schema({
     durée:{
         type: Number
     }
-});
+}, {collection : "sanctions"});
 
 
 var Sanction = mongoose.model('Sanction', sanctionSchema);

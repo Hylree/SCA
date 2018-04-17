@@ -10,26 +10,26 @@ const GarantieSchema = new Schema({
         required:[true, 'Vous devez indiquer un nom pour la garantie.']
     },
     resp_civile:{
-        type: Boolean,
+        type: String,
         required: [true, 'Responsabilité civile est à remplir.']
     },
     inc:{
-        type: Boolean,
+        type: String,
         required: [true, 'Ce champs doit être renseigné.']
     },
     defence_penal_recours:{
-        type: Boolean,
+        type: String,
         required: [true, 'Ce champs doit être renseigné.']
     },
     vol:{
-        type: Boolean,
+        type: String,
         required: [true, 'Ce champs doit être renseigné.']
     },
     dommage_tout_risque:{
-        type: Boolean,
+        type: String,
         required: [true, 'Ce champs doit être renseigné.']
     }
-}, {collection : "garantie"});
+}, {collection : "garanties"});
 
 var Garantie = mongoose.model('Garantie', GarantieSchema);
 
