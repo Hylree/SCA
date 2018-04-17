@@ -52,7 +52,9 @@ $(document).ready(() => {
     $('.type_infraction').on('change',(event) => {
 
         var id = event.target.id;
-        console.log("test " + $("select#infraction_0").val());
+        id($("select#infraction_0").val()){
+            
+        }
     });
 
     $('.close-conducteur-item').click((event) => {
