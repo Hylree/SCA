@@ -29,7 +29,9 @@ const getAllHumans = (req, res) => {
 
 };
 
-
+/**
+ * Permet de récuperer les Humans triés
+ */
 const getUsersFilter = (req, res) => {
 
     const nameFilter = req.params.nameFilter;
@@ -44,6 +46,9 @@ const getUsersFilter = (req, res) => {
 
 };
 
+/** 
+ * Permet de modifier un utilisateur
+*/
 const postUsers = (req, res) => {
 
     req.body.password = bcrypt.hashSync(req.body.password, null);
@@ -60,6 +65,9 @@ const postUsers = (req, res) => {
 
 };
 
+/**
+ * Permet de récuperer un seul utilisateur grâce à son id
+ */
 const getUniqueUser = (req, res) => {
     let id = req.params.id;
 
@@ -71,6 +79,9 @@ const getUniqueUser = (req, res) => {
     });
 };
 
+/**
+ * permet de modifier un utilisateur grace à sont id
+ */
 const updateOneUser = (req, res) => {
     
     const id = req.params.id; //Récuperation de l'id de du client

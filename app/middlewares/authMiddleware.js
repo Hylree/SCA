@@ -18,7 +18,7 @@ const authMiddleware = (req, res, next) => {
             if (!authToken) {
                 errors.push("La session n'est plus valide, reconnectez-vous.");
                 res.cookie('flashErrors', errors);
-                 next();
+                next();
                 
             } else {
         
