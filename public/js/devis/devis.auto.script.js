@@ -8,6 +8,11 @@ $(document).ready(() => {
 
     initialFunction = () => {
 
+    /** Formulaire incription devis auto */
+    let data = {
+        conducteurs : []
+    };
+
     $('.button-collapse').sideNav();
     $('select').material_select(); //On initialise les selects
     $('.collapsible').collapsible();
@@ -44,11 +49,12 @@ $(document).ready(() => {
 
     });
 
-    $('.type_infraction').change((event) => {
+    $('.type_infraction').on('change',(event) => {
 
         var id = event.target.id;
-        
-        console.log(id);
+        id($("select#infraction_0").val()){
+            
+        }
     });
 
     $('.close-conducteur-item').click((event) => {
@@ -57,10 +63,7 @@ $(document).ready(() => {
         initialFunction();
     });
 
-    /** Formulaire incription devis auto */
-    let data = {
-        conducteurs : []
-    };
+
 
     /** On calcul le nombre d'élément pour préparer la constuction de l'objet conducteur */
     var numItemsConducteurs = $('.conducteur-item').length;
