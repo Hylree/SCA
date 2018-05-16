@@ -24,7 +24,10 @@ const getAllHumans = (req, res) => {
     find().
     populate('user_id client_id conducteur_id').
     exec((err, humans) => {
-        res.status(200).send({sucess: true, users : humans});
+        res.status(200).send({
+            sucess: true, 
+            users : humans
+        });
     });
 
 };

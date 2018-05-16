@@ -59,6 +59,11 @@ const authMiddleware = (req, res, next) => {
         
             }
     }else{
+                            
+
+        req.session.destroy((err) => {
+            res.status(200).redirect( '/' );
+        });
         next();
     }
 

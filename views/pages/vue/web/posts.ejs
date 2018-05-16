@@ -13,11 +13,11 @@
 <body>
         <% include ../../../partials/menus/_menu %> 
         <% include ../../../partials/messages/_flash_message %>
-
+<div class="container">
 <% if(locals.posts && locals.posts.length > 0){ %>
     <div class="row">
         <% posts.forEach(function(post) { %>
-            <div class="col s12 m4 l4">
+            <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                         <% if(post.images && post.images.length > 0){ %>
@@ -48,7 +48,7 @@
         <% }); %>        
     </div>
 <% } %>
-
+</div>
 <% include ../../../partials/footers/_footer %>
 
 

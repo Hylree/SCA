@@ -79,6 +79,8 @@ const postRegister = (req, res) => {
     }
     
 
+    /** On enregistre l'utilisateur */
+
     var profilQuery = Profil.findOne({'id' : 'prospect'}).exec();
     profilQuery.then((profil) => {
         req.body.profil = profil.id;
@@ -95,46 +97,6 @@ const postRegister = (req, res) => {
     }).catch((err) => {
         res.status(200).render('pages/vue/web/register', { flashErrors : errors});
     });
-   
-    /*Profil.findOne({'id' : 'prospect'}, (err, profil) => {
-        req.body.profil = profil.id;
-        const user = new User(req.body);
-        user.save((err, user) => {
-            /*if (err || errors.length > 0) {
-                console.log(err);
-                if(err){
-                    if(err.code === 11000){
-                        errors.push("L'utilisateur existe déjà.");
-                    }
-                    for(const error in err.errors){
-                        if (err.errors[error].name === 'ValidatorError') {
-                            errors.push(err.errors[error].properties.message);
-                        }
-                    } 
-                }*/
-/*
-                req.body.user_id = user._id;
-                const human = Human.Human(user._id);
-                human.save((err, human) => {
-                    console.log('Cest fait')
-                });*/
-                //res.cookie('flashErrors', errors);
-                
-               // res.status(200).render('pages/vue/web/register', { flashErrors : errors } );
-                
-            //}
-            /*else {
-                let success = [];
-                success.push("Compte enregistré.");
-                //res.cookie('flashSuccess', ['Bravo']);
-                res.status(200).render('pages/vue/web/home', { flashSuccess : success } );                
-                //res.status(201).redirect( '/' );
-            }
-        });*/
-        
-
-    //});
-
     
 }
 
