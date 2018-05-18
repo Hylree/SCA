@@ -31,8 +31,8 @@ const getAllHumans = (req, res) => {
 
 /**
  * Permet de récuperer les Humans triés
- */
-const getUniqueHuman = (req, res) => {
+*/
+const getHumansFilter = (req, res) => {
 
     const nameFilter = req.params.nameFilter;
 
@@ -45,7 +45,6 @@ const getUniqueHuman = (req, res) => {
     });
 
 };
-
 /** 
  * Permet de modifier un utilisateur
 */
@@ -160,7 +159,7 @@ const updateOneHuman = (req, res) => {
 module.exports = {
     getAllHumans: getAllHumans,
     postUsers: postUsers,
-    getUniqueUser: getUniqueUser,
-    updateOneUser : updateOneUser,
-    getUsersFilter :getUsersFilter
+    getUniqueHuman: getUniqueHuman,
+    updateOneHuman : updateOneHuman,
+    getHumansFilter :getHumansFilter
 };
