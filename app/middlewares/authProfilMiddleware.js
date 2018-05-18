@@ -11,11 +11,12 @@ const authProfilMiddleware = (req, res, next) => {
         if(req.session.profil !== undefined){
             
             req.session.destroy((err) => {
+                errors.push("Vous n'avez pas les autorisations necessaire pour continuer sur cette page. Vous êtes déconnecté.");
+                res.cookie('flashErrors', errors);
                 res.status(401).redirect( '/' );
             });
 
         }
-        next();
     }else{
         next();
     }

@@ -14,11 +14,13 @@ const authMiddleware = (req, res, next) => {
     if(req.session.authToken){
         const authToken = req.session.authToken;
         
-            console.log(authToken);
             if (!authToken) {
                 errors.push("La session n'est plus valide, reconnectez-vous.");
                 res.cookie('flashErrors', errors);
-                next();
+                
+                req.session.destroy((err) => {
+                    res.status(200).redirect( '/' );
+                });
                 
             } else {
         
@@ -27,7 +29,10 @@ const authMiddleware = (req, res, next) => {
                     if (!user) {
                     errors.push("La session n'est plus valide, reconnectez-vous.");
                     res.cookie('flashErrors', errors);
-                    next();
+
+                    req.session.destroy((err) => {
+                        res.status(200).redirect( '/' );
+                    });
                         
                     } else {
                         const actualTime = (new Date()).getTime();
@@ -36,12 +41,17 @@ const authMiddleware = (req, res, next) => {
                         if (userTime < actualTime) {
                             errors.push("La session à expiré. Reconnectez-vous.");
                             res.cookie('flashErrors', errors);
+                            req.session.destroy((err) => {
+                                res.status(200).redirect( '/' );
+                            });
                         } else {
                             jwt.verify(authToken, jwtConfig.secret, {}, (err, decoded) => {
                                 if (err) {
                                     errors.push("La sessions est invalide. Reconnectez-vous.");
                                     res.cookie('flashErrors', errors);
-                                    next();
+                                    req.session.destroy((err) => {
+                                        res.status(200).redirect( '/' );
+                                    });
                                 } else {
                                     User.findOneAndUpdate({ _id: user._id }, { 
                                         validUntil: new Date((new Date()).setHours((new Date()).getHours() + 1)) 
@@ -59,17 +69,8 @@ const authMiddleware = (req, res, next) => {
         
             }
     }else{
-                            
-
-        req.session.destroy((err) => {
-            res.status(200).redirect( '/' );
-        });
         next();
     }
-
-
-   
-
 };
 
 /** On exporte le Middleware */
