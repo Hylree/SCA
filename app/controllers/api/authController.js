@@ -8,7 +8,7 @@ const jwtConfig = require('../../config/jwt');
 /** On importe les modèles */
 const User = require('../../models/user');
 
-/** On déclare les fonctions liées aux animaux */
+/** Connexion de l'utilisateur */
 const login = (req, res) => {
 
     const username = req.body.username;
@@ -61,7 +61,7 @@ const login = (req, res) => {
 
 };
 
-/** On exporte le controller */
+/** On exporte les controllers */
 module.exports = {
     login: login
 };

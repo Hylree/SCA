@@ -1,11 +1,8 @@
 /** On importe les librairies */
 
 
-/** On importe les modèles */
 
-
-/** On déclare les fonctions */
-
+/** Initialitation de la vue de la page de gestion des utilisateur */
 const usersView = (req, res) => {
     
     const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
@@ -21,6 +18,7 @@ const usersView = (req, res) => {
     });
 }
 
+/** On exporte les controllers */
 module.exports = {
     usersView : usersView
 };

@@ -3,9 +3,9 @@
 const formidable = require('formidable');
 /** On importe les modèles */
 const Post = require('../../models/post');
-
 const Image = require('../../models/image/post/imagePost');
 
+/** Création du post */
 const postPost = (req, res) =>{
 
         var form = new formidable.IncomingForm();
@@ -37,17 +37,12 @@ const postPost = (req, res) =>{
                     Post.create({message: fields.message}, async (err, post) => {
 
                         for (eachFile of arrayOfFiles){
-                            console.log("eachFile");
-                            console.log(eachFile);
                             Image.Image.create(eachFile.files, async (err, images) => {
                                 
 
                                 for(image of images){
-                                    console.log("image");
-                                    console.log(image);
                                     Image.RelationImage.create({id_image: image._id, id_post: post._id}, async (err, relationimagePost) => {
-                                        console.log("relationimage");
-                                        console.log(relationimagePost);
+
                                     });
                                 }
                                 
@@ -68,6 +63,7 @@ const postPost = (req, res) =>{
 
 }
 
+/** Initialisation de la vue de création d'un post */
 const viewPost = (req, res) =>{
 
     const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
@@ -83,7 +79,7 @@ const viewPost = (req, res) =>{
 }
 
 
-/** On exporte le controller */
+/** On exporte les controllers */
 module.exports = {
     postPost: postPost,
     viewPost: viewPost

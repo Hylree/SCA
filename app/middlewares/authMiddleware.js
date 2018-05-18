@@ -7,7 +7,7 @@ const jwtConfig = require('../config/jwt');
 /** On importe les modèles */
 const User = require('../models/user');
 
-/** On créée le Middleware */
+/** vérifie l'authentification si il est valide ou non*/
 const authMiddleware = (req, res, next) => {
 
     const errors = [];

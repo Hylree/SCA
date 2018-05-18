@@ -10,10 +10,12 @@ const User = require('../../models/user');
 const Human = require('../../models/human');
 const Client = require('../../models/client');
 
+/** Initialisation de la vue de connexion utilisateur */
 const viewLogin = (req, res) => {
     res.render('pages/vue/web/login', req.locals);
 }
-/** On déclare les fonctions liées aux animaux */
+
+/** Connexion de l'utilisateur */
 const login = (req, res) => {
     const errors = [];
     const success = [];
@@ -84,6 +86,7 @@ const login = (req, res) => {
 
 };
 
+/** Déconnexion de l'utilisateur */
 const logout = (req, res) => {
 
     req.session.destroy((err) => {
@@ -95,7 +98,7 @@ const logout = (req, res) => {
     });
 };
 
-/** On exporte le controller */
+/** On exporte les controllers */
 module.exports = {
     login: login,
     viewLogin : viewLogin,

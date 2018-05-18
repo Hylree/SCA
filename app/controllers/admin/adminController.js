@@ -1,6 +1,4 @@
-/** On importe les modèles */
-
-
+/** Initialisation de la vue de la page principale de l'administration */
 const viewAdmin = (req, res) =>{
 
     const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
@@ -16,7 +14,7 @@ const viewAdmin = (req, res) =>{
 }
 
 
-/** On exporte le controller */
+/** On exporte les controllers */
 module.exports = {
     viewAdmin: viewAdmin
 };

@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 /** 
  * On importe les modèles
- * !!! Il faut importer les modules pour les populates !!!
+ * !!! Il faut importer tout les modules concernés pour les populates !!!
  *  */
 const User = require('../../models/user');
 const Human = require('../../models/human');
@@ -12,10 +12,7 @@ const Conducteur = require('../../models/conducteur');
 
 /** On importe de ficher des fonctions de l'application */
 const FunctionApp = require('../../functions/appFunctions');
-
-/** On déclare les fonctions liées aux animaux */
   
-
 /**
  * Récupere tout les humains avec les références
  */
@@ -35,7 +32,7 @@ const getAllHumans = (req, res) => {
 /**
  * Permet de récuperer les Humans triés
  */
-const getUsersFilter = (req, res) => {
+const getUniqueHuman = (req, res) => {
 
     const nameFilter = req.params.nameFilter;
 
@@ -71,7 +68,7 @@ const postUsers = (req, res) => {
 /**
  * Permet de récuperer un seul utilisateur grâce à son id
  */
-const getUniqueUser = (req, res) => {
+const getUniqueHuman = (req, res) => {
     let id = req.params.id;
 
     Human.Human.
@@ -85,7 +82,7 @@ const getUniqueUser = (req, res) => {
 /**
  * permet de modifier un utilisateur grace à sont id
  */
-const updateOneUser = (req, res) => {
+const updateOneHuman = (req, res) => {
     
     const id = req.params.id; //Récuperation de l'id de du client
     const errors = [];

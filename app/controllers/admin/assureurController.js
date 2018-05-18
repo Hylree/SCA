@@ -1,6 +1,5 @@
 
-
-
+/** Initialisation de la vue pour la gestion des Assureurs */
 const assureursView = (req, res) => {
     
     const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
@@ -16,6 +15,7 @@ const assureursView = (req, res) => {
     });
 }
 
+/** On exporte les controller */
 module.exports = {
     assureursView : assureursView
 };

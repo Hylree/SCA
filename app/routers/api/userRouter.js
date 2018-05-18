@@ -9,9 +9,9 @@ const userRouter = express.Router();
 
 /** On déclare les routes */
 userRouter.get('/', userController.getAllHumans);
-userRouter.get('/:id', userController.getUniqueUser);
-userRouter.post('/updateOneUser/:id', userController.updateOneUser);
-userRouter.get('/getUserFilter/:nameFilter', userController.getUsersFilter);
+userRouter.get('/:id', userController.getUniqueHuman);
+userRouter.post('/updateOneUser/:id', userController.updateOneHuman);
+userRouter.get('/getUserFilter/:nameFilter', userController.getHumansFilter);
 
 /** On exporte le router */
 module.exports = userRouter;

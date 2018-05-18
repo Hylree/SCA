@@ -2,6 +2,7 @@
 const Post = require('../../models/post');
 const Image = require('../../models/image/post/imagePost');
 
+/** Initialisation de la vue de l'affichage des posts */
 const postsView = (req, res) => {
 
     const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
@@ -10,7 +11,7 @@ const postsView = (req, res) => {
     delete req.session.flashSuccess;
     delete req.session.flashErrors;
     
-    
+    /** Recherche des posts */
     Post.find({}, async (err, posts) => {
         const numberPosts = posts.length;
         let arrayPosts = [];
@@ -28,8 +29,6 @@ const postsView = (req, res) => {
             arrayPosts.push(object);
         };
 
-        console.log(arrayPosts);
-
         res.render('pages/vue/web/posts',  {
             flashSuccess: flashSuccess,
             flashErrors: flashErrors,
@@ -39,6 +38,7 @@ const postsView = (req, res) => {
     });
 }
 
+/** On exporte les controllers */
 module.exports = {
     postsView : postsView
 };

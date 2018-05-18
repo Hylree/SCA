@@ -1,10 +1,4 @@
-/** On importe les librairies */
-
-/** On importe les modèles */
-
-
-/** On déclare les fonctions */
-
+/** Initialisation de la page d'acceuil */
 const viewHome = (req, res) => {
     
     const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
@@ -19,6 +13,7 @@ const viewHome = (req, res) => {
     });
 }
 
+/** On export les controllers */
 module.exports = {
     viewHome : viewHome
 };

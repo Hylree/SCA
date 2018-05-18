@@ -6,11 +6,10 @@ const cookie = require('cookie-parser');
 /** On importe les modèles */
 const User = require('../../models/user');
 const Profil = require('../../models/profil');
-
 const Human = require('../../models/human');
 
-/** On déclare les fonctions */
 
+/** Initialisation de la page de création de compte */
 const viewRegister = (req, res) => {
 
     const flashSuccess = req.session.flashSuccess ? req.session.flashSuccess : [];
@@ -25,13 +24,14 @@ const viewRegister = (req, res) => {
     });
 }
 
+/** Création du compte */
 const postRegister = (req, res) => {
     const errors = [];
     const success = [];
     const dateNow = new Date();
     const cp = req.body.code;
     const typeHab = req.body.home_type;
-    const regex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/gmi;
+    const regex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/gmi; //Permet de vérifier le formalisme du numero de téléphone
 
 
     if(req.body.password !== req.body.password_confirm){
@@ -80,7 +80,6 @@ const postRegister = (req, res) => {
     
 
     /** On enregistre l'utilisateur */
-
     var profilQuery = Profil.findOne({'id' : 'prospect'}).exec();
     profilQuery.then((profil) => {
         req.body.profil = profil.id;
@@ -100,6 +99,7 @@ const postRegister = (req, res) => {
     
 }
 
+/** Vérifie la séléction de l'utilisateur pour l'habitat */
 function checkTypeHab(type){
     const arrayTypeHabitation = ['Appartement', 'Maison', 'Autres'];
     let res = false;
@@ -113,6 +113,7 @@ function checkTypeHab(type){
     return res;
 }
 
+/** Vérifie la séléction de l'utilisateur pour sa qualité pour l'habitation */
 function checkQualityForHab(quality){
     const arrayQuality = ['Location', 'Propriétaire', 'Autres'];
     let res = false;
@@ -125,6 +126,7 @@ function checkQualityForHab(quality){
     return res;
 }
 
+/** Vérifie la séléction de l'utilisateur pour sa situation familiale */
 function checkSituationFamily(sit){
     const arraySitation = ['Célibataire', 'Marié', 'Concubinage', 'Séparer', 'Divorcé', 'Veuf', 'Pacs'];
     let res = false;
@@ -137,6 +139,7 @@ function checkSituationFamily(sit){
     return res;
 }
 
+/** Vérifie la séléction pour sa situation proféssionnelle */
 function checkSituationPro(sit){
     const arraySituation = ['Artisan', 'Exploitant agricole', 'Profession libérale', "Chef d'entreprise", 'Salarié', 'Fonctionnaire', 'VRP', 'Etudiant', 'Sans profession', "Recherche d'emploi", 'Ecclasiastique'];
     let res = false;
@@ -149,13 +152,8 @@ function checkSituationPro(sit){
 
     return res;
 }
-/**  POur récupérer un utilisateur avec le profil 
- User.findOne({ username : 'Superman'}).populate('profil').exec((err, person) => {
-    onsole.log(person);
-});
-*/
 
-/** On exporte le controller */
+/** On exporte les controllers */
 module.exports = {
     viewRegister : viewRegister,
     postRegister: postRegister

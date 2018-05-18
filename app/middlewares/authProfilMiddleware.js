@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 /** On importe les modèles */
 const User = require('../models/user');
 
-/** On créée le Middleware */
+/** Vérifie si l'utilisateur est administrateur */
 const authProfilMiddleware = (req, res, next) => {
 
     const errors = [];
@@ -19,9 +19,6 @@ const authProfilMiddleware = (req, res, next) => {
     }else{
         next();
     }
-
-
-   
 
 };
 
