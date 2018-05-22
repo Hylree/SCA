@@ -16,7 +16,13 @@ const authProfilMiddleware = (req, res, next) => {
                 res.status(401).redirect( '/' );
             });
 
+        }else{
+            errors.push("Vous n'avez pas les autorisations necessaire pour continuer sur cette page.");
+            res.cookie('flashErrors', errors);
+            res.status(401).redirect( '/' );
         }
+
+        
     }else{
         next();
     }
